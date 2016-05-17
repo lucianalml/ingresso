@@ -38,6 +38,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	Route::get('evento/{id}/edit', 'EventoController@edit');
 	Route::post('evento/{id}/edit', 'EventoController@update');
 
+// Lotes de um evento
+	Route::get('evento/{evento}/lotes', 'LoteController@index');
+
+
 // Salva novo lote
     Route::post('evento/{evento}/lote', 'LoteController@store');
 

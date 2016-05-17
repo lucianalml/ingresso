@@ -55,7 +55,8 @@ class EventoController extends Controller
      */
     public function create()
     {
-        return view('admin.eventos.create');
+//        $evento = new Evento;
+        return view('admin.eventos.create-edit');
     }
 
 
@@ -121,7 +122,8 @@ class EventoController extends Controller
     {   
 
         $evento = Evento::findOrFail($id);
-        return view('admin.eventos.edit', compact('evento'));
+//        return view('admin.eventos.edit', compact('evento'));
+        return view('admin.eventos.create-edit', compact('evento'));
     }
 
     /**

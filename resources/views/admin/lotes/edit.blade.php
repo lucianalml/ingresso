@@ -4,12 +4,12 @@
 <div class="container">
 	<div class="col-sm-offset-2 col-sm-8">
 
-  			<a href="{{ url('admin/evento/'.$evento->id .'/edit'  ) }}" class="btn btn-primary">Voltar</a>
+  			<a href="{{ url('admin/evento/'.$evento->id .'/lotes'  ) }}" class="btn btn-primary">Voltar</a>
   			<br><br>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Editando Lote {{ $lote->descricao }}
+                    Editando {{ $lote->descricao }}
                 </div>
 
                 <div class="panel-body">
