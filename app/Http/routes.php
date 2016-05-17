@@ -33,7 +33,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 	Route::get('/evento/create', 'EventoController@create');
 	Route::post('/evento/create', 'EventoController@store');
-	
+
+//	Route::get('evento/{id}', 'EventoController@show');
+	Route::get('evento/{id}/edit', 'EventoController@edit');
+	Route::post('evento/{id}/edit', 'EventoController@update');
+
+// Salva novo lote
+    Route::post('evento/{evento}/lote', 'LoteController@store');
+
+// Edita um lote
+    Route::get('evento/{evento}/lote/{lote}/edit', 'LoteController@edit');
+    Route::post('evento/{evento}/lote/{lote}/edit', 'LoteController@update');
+
 //	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
 });

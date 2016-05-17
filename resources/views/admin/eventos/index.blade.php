@@ -38,9 +38,8 @@
 										<td class="table-text"><div>{{ $evento->local }}</div></td>
 		                                <td>
 		                                    <!-- Editar -->
-		                                    <button type="submit" id="edit-evento-{{ $evento->id }}" class="btn btn-primary">
-                								<i class="fa fa-btn fa-edit"></i>Editar
-            								</button>
+		                                    <a href="{{ url('admin/evento/'.$evento->id.'/edit') }}" class="btn btn-primary">
+		                                    <i class="fa fa-btn fa-edit"></i>Editar</a>
 		                                </td>
 		                            </tr>
 		                        @endforeach

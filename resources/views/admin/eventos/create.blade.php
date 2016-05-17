@@ -27,7 +27,7 @@
 			                <label for="nome" class="col-sm-3 control-label">Nome</label>
 
 			                <div class="col-sm-6">
-			                    <input type="text" name="nome" id="nome" class="form-control">
+			                    <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}">
 			                </div>
 			            </div>
 
@@ -36,7 +36,9 @@
 			                <label for="descricao" class="col-sm-3 control-label">Descrição</label>
 
 			                <div class="col-sm-6">
-			                	<textarea name="descricao" id="descricao" class="form-control" form="formcreate" rows="5"></textarea>
+			                	<textarea name="descricao" id="descricao" class="form-control" form="formcreate" rows="5">
+			                		{{ old('descricao') }}
+			                	</textarea>
 			                </div>
 			            </div>
 
@@ -46,7 +48,7 @@
 			                <label for="data" class="col-sm-3 control-label">Data</label>
 
 			                <div class="col-sm-6">
-			                    <input type="date" name="data" id="data" class="form-control">
+			                    <input type="date" name="data" id="data" class="form-control" value="{{ old('data') }}">
 			                </div>
 			            </div>
 
@@ -55,7 +57,7 @@
 			                <label for="hora" class="col-sm-3 control-label">Hora</label>
 
 			                <div class="col-sm-6">
-			                    <input type="time" name="hora" id="hora" class="form-control">
+			                    <input type="time" name="hora" id="hora" class="form-control" value="{{ old('hora') }}">
 			                </div>
 			            </div>
 
@@ -64,7 +66,7 @@
 			                <label for="local" class="col-sm-3 control-label">Local</label>
 
 			                <div class="col-sm-6">
-			                    <input type="text" name="local" id="local" class="form-control">
+			                    <input type="text" name="local" id="local" class="form-control" value="{{ old('local') }}">
 			                </div>
 			            </div>
 
@@ -72,7 +74,7 @@
 			            <!-- Botão adicionar evento -->
 			            <div class="form-group">
 			                <div class="col-sm-offset-3 col-sm-6">
-			                    <button type="submit" class="btn btn-default">
+			                    <button type="submit" class="btn btn-success">
 			                        <i class="fa fa-plus"></i> Adicionar
 			                    </button>
 			                </div>

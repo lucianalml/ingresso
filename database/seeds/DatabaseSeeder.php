@@ -17,8 +17,11 @@ class DatabaseSeeder extends Seeder
 //        $this->call(AdminsTableSeeder::class);
 //        $this->command->info('Admins table seeded!');
 
-        $this->call(EventosTableSeeder::class);
-        $this->command->info('Eventos table seeded!');
+//        $this->call(EventosTableSeeder::class);
+//        $this->command->info('Eventos table seeded!');
+
+        $this->call(LotesSeeder::class);
+        $this->command->info('Lotes table seeded!');
 
     }
 }

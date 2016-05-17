@@ -16,4 +16,12 @@ class Evento extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Recupera todos os lotes desse evento
+     */
+    public function lotes()
+    {
+        return $this->hasMany(Lote::class,'evento_id', 'id');
+    }
 }

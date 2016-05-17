@@ -14,9 +14,9 @@ class EventoController extends Controller
 {
 
     /**
-     * The task repository instance.
+     * The evento repository instance.
      *
-     * @var TaskRepository
+     * @var EventoRepository
      */
     protected $eventos;
 
@@ -69,6 +69,7 @@ class EventoController extends Controller
     public function store(Request $request)
     {
 
+        // Get all the validation rules for eventos and assign it to the evento Model
         $this->validate($request, [
             'nome' => 'required',
             'descricao' => 'required',
@@ -77,7 +78,6 @@ class EventoController extends Controller
             'local' => 'required',
         ]);
         
-        // Get all the validation rules for eventos and assign it to the evento Model
         $evento = new Evento();
 
         $evento->nome = $request->nome;
@@ -111,4 +111,43 @@ class EventoController extends Controller
         
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {   
+
+        $evento = Evento::findOrFail($id);
+        return view('admin.eventos.edit', compact('evento'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+
+    {
+        $this->validate($request, [
+            'nome' => 'required',
+            'descricao' => 'required',
+            'data' => 'required',
+            'hora' => 'required',
+            'local' => 'required',
+        ]);
+
+
+        $eventos = Evento::findOrFail($id);
+
+        $eventos->update($request->all());
+
+        return redirect('admin/eventos');
+
+    }
 }
