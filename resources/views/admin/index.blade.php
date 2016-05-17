@@ -8,7 +8,7 @@
                 <div class="panel-heading">Administração</div>
 
                 <div class="panel-body">
-                    Página da administração
+                    <a href="{{ url('admin/eventos') }}">Gerenciar Eventos</a>
                 </div>
             </div>
         </div>

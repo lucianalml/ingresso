@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Admin;
+use App\Models\Evento;
 
 class User extends Authenticatable
 {
@@ -26,10 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Verifica se o usuário é Admin
+     */
     public function isAdmin()
     {
-
-// Verifica se o usuário é Admin
         $admin = Admin::find($this->id);
 
         if ($admin == NULL) {
@@ -39,6 +41,14 @@ class User extends Authenticatable
             return true;
         }      
 
+    }
+
+    /**
+     * Recupera todos os eventos desse usuário
+     */
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class);
     }
 
 }

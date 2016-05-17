@@ -29,5 +29,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		return view('admin.index');
 	});
 
+	Route::get('/eventos', 'EventoController@index');
+
+	Route::get('/evento/create', 'EventoController@create');
+	Route::post('/evento/create', 'EventoController@store');
+	
+//	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
 });
