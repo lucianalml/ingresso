@@ -112,6 +112,19 @@ class EventoController extends Controller
         
     }
 
+/**
+ *  ToDo
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {   
+
+        
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
