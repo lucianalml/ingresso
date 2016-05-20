@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    <link rel="stylesheet" href="/css/style.css">
+
     <style>
         body {
             font-family: 'Lato';
+            padding-top: 70px;
         }
 
         .fa-btn {
@@ -26,10 +29,9 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
@@ -48,10 +50,19 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/admin') }}">Admin</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
+                     <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Buscar">
+                        </div>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> </button>
+                      </form>
+
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
@@ -71,6 +82,7 @@
             </div>
         </div>
     </nav>
+
 
     @yield('content')
 

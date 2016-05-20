@@ -56,8 +56,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	//Rota Get Produtores
 	Route::get('/produtores', 'ProdutorController@index');
 
+// Editar um produtor
+    Route::get('produtor/{produtor}/edit', 'ProdutorController@edit');
+    Route::post('produtor/{produtor}/edit', 'ProdutorController@update');
+
+    
+
 });
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
