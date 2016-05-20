@@ -35,17 +35,6 @@
 		                </div>
 		            </div>
 
-
-		            <!-- Email -->
-		            <div class="form-group">
-		                <label for="email" class="col-sm-3 control-label">E-mail</label>
-
-		                <div class="col-sm-6">
-	                    	<input type="text" name="email" id="email" class="form-control" value="{{ $produtor->user->email }}">
-
-		                </div>
-		            </div>
-
 		            <!-- Celular -->
 		            <div class="form-group">
 		                <label for="celular" class="col-sm-3 control-label">Celular</label>

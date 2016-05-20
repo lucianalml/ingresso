@@ -14,4 +14,12 @@ class Produtor extends Model
     {
         return $this->hasOne(User::class, 'id', 'id');
     }
+
+    /**
+     * Recupera todos os eventos desse produtor
+     */
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class,'produtor_id', 'id');
+    }
 }

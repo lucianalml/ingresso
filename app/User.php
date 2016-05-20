@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Admin;
 use App\Models\Evento;
+use App\Models\Produtor;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,22 @@ class User extends Authenticatable
         $admin = Admin::find($this->id);
 
         if ($admin == NULL) {
+            return false ;
+        }
+        else {
+            return true;
+        }      
+
+    }
+
+    /**
+     * Verifica se o usuário é Produtor
+     */
+    public function isProdutor()
+    {
+        $produtor = Produtor::find($this->id);
+
+        if ($produtor == NULL) {
             return false ;
         }
         else {

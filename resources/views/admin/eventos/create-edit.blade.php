@@ -24,10 +24,11 @@
 		        <!-- Exibe os erros de validação -->
 		        @include('common.errors')
 
-		        <!-- Form para criar/editar eventos -->
+		        <!-- Form para editar eventos -->
 				@if( isset($evento) )
 				    <form action="{{ url('admin/evento/'.$evento->id.'/edit') }}" method="POST" class="form-horizontal" id="form">
 				@else
+				<!-- Form para criar eventos -->
 				    <form action="{{ url('admin/evento/create') }}" method="POST" class="form-horizontal" id="form">
 				@endif
 
@@ -108,6 +109,27 @@
 		                </div>
 		            </div>
 
+
+		            <!-- Produtor -->
+		            <div class="form-group">
+		                <label for="produtor" class="col-sm-3 control-label">Produtor</label>
+
+		                <div class="col-sm-6">
+
+
+                        <select class="form-control" name="produtor_id" id="produtor_id">
+                        	@if( isset($evento) )
+                            	<option value="{{ $evento->propdutor_id }}"></option>
+							@else
+								<option value="{{ old('produtor') }}"></option>
+							@endif
+                            @foreach($produtores as $produtor)
+                                <option value="{{ $produtor->id }}" {{ $evento->produtor_id == $produtor->id ? "selected" : "" }}>{{ $produtor->user->name }}</option>
+                            @endforeach
+                        </select>
+
+		                </div>
+		            </div>
 
 		            <!-- Botão de salvar -->
 		            <div class="form-group">

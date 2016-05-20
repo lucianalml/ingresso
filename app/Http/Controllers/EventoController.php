@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Repositories\EventoRepository;
 
 use App\Models\Evento;
+use App\Models\Produtor;
 
 class EventoController extends Controller
 {
@@ -87,25 +88,10 @@ class EventoController extends Controller
         $evento->hora = $request->hora;
         $evento->local = $request->local;
       
-/*
-        if (Auth::user()->id == 2) {
-            // If user is a test user (id = 2),display message saying you cant delete if your a test user
-            flash()->error('Error', 'Cannot create Evento because you are signed in as a test user.');
-        } else {
-            // Save the Eventos in DB
-            $eventos->save();
-
-            // Flash a success message
-            flash()->success('Success', 'Evento created successfully!');
-        }
-
-*/
-
-        // Save the Eventos in DB
+// Salva o evento no banco de dados
         $evento->save();
 
-        // Flash a success message
-//        flash()->success('Success', 'Evento created successfully!');
+        flash()->success('Evento criado com sucesso!');
 
         // Redirect back to Show all eventos page.
         return redirect('admin/eventos');
@@ -135,8 +121,11 @@ class EventoController extends Controller
     {   
 
         $evento = Evento::findOrFail($id);
-//        return view('admin.eventos.edit', compact('evento'));
-        return view('admin.eventos.create-edit', compact('evento'));
+
+        // Recupera os produtors
+        $produtores = Produtor::get();
+
+        return view('admin.eventos.create-edit', compact('evento', 'produtores'));
     }
 
     /**
