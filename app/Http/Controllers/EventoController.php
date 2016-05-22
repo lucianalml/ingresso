@@ -56,8 +56,10 @@ class EventoController extends Controller
      */
     public function create()
     {
-//        $evento = new Evento;
-        return view('admin.eventos.create-edit');
+        // Recupera os produtors
+        $produtores = Produtor::get();
+
+        return view('admin.eventos.create-edit', compact('produtores'));
     }
 
 

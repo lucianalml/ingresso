@@ -1,9 +1,7 @@
-@extends('layouts.app')
+@extends('admin.layouts.default')
 
 @section('content')
 
-    <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
 
   			<a href="{{ url('admin/evento/create') }}" class="btn btn-primary">Criar novo evento</a>
   			<br><br>
@@ -48,6 +46,5 @@
 		            </div>
 		        </div>
 		    @endif
-        </div>
-    </div>
+
 @endsection
