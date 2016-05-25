@@ -121,5 +121,4 @@ class ProdutorController extends Controller
 
         return back();
     }
-
 }

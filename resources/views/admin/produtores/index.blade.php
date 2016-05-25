@@ -39,7 +39,7 @@
                             </td>
 
                             <td>
-                                <!-- Visualizar eventos TODO enviar para rota-->
+                                <!-- Eventos do produtor-->
                                 <a href="{{ url('admin/eventos') }}" class="btn btn-primary">
                                 <i class="fa fa-btn fa-headphones"></i>Eventos</a>
                             </td>

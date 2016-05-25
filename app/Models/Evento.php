@@ -30,4 +30,12 @@ class Evento extends Model
     {
         return $this->hasMany(Lote::class,'evento_id', 'id');
     }
+
+    /**
+     * Recupera todas as imagens desse evento
+     */
+    public function imagens()
+    {
+        return $this->hasMany(EventoImagem::class,'evento_id', 'id');
+    }
 }

@@ -76,6 +76,8 @@
 
         <div id="page-wrapper">
             @include('flash::message')
+
+            <br>
             @yield('content')
         </div>
     </div>

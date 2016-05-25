@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<a href="{{ url('admin/evento/'.$evento->id .'/lotes'  ) }}" class="btn btn-primary">Voltar</a>
+	<a href="{{ url('admin/evento/'.$evento->id .'/edit'  ) }}" class="btn btn-primary">Voltar</a>
 	<br><br>
 
     <div class="panel panel-default">

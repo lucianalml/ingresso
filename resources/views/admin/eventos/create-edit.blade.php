@@ -38,11 +38,11 @@
 
                 <div class="col-sm-6">
 
-		@if( isset($evento) )
-		    <input type="text" name="nome" id="nome" class="form-control" value="{{ $evento->nome }}">
-		@else
-		    <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}">
-		@endif
+        		@if( isset($evento) )
+        		    <input type="text" name="nome" id="nome" class="form-control" value="{{ $evento->nome }}">
+        		@else
+        		    <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}">
+        		@endif
 
                     
                 </div>
@@ -125,7 +125,12 @@
 
 					@else
 						<option value="{{ old('produtor_id') }}"></option>
-
+                        @foreach($produtores as $produtor)
+                            <option value="{{ $produtor->id }}"
+                            {{ old('produtor_id') == $produtor->id ? "selected" : "" }}>
+                                {{ $produtor->user->name }}
+                            </option>
+                        @endforeach
 
 					@endif
                 </select>
@@ -139,16 +144,14 @@
                     <button type="submit" class="btn btn-success">
                         <i class="fa fa-floppy-o"></i> Salvar
                     </button>
-
-                    <!-- Botão de gerenciar lotes -->
-                    @if( isset($evento) )
-                    	<a href="{{ url('admin/evento/'.$evento->id.'/lotes') }}" class="btn btn-primary">
-                    	<i class="fa fa-ticket"></i> Gerenciar Lotes</a>
-					@endif
                 </div>
             </div>
-
         </form>
+
+        @if( isset($evento) )
+            @include('admin.lotes.evento-lotes')
+        @endif
+
 	</div>
 </div>
 

@@ -13,13 +13,9 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', function () {
-        return view('index');
-    });
+    Route::get('/', 'HomeController@index');
 
     Route::auth();
-
-    Route::get('/home', 'HomeController@index');
 
 });
 
@@ -38,12 +34,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	Route::get('evento/{id}/edit', 'EventoController@edit');
 	Route::post('evento/{id}/edit', 'EventoController@update');
 
-	//ToDo - utilizar softDelete do laravel
+	//ToDo - utilizar softDelete
 	//Route::post('evento/{id}/delete', 'EventoController@delete');
 
 // Lotes de um evento
 	Route::get('evento/{evento}/lotes', 'LoteController@index');
-
 
 // Salva novo lote
     Route::post('evento/{evento}/lote', 'LoteController@store');
@@ -68,5 +63,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 // Remove um usuário da lista de produtores
     Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
     
+
+// Imagens de um evento
+	Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
+
+// Salvar uma nova imagem
+ 	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
+
+// Deletar uma imagem
+    Route::delete('admin/products/photos/{id}', 'ProductPhotosController@destroy');
 
 });

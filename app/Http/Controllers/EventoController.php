@@ -30,18 +30,22 @@ class EventoController extends Controller
     public function __construct(EventoRepository $eventos)
     {
         $this->middleware('auth');
-        $this->eventos = $eventos;
+
+// Verificar como funciona essa pira de Repository
+//         $this->eventos = $eventos;
+
+// Listar eventos do usuário em EventoRepository
+//        $eventos->forUser($user);
     }
 
 	/**
-	 * Retorna uma lista com todos os eventos
+	 * Lista todos os eventos
 	 *
 	 * @param  Request  $request
 	 * @return Response
 	 */
 	public function index(Request $request)
 	{
-
 
         $eventos = Evento::get();
         return view('admin.eventos.index', compact('eventos'));
@@ -58,7 +62,6 @@ class EventoController extends Controller
     {
         // Recupera os produtors
         $produtores = Produtor::get();
-
         return view('admin.eventos.create-edit', compact('produtores'));
     }
 
@@ -95,9 +98,8 @@ class EventoController extends Controller
 
         flash()->success('Evento criado com sucesso!');
 
-        // Redirect back to Show all eventos page.
-        return redirect('admin/eventos');
-        
+// Envia para a rota de edição do evento
+        return redirect()->action('EventoController@edit', [$evento->id]);       
     }
 
 /**
@@ -153,6 +155,8 @@ class EventoController extends Controller
 
         $eventos->update($request->all());
 
+        flash()->success('Evento atualizado.');
+        
         return redirect('admin/eventos');
 
     }

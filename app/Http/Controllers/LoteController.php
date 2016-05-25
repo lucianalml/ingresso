@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
-use App\Models\Lote;
 use App\Models\Evento;
+use App\Models\Lote;
+use App\Models\Produtor;
+use Illuminate\Http\Request;
 
 class LoteController extends Controller
 {
-
 
     /**
      * Retorna uma lista com todos os lotes do evento
@@ -21,10 +19,7 @@ class LoteController extends Controller
      */
     public function index(Request $request, Evento $evento)
     {
-//        $lotes = $evento->lotes;
-//        return view('admin.lotes.index', compact(['evento','lotes']));
         return view('admin.lotes.index', compact('evento'));
-
     }
 
     /**
@@ -44,20 +39,14 @@ class LoteController extends Controller
         
         $lote = new Lote();
 
-
         $lote->descricao = $request->descricao;
         $lote->preco = $request->preco;
 
 // Salva no banco de dados
         $evento->lotes()->save($lote);
 
-// Recupera o id do evento
-//        $lote->evento_id = $evento->id
-//        $lote->save();
+        flash()->success('Lote atualizado.');
 
-
-//        return $request->all();
-//        return redirect('/admin');
         return back();
     }
 
@@ -96,7 +85,10 @@ class LoteController extends Controller
 
         $lote->update($request->all());
 
-        return redirect('admin/evento/'. $evento->id . '/lotes');
+        flash()->success('Lote atualizado.');
+            
+// Envia para edição do evento
+        return redirect()->action('EventoController@edit', [$evento->id]);       
 
     }
 
