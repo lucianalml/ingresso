@@ -18,13 +18,14 @@
 
         <!-- Imagens cadastradas -->
         <div class="col-md-12 gallery">
+
             @foreach ($evento->imagens->chunk(4) as $set)
                 <div class="row" id="image_row">
                     @foreach ($set as $photo)
                         <div class="col-xs-6 col-sm-3 col-md-3 gallery_image">
                             <label>{{ $photo->id }}</label>                            
                             <div class="img-wrap">
-                                <form method="post" action="/store/admin/products/photos/{{ $photo->id }}">
+                                <form method="post" action="/admin/evento/{{ $evento->id }}/imagem/{{ $photo->id }}">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="close">&times;</button>
@@ -37,6 +38,7 @@
                     @endforeach
                 </div>
             @endforeach
+
         </div>
     </div>
 

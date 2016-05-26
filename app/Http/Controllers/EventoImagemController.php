@@ -8,6 +8,7 @@ use App\Models\EventoImagem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;
+use File;
 
 class EventoImagemController extends Controller
 {
@@ -70,5 +71,30 @@ class EventoImagemController extends Controller
         flash()->success('Imagem carregada com sucesso!');
         return back();
 	}
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, Evento $evento, EventoImagem $imagem)
+    {
+
+// // Deleta o link do banco de dados
+// //    dd($imagem);
+
+//     $evento->imagens()->find($evento->id,$imagem->id)->delete();
+
+// // Deletar a imagem do servidor 
+//     File::delete($imagem->path, $imagem->thumbnail_path);
+
+// //    dd($imgDeletar);
+    
+//     flash()->success('Imagem removida com sucesso!');
+
+        return back();
+    }
+
 
 }

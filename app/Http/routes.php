@@ -17,6 +17,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::auth();
 
+	Route::get('/teste', function(){
+		$eventos = App\Models\Evento::get();       
+		return view('teste', compact('eventos'));
+	});
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
@@ -71,6 +76,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
  	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
 
 // Deletar uma imagem
-    Route::delete('admin/products/photos/{id}', 'ProductPhotosController@destroy');
+    Route::delete('evento/{evento}/imagem/{id}', 'EventoImagemController@destroy');
 
 });

@@ -1,0 +1,19 @@
+            @foreach ($evento->imagens->chunk(4) as $set)
+                <div class="row" id="image_row">
+                    @foreach ($set as $photo)
+                        <div class="col-xs-6 col-sm-3 col-md-3 gallery_image">
+                            <label>{{ $photo->id }}</label>                            
+                            <div class="img-wrap">
+                                <form method="post" action="/admin/evento/{{ $evento->id }}/imagem/{{ $photo->id }}">
+                                    {!! csrf_field() !!}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="close">&times;</button>
+                                    <a href="{{ $photo->path }}" data-lity>
+                                        <img src="{{ $photo->thumbnail_path }}" alt="" data-id="{{ $photo->id }}">
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach

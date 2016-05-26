@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventoImagem extends Model
 {
-   	protected $table = 'evento_imagens';
+    protected $table = 'evento_imagens';
 
    	public $timestamps = false;
 
-	protected $fillable = array('path', 'thumbnail_path');
+    protected $fillable = array('path', 'thumbnail_path');
 
 	/**
      * Recupera o evento da imagem

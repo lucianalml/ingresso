@@ -36,6 +36,7 @@ class Evento extends Model
      */
     public function imagens()
     {
+//        return $this->hasMany(EventoImagem::class);
         return $this->hasMany(EventoImagem::class,'evento_id', 'id');
     }
 }
