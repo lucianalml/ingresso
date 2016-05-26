@@ -16,21 +16,21 @@
         <!-- Erros de validação -->
         @include('common.errors')
 
-        <!-- Imagens cadastradas -->
+        <!-- Exibir imagens cadastradas -->
         <div class="col-md-12 gallery">
 
             @foreach ($evento->imagens->chunk(4) as $set)
                 <div class="row" id="image_row">
-                    @foreach ($set as $photo)
+                    @foreach ($set as $imagem)
                         <div class="col-xs-6 col-sm-3 col-md-3 gallery_image">
-                            <label>{{ $photo->id }}</label>                            
+                            <label>{{ $imagem->id }}</label>                            
                             <div class="img-wrap">
-                                <form method="post" action="/admin/evento/{{ $evento->id }}/imagem/{{ $photo->id }}">
+                                <form method="post" action="/admin/imagem/{{ $imagem->id }}">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="close">&times;</button>
-                                    <a href="{{ $photo->path }}" data-lity>
-                                        <img src="{{ $photo->thumbnail_path }}" alt="" data-id="{{ $photo->id }}">
+                                    <a href="{{ $imagem->path }}" data-lity>
+                                        <img src="{{ $imagem->thumbnail_path }}" alt="" data-id="{{ $imagem->id }}">
                                     </a>
                                 </form>
                             </div>
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <!-- Form para inserir novas imagens-->        
+    <!-- Inserir imagens-->        
     <div class="panel panel-default">
         <div class="panel-heading">
             Cadastrar imagens

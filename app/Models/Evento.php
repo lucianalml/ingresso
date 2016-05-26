@@ -16,7 +16,7 @@ class Evento extends Model
 
 
     /**
-     * Recupera o produtor desse evento
+     * Produtor do evento
      */
     public function produtor()
     {
@@ -24,19 +24,18 @@ class Evento extends Model
     }
 
     /**
-     * Recupera todos os lotes desse evento
+     * Lotes do evento
      */
     public function lotes()
     {
-        return $this->hasMany(Lote::class,'evento_id', 'id');
+        return $this->hasMany(Lote::class);
     }
 
     /**
-     * Recupera todas as imagens desse evento
+     * Imagens do evento
      */
     public function imagens()
     {
-//        return $this->hasMany(EventoImagem::class);
-        return $this->hasMany(EventoImagem::class,'evento_id', 'id');
+        return $this->hasMany(EventoImagem::class);
     }
 }

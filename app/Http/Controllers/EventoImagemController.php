@@ -78,20 +78,16 @@ class EventoImagemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Evento $evento, EventoImagem $imagem)
+    public function destroy(Request $request, EventoImagem $imagem)
     {
 
-// // Deleta o link do banco de dados
-// //    dd($imagem);
+    // Deletar a imagem do servidor 
+     File::delete(public_path().$imagem->path, public_path().$imagem->thumbnail_path);
 
-//     $evento->imagens()->find($evento->id,$imagem->id)->delete();
+    // Deleta do banco de dados
+    $imagem->delete();    
 
-// // Deletar a imagem do servidor 
-//     File::delete($imagem->path, $imagem->thumbnail_path);
-
-// //    dd($imgDeletar);
-    
-//     flash()->success('Imagem removida com sucesso!');
+    flash()->success('Imagem removida com sucesso!');
 
         return back();
     }

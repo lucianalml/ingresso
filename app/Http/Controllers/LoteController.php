@@ -57,14 +57,10 @@ class LoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evento $evento, $loteId)
+    public function edit(Lote $lote)
     {   
 
-// Recupera o lote
-        $lote = Lote::where('evento_id',$evento->id)
-                        ->where('id',$loteId)->first();
-
-        return view('admin.lotes.edit', compact(['evento','lote']));
+        return view('admin.lotes.edit', compact('lote'));
     }
 
     /**
@@ -74,7 +70,7 @@ class LoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evento $evento, Lote $lote)
+    public function update(Request $request, Lote $lote)
     {
 
         $this->validate($request, [
@@ -88,7 +84,7 @@ class LoteController extends Controller
         flash()->success('Lote atualizado.');
             
 // Envia para edição do evento
-        return redirect()->action('EventoController@edit', [$evento->id]);       
+        return redirect()->action('EventoController@edit', [$lote->evento->id]);
 
     }
 

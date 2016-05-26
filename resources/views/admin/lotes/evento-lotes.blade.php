@@ -23,7 +23,7 @@
                         <td class="table-text"><div>{{ $lote->preco }}</div></td>
                         <td>
                             <!-- Editar -->
-                            <a href="{{ url('admin/evento/'.$evento->id.'/lote/'.$lote->id.'/edit' ) }}" class="btn btn-primary">
+                            <a href="{{ url('admin/lote/'.$lote->id.'/edit' ) }}" class="btn btn-primary">
                             <i class="fa fa-btn fa-edit"></i>Editar</a>
                         </td>
                     </tr>

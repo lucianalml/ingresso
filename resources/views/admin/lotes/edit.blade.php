@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<a href="{{ url('admin/evento/'.$evento->id .'/edit'  ) }}" class="btn btn-primary">Voltar</a>
+	<a href="{{ url('admin/evento/'.$lote->evento->id .'/edit'  ) }}" class="btn btn-primary">Voltar</a>
 	<br><br>
 
     <div class="panel panel-default">
@@ -16,7 +16,7 @@
 	        @include('common.errors')
 
 	        <!-- Form para editar o lote -->
-	        <form action="{{ url('admin/evento/'.$evento->id.'/lote/'.$lote->id.'/edit' ) }}" method="POST" class="form-horizontal" id="form">
+	        <form action="{{ url('admin/lote/'.$lote->id.'/edit' ) }}" method="POST" class="form-horizontal" id="form">
 	            {{ csrf_field() }}
 
 				<!-- Descrição -->
