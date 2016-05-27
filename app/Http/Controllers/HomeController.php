@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Evento;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-// ?
+// TODO - Verificar....
 //        $this->middleware('auth');
     }
 
@@ -25,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+
+        $eventos = Evento::get();
+
+        return view('index', compact('eventos'));
     }
 }

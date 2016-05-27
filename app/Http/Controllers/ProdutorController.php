@@ -15,12 +15,11 @@ class ProdutorController extends Controller
    	//Retorna todos os produtores
    	public function index()
    	{
-
 		$produtores = Produtor::get();
 		return view('admin.produtores.index', compact('produtores'));
    	}
 
-/**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -46,11 +45,11 @@ class ProdutorController extends Controller
             'nome' => 'required',
         ]);
 
-// Atualiza os dados na tabela de produtor
+        // Atualiza os dados na tabela de produtor
         $produtor->celular = $request->celular;
         $produtor->update();
 
-// Atualiza os dados na tabela de usuario
+        // Atualiza os dados na tabela de usuario
         $usuario = User::find($produtor->id);
         $usuario->name = $request->nome;
         $usuario->update();
@@ -95,7 +94,6 @@ class ProdutorController extends Controller
 //        session()->flash('message_important',true);
 //        return back();
         
-
         flash()->success('Usuario adicionado como produtor');
 //        flash('Usuario adicionado como produtor');
 

@@ -13,14 +13,12 @@
 
 Route::group(['middleware' => ['web']], function () {
 
+	Route::auth();
+
     Route::get('/', 'HomeController@index');
 
-    Route::auth();
-
-	Route::get('/teste', function(){
-		$eventos = App\Models\Evento::get();       
-		return view('teste', compact('eventos'));
-	});
+    /** Exibir os eventos **/
+	Route::get('/evento', 'EventoController@show');
 
 });
 
