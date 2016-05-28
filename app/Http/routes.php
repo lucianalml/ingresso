@@ -18,7 +18,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'HomeController@index');
 
     /** Exibir os eventos **/
-	Route::get('/evento', 'EventoController@show');
+	Route::get('/evento/{evento}', 'EventoController@show');
 
 });
 

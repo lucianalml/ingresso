@@ -160,4 +160,17 @@ class EventoController extends Controller
         return redirect('admin/eventos');
 
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Evento $evento)
+    {
+        return view('evento', compact('evento'));
+    }
+
+
 }

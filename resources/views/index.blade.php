@@ -13,12 +13,13 @@
                 @foreach($eventos as $evento)
 
                     <div class="col-sm-6 col-md-3 animated zoomIn" id="featured-container">
-                        <a href="{{ url('evento/'.$evento->nome) }}">
+                        <a href="{{ url('evento/'.$evento->id) }}">
 
                         @if ( $evento->imagens->count() > 0 )
-                            <img src="{{ $evento->imagens->first()->thumbnail_path }}" alt="Photo ID: {{ $evento->imagens->first()->id }}" />
+                            <img src="{{ $evento->imagens->first()->thumbnail_path }}" />
                         @else
-                            <img src="/ImagensEventos/img-nao-encontrada.jpg" alt="No Image Found Tag" id="Product-similar-Image" style="width: 200px; height: 200px;">
+                            <img src="/ImagensEventos/img-nao-encontrada.jpg" 
+                            style="width: 200px; height: 200px;">
                         @endif
 
                             <div id="featured-evento-name-container">
@@ -27,11 +28,11 @@
 
                         </a>
 
-                        <form action="/store/cart/add" method="post" name="add_to_cart">
+                        <form action="/carrinho/add" method="post" name="add_to_cart">
                             {!! csrf_field() !!}
                             <input type="hidden" name="evento" value="{{$evento->id}}" />
                             <input type="hidden" name="qty" value="1" />
-                            <button class="btn btn-default waves-effect waves-light">Comprar</button>
+                            <button class="btn btn-default waves-effect waves-light">Se divertir!</button>
                         </form>
                         <br>
                     </div>
