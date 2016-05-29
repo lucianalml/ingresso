@@ -128,18 +128,22 @@ class ProdutorController extends Controller
 
     }
 
-//     /**
-//      * Elimina um usuário da tabela de produtores
-//      *
-//      * @param  Produtor  $produtor
-//      * @return Response
-//      */
-//     public function destroy(Produtor $produtor)
-//     {
-//         $produtor->delete();
+    /**
+     * Desativa um produtor
+     *
+     * @param  Produtor  $produtor
+     * @return Response
+     */
+    public function destroy(Produtor $produtor)
+    {
+        $produtor->ativo = false;
 
-//         flash()->success('Usuario removido dos produtores');
+        $produtor->update();
 
-//         return back();
-//     }
+        return redirect('admin/produtores');
+
+        flash()->success('Produtor inativo.');
+
+        return back();
+    }
 }

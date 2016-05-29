@@ -120,7 +120,7 @@
                         <option value="{{ $evento->propdutor_id }}"></option>
 
                         @foreach($produtores as $produtor)
-                            <option value="{{ $produtor->id }}" {{ $evento->produtor_id == $produtor->id ? "selected" : "" }}>{{ $produtor->user->name }}</option>
+                            <option value="{{ $produtor->id }}" {{ $evento->produtor_id == $produtor->id ? "selected" : "" }}>{{ $produtor->name }}</option>
                         @endforeach
 
                     @else
@@ -128,7 +128,7 @@
                         @foreach($produtores as $produtor)
                             <option value="{{ $produtor->id }}"
                             {{ old('produtor_id') == $produtor->id ? "selected" : "" }}>
-                                {{ $produtor->user->name }}
+                                {{ $produtor->name }}
                             </option>
                         @endforeach
 

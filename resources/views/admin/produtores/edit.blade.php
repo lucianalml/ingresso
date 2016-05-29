@@ -3,6 +3,15 @@
 @section('content')
 
 <a href="{{ url('admin/produtores') }}" class="btn btn-primary">Voltar</a>
+<br>
+
+<!-- Desativar um produtor -->
+<form method="post" action="/admin/produtor/{{ $produtor->id }}">
+    {!! csrf_field() !!}
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-danger">Desativar</button>
+</form>
+
 <br><br>
 
 <div class="panel panel-default">

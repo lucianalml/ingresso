@@ -27,19 +27,18 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 		Route::post('/evento/create', 'EventoController@store');
 
 	//	Route::get('evento/{id}', 'EventoController@show');
-		Route::get('evento/{id}/edit', 'EventoController@edit');
-		Route::post('evento/{id}/edit', 'EventoController@update');
+		Route::get('evento/{evento}/edit', 'EventoController@edit');
+		Route::post('evento/{evento}/edit', 'EventoController@update');
 
-		//ToDo - utilizar softDelete
+		//TODO - Para deletar um evento utilizar softDelete p/ nao remover do banco
 		//Route::post('evento/{id}/delete', 'EventoController@delete');
+	//	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
 	// Cadastro de lotes
 		Route::get('evento/{evento}/lotes', 'LoteController@index');
 	    Route::post('evento/{evento}/lote', 'LoteController@store');
 	    Route::get('/lote/{lote}/edit', 'LoteController@edit');
 	    Route::post('/lote/{lote}/edit', 'LoteController@update');
-
-	//	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
 	// Cadastro de produtores
 	 	Route::get('/produtores', 'AdminController@listarProdutores');
@@ -48,7 +47,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	
 	    Route::get('produtor/{produtor}/edit', 'ProdutorController@edit');
 	    Route::post('produtor/{produtor}/edit', 'ProdutorController@update');
-//	    Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
+	    Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
 	    
 	// Cadastro de imagens
 		Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
