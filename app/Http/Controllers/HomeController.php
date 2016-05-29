@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
 // TODO - Verificar....
 //        $this->middleware('auth');
-        $this->middleware('guest');
+//        $this->middleware('guest');
     }
 
     /**

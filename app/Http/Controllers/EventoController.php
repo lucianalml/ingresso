@@ -29,7 +29,8 @@ class EventoController extends Controller
      */
     public function __construct(EventoRepository $eventos)
     {
-        $this->middleware('auth');
+// Middleware valido para todos os métodos desse controler
+//        $this->middleware('auth');
 
 // Verificar como funciona essa pira de Repository
 //         $this->eventos = $eventos;
@@ -62,6 +63,7 @@ class EventoController extends Controller
     {
         // Recupera os produtors
         $produtores = Produtor::get();
+
         return view('admin.eventos.create-edit', compact('produtores'));
     }
 

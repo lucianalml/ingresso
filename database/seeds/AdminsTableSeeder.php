@@ -13,13 +13,26 @@ class AdminsTableSeeder extends Seeder
     {
         DB::table('admins')->delete();
 
-    	$admins = [
-    		0 => [  'id' => 4 ],
+        $users = [
+            0 => [  'email' => 'admin@ingresso.art.br',
+                    'password' => Hash::make('123123'),
+                    'name' => 'Administrador'],
 
-    		1 => [	'id' => 5 ]
-    	];
-		  
-		DB::table('admins')->insert($admins);
+            1 => [  'email' => 'luciana@ingresso.art.br',
+                    'password' => Hash::make('123123'),
+                    'name' => 'Luciana'],
+
+            2 => [  'email' => 'pedro@ingresso.art.br',
+                    'password' => Hash::make('123123'),
+                    'name' => 'Pedro'],
+
+            3 => [  'email' => 'claudio@ingresso.art.br',
+                    'password' => Hash::make('123123'),
+                    'name' => 'Claudio'],
+
+        ];
+          
+        DB::table('admins')->insert($users);
 
     }
 }

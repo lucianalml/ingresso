@@ -1,7 +1,6 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
 @section('content')
-
 
 <h4 class="text-center animated zoomIn" id="featured-eventos-heading">Próximos eventos</h4>
 

@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.app')
 
 @section('content')
 
@@ -116,15 +116,15 @@
 
 
                 <select class="form-control" name="produtor_id" id="produtor_id">
-                	@if( isset($evento) )
-                    	<option value="{{ $evento->propdutor_id }}"></option>
+                    @if( isset($evento) )
+                        <option value="{{ $evento->propdutor_id }}"></option>
 
                         @foreach($produtores as $produtor)
                             <option value="{{ $produtor->id }}" {{ $evento->produtor_id == $produtor->id ? "selected" : "" }}>{{ $produtor->user->name }}</option>
                         @endforeach
 
-					@else
-						<option value="{{ old('produtor_id') }}"></option>
+                    @else
+                        <option value="{{ old('produtor_id') }}"></option>
                         @foreach($produtores as $produtor)
                             <option value="{{ $produtor->id }}"
                             {{ old('produtor_id') == $produtor->id ? "selected" : "" }}>
@@ -132,10 +132,11 @@
                             </option>
                         @endforeach
 
-					@endif
+                    @endif
                 </select>
-
                 </div>
+                
+
             </div>
 
             <!-- Botão de salvar -->

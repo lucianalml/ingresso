@@ -29,22 +29,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Verifica se o usuário é Admin
-     */
-    public function isAdmin()
-    {
-        $admin = Admin::find($this->id);
-
-        if ($admin == NULL) {
-            return false ;
-        }
-        else {
-            return true;
-        }      
-
-    }
-
-    /**
      * Verifica se o usuário é Produtor
      */
     public function isProdutor()
