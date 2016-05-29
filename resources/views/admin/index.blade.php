@@ -4,7 +4,7 @@
     
 <div class="panel">
 
-	<h1 class="page-header">Administração</h1>
+	<h1 class="page-header">Dashboards</h1>
 
 </div>
 @endsection

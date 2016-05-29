@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Produtor;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -61,5 +62,11 @@ class AdminController extends Controller
     {
         $produtores = Produtor::get();
         return view('admin.produtores.index', compact('produtores'));
+    }
+
+    public function listarUsuarios()
+    {
+        $users = User::get();
+        return view('admin.usuarios', compact('users'));
     }
 }

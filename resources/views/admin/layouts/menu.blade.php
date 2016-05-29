@@ -8,6 +8,12 @@
                     <li>
                         <a href="{{ url('admin/produtores') }}">Gerenciar Produtores</a>
                     </li>
+                    <li>
+                        <a href="{{ url('admin/usuarios') }}">Gerenciar Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('admin/pedidos') }}">Pedidos</a>
+                    </li>
                 </ul>
             </div>
         </div>

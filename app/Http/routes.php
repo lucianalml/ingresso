@@ -53,6 +53,10 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 		Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
 	 	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
 	    Route::delete('imagem/{imagem}', 'EventoImagemController@destroy');
+
+	// Usuários cadastrados
+	 	 Route::get('/usuarios', 'AdminController@listarUsuarios');
+
 	});
 
 });
@@ -65,7 +69,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', 'HomeController@index');
 
-    /** Exibir os eventos **/
+    // Exibir os eventos
 	Route::get('/evento/{evento}', 'EventoController@show');
 
 });
