@@ -4,17 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\User;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Produtor extends Model
+class Produtor extends Authenticatable
 {
 	protected $table = 'produtores';
 
-    public function user()
-    {
-        return $this->hasOne(User::class, 'id', 'id');
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    
     /**
      * Recupera todos os eventos desse produtor
      */

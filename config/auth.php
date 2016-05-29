@@ -46,6 +46,11 @@ return [
             'provider' => 'admin',
         ],
 
+        'produtor' => [
+            'driver' => 'session',
+            'provider' => 'produtor',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -78,6 +83,11 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'produtor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Produtor::class,
         ],
 
         // 'users' => [

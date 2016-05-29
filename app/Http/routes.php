@@ -42,12 +42,13 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	//	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
 	// Cadastro de produtores
-		Route::get('/produtores', 'ProdutorController@index');
-		Route::get('/produtor/create', 'ProdutorController@create');
-		Route::post('/produtor/create/{id}', 'ProdutorController@store');
+	 	Route::get('/produtores', 'AdminController@listarProdutores');
+	 	Route::get('/produtor/create', 'ProdutorController@create');
+	 	Route::post('/produtor/register', 'ProdutorController@store');
+	
 	    Route::get('produtor/{produtor}/edit', 'ProdutorController@edit');
 	    Route::post('produtor/{produtor}/edit', 'ProdutorController@update');
-	    Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
+//	    Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
 	    
 	// Cadastro de imagens
 		Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
@@ -67,5 +68,16 @@ Route::group(['middleware' => ['web']], function () {
 
     /** Exibir os eventos **/
 	Route::get('/evento/{evento}', 'EventoController@show');
+
+});
+
+Route::group(['prefix' => 'produtor', ['middleware' => 'produtor']], function () {
+	Route::get('/login', 'ProdutorController@showFormLogin');
+	Route::post('/login', 'ProdutorController@login');
+	Route::get('/logout', 'ProdutorController@logout');
+
+	Route::group(['middleware' => 'auth.produtor'], function () {
+		Route::get('/', 'ProdutorController@index');
+	});
 
 });

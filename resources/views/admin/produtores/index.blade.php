@@ -19,8 +19,7 @@
                 <thead>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Celular</th>
-                    <th></th>
+                    <th>Ativo</th>
                     <th></th>
                 </thead>
 
@@ -29,9 +28,21 @@
                     @foreach ($produtores as $produtor)
                         <tr>
                             <!-- Task Name -->
-                            <td class="table-text"><div>{{ $produtor->user->name }}</div></td>
-							<td class="table-text"><div>{{ $produtor->user->email }}</div></td>
-							<td class="table-text"><div>{{ $produtor->celular }}</div></td>
+                            <td class="table-text"><div>{{ $produtor->name }}</div></td>
+							<td class="table-text"><div>{{ $produtor->email }}</div></td>
+                            
+
+                            @if ($produtor->ativo == 1)
+                                <td class="table-text"><div>
+                                <input name="ativo" type="checkbox" checked="checked" disabled readonly>
+                                </div></td>
+                            @else
+                                <td class="table-text"><div>
+                                <input name="ativo" type="checkbox" disabled readonly>
+                                </div></td>
+                            @endif
+
+
                             <td>
                                 <!-- Editar -->
                                 <a href="{{ url('admin/produtor/'.$produtor->id.'/edit') }}" class="btn btn-primary">
@@ -39,7 +50,7 @@
                             </td>
 
                             <td>
-                                <!-- Eventos do produtor-->
+                                <!-- Eventos do produtor - TODO-->
                                 <a href="{{ url('admin/eventos') }}" class="btn btn-primary">
                                 <i class="fa fa-btn fa-headphones"></i>Eventos</a>
                             </td>

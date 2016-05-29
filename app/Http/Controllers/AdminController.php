@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
+use App\Models\Produtor;
 use Auth;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -56,5 +55,11 @@ class AdminController extends Controller
         auth()->guard('admin')->logout();
 
         return redirect('/admin/login');
+    }
+
+    public function listarProdutores()
+    {
+        $produtores = Produtor::get();
+        return view('admin.produtores.index', compact('produtores'));
     }
 }

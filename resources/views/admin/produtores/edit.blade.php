@@ -8,7 +8,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         
-			Editando {{ $produtor->user->name }}
+			Editando {{ $produtor->name }}
     </div>
 
     <div class="panel-body">
@@ -27,17 +27,8 @@
 
                 <div class="col-sm-6">
 
-		    	<input type="text" name="nome" id="nome" class="form-control" value="{{ $produtor->user->name }}">
+		    	<input type="text" name="name" id="name" class="form-control" value="{{ $produtor->name }}">
                     
-                </div>
-            </div>
-
-            <!-- Celular -->
-            <div class="form-group">
-                <label for="celular" class="col-sm-3 control-label">Celular</label>
-
-                <div class="col-sm-6">
-                	<input type="text" name="celular" id="celular" class="form-control" value="{{ $produtor->celular }}">
                 </div>
             </div>
 
