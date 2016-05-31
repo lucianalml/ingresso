@@ -73,6 +73,9 @@ Route::group(['middleware' => ['web']], function () {
     // Exibir o evento
 	Route::get('/evento/{evento}', 'EventoController@show');
 
+	// Adicionar ingressos ao carrinho
+	Route::post('carrinho/add', 'EventoController@adicionarIngresso');
+
 });
 
 // Rotas para acesso a area do produtor

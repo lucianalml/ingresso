@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
-use App\Repositories\EventoRepository;
-
 use App\Models\Evento;
+use App\Models\Lote;
 use App\Models\Produtor;
+use App\Repositories\EventoRepository;
+use Illuminate\Http\Request;
+use Session;
 
 class EventoController extends Controller
 {
@@ -169,8 +168,38 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        return view('evento', compact('evento'));
+//        $sessionId = Session::getId();
+//        dd(Session::get('carrinho'));
+//        
+        $carrinho = Session::get('carrinho');
+
+        return view('shop.evento', compact('evento', 'carrinho'));
     }
 
+    /**
+     * Adiciona um ingresso ao carrinho
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function adicionarIngresso(Request $request)
+    {        
+
+        $lote = Lote::findOrFail($request->lote);
+
+        $item = ['lote' => $request->lote, 
+                'descricao' => $lote->descricao,
+                'quantidade' => $request->quantidade];
+        
+        $data = Session::get('carrinho'); 
+        $data[] = $item; 
+        Session::put('carrinho', $data);
+
+//        dd(Session::get('carrinho'));
+
+//        $request->session()->push('carrinho.itens', $item);
+        
+        return back();
+    }
 
 }

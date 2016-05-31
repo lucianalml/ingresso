@@ -30,6 +30,6 @@ class HomeController extends Controller
 
         $eventos = Evento::get();
 
-        return view('index', compact('eventos'));
+        return view('shop.index', compact('eventos'));
     }
 }

@@ -24,7 +24,7 @@
                         @endif
                     </a>
 
-                    <form action="/carrinho/add" method="post" name="add_to_cart">
+                    <form action="{{ url('evento/'.$evento->id) }}" method="POST">
                         {!! csrf_field() !!}
                         <input type="hidden" name="evento" value="{{$evento->id}}" />
                         <input type="hidden" name="qty" value="1" />
