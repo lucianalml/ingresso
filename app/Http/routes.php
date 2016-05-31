@@ -62,18 +62,20 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 });
 
 
-// Rotas para autenticação do usuário
+// Rotas para autenticação do usuário (login, register, logout)
 Route::auth();
 
+// Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', 'HomeController@index');
 
-    // Exibir os eventos
+    // Exibir o evento
 	Route::get('/evento/{evento}', 'EventoController@show');
 
 });
 
+// Rotas para acesso a area do produtor
 Route::group(['prefix' => 'produtor', ['middleware' => 'produtor']], function () {
 	Route::get('/login', 'ProdutorController@showFormLogin');
 	Route::post('/login', 'ProdutorController@login');

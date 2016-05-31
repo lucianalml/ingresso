@@ -8,7 +8,7 @@
         <!-- Erros de validação -->
         @include('common.errors')
 
-        <table class="table table-striped evento-table">
+        <table class="table table-striped">
             <thead>
                 <th>Descrição</th>
                 <th>Valor</th>

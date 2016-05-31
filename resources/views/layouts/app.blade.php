@@ -51,10 +51,14 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-top-links navbar-right">
+                    
+                    <li><a href="{{ url('/carrinho') }}"><i class="fa fa-shopping-cart"></i> Carrinho </a></li>
+
+                    
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/register') }}">Registrar</a></li>
                         @else
 
                             <li class="dropdown">
