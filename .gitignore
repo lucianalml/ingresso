@@ -3,7 +3,7 @@
 /public/storage
 Homestead.yaml
 Homestead.json
-/public/ImagensEventos/*.jpg
-/public/ImagensEventos/*.png
-/public/ImagensEventos/Thumbnail/*.jpg
-/public/ImagensEventos/Thumbnail/*.png
+/public/ImagensEventos/*
+!/public/ImagensEventos/.gitkeep
+/public/ImagensEventos/Thumbnail/*
+!/public/ImagensEventos/Thumbnail/.gitkeep
