@@ -4,3 +4,6 @@
 Homestead.yaml
 Homestead.json
 /public/ImagensEventos/*.jpg
+/public/ImagensEventos/*.png
+/public/ImagensEventos/Thumbnail/*.jpg
+/public/ImagensEventos/Thumbnail/*.png
