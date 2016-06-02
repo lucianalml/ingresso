@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('title')
+    Ingresso.Art
+@endsection
 
 @section('content')
 

@@ -244,6 +244,8 @@ class EventoController extends Controller
         }
 
         Session::put('carrinho', $carrinho);
+
+        flash()->success('Ingressos adicionados!');
         
         return back();
     }

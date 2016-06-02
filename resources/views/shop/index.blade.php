@@ -1,42 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('title')
+    Ingresso.Art
+@endsection
 
 @section('content')
 
 <h4 class="text-center">Próximos eventos</h4>
 
-<div class="text-center">
-    <div class="container-fluid">
+@foreach(array_chunk($eventos->all(),4) as $row)
+    <div class="row">
+        @foreach($row as $evento)
+            <div class="col-md-3">
+                <div class="thumbnail">
 
-        <div class="row">
-            @foreach($eventos as $evento)
+                    @if ( $evento->imagens->count() > 0 )
+                        <img src="{{ $evento->imagens->first()->thumbnail_path }}" alt="{{ $evento->nome }}">
+                    @else
+                        <img src="/ImagensEventos/img-nao-encontrada.jpg">
+                    @endif
 
-                <div class="col-sm-6 col-md-4">
-                    <a href="{{ url('evento/'.$evento->id) }}">
-
+                    <div class="caption">
                         <h3>{{ $evento->nome }}</h3>
+                        <p>{{ $evento->descricao }}</p>
 
-                        @if ( $evento->imagens->count() > 0 )
-                            <img src="{{ $evento->imagens->first()->thumbnail_path }}" 
-                            style="width: 300px; height: 300px;"/>
-                        @else
-                            <img src="/ImagensEventos/img-nao-encontrada.jpg" 
-                            style="width: 300px; height: 300px;"/>
-                        @endif
-                    </a>
-
-                    <form action="{{ url('evento/'.$evento->id) }}" method="POST">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="evento" value="{{$evento->id}}" />
-                        <input type="hidden" name="qty" value="1" />
-                        <br>
-                        <button class="btn btn-primary">
-                        <i class="fa fa-ticket" aria-hidden="true"></i> Ingressos</button>
-                    </form>
-                    <br>
+                        <p><a href="{{ url('evento/'.$evento->id) }}" class="btn btn-success" role="button">
+                        <i class="fa fa-ticket" aria-hidden="true"></i> Ingressos</a></p>
+                    </div>
                 </div>
-                @endforeach
-			</div>
+            </div>
+        @endforeach
+    </div>
+@endforeach
 
-		</div>
-	</div>
 @endsection

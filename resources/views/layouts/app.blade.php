@@ -31,63 +31,48 @@
 
 <body>
 
-    <div id="wrapper">
-
         <!-- Navegação -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Ingresso.Art
-                    </a>
 
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/') }}">Home</a></li>
-                        <li><a href="{{ url('/admin') }}">Admin</a></li>
-                        <li><a href="{{ url('/produtor') }}">Produtor</a></li>
-                    </ul>
-                </div>
+            <div class="navbar-header">
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Ingresso.Art
+                </a>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-top-links navbar-right">
-                    
-                    <li><a href="{{ url('/carrinho') }}"><i class="fa fa-shopping-cart"></i> Carrinho </a></li>
-
-                    
-                    <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Registrar</a></li>
-                        @else
-
-                            <li class="dropdown">
-
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-
-            <!-- Menu lateral Principal-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="{{ url('eventos') }}">Cidade</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('eventos') }}">Estilo</a>
-                        </li>
-                    </ul>
-                </div>
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/admin') }}">Admin</a></li>
+                    <li><a href="{{ url('/produtor') }}">Produtor</a></li>
+                </ul>
             </div>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <li><a href="{{ url('/carrinho') }}"><i class="fa fa-shopping-cart"></i> Carrinho </a></li>
+
+            
+            <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                    <li><a href="{{ url('/register') }}">Registrar</a></li>
+                @else
+
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
 
         </nav>
 
@@ -97,7 +82,6 @@
             <br>
             @yield('content')
         </div>
-    </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
