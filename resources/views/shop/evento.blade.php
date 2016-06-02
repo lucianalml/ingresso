@@ -42,23 +42,28 @@
 						<th>Descrição</th>
 						<th>Valor</th>
 						<th>Quantidade</th>
+						<th>Valor total</th>
 						<th></th>
 					</thead>
 
 			        <tbody>
-			            @foreach ($evento->lotes as $lote)
+			            @foreach ($ingressos as $ingresso)
 						{!! Form::open(array('url'=>'carrinho/add','method'=>'POST')) !!}
 			                <tr>
-		                    <td class="table-text"><div>{{ $lote->descricao }}</div></td>
-		                    <td class="table-text"><div>{{ $lote->preco }}</div></td>
+		                    <td class="table-text"><div>{{ $ingresso['descricao'] }}</div></td>
+		                    <td class="table-text"><div>{{ $ingresso['valor'] }}</div></td>
 
 		                    <td>
-		                    	<input type="number" name="quantidade"/>
+		                    	<input type="number" name="quantidade" value="{{ $ingresso['quantidade'] }}" />
+		                    </td>
+
+		                    <td>
+		                    	<input type="number" name="valor_total" value="{{ $ingresso['valor_total'] }}" readonly/>
 		                    </td>
 
 		                    <td>
 							<!-- Adicionar ao carrinho -->
-		                    	<button class="btn" name="lote" value="{{ $lote->id }}">
+		                    	<button class="btn" name="lote" value="{{ $ingresso['lote_id'] }}">
 		                    		<i class="fa fa-shopping-cart"></i>
 		                    	</button>
 		                    </td>
@@ -79,10 +84,15 @@
 
 		        <div class="panel-body">
 					@if( isset($carrinho) )
+
+					Testes carrinho
+					<br>
+
 						@foreach ($carrinho as $item)
-						{{ $item['descricao'] }} - {{ $item['quantidade'] }}
+						{{ $item['lote_id'] }} - {{ $item['quantidade'] }}
 						<br>
 						@endforeach
+
 					@endif
 
 				</div>

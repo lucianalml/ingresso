@@ -169,11 +169,46 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
 //        $sessionId = Session::getId();
-//        dd(Session::get('carrinho'));
 //        
+//        
+        // Recupera a variavel de sessão
         $carrinho = Session::get('carrinho');
+        if (is_null($carrinho)) {
+            $carrinho = [];
+        }
 
-        return view('shop.evento', compact('evento', 'carrinho'));
+        $ingressos = [];
+
+        // Percorre todos os lotes existentes para preencher tabela de ingressos
+        foreach ($evento->lotes as $lote) {
+
+            // Verifica se o lote foi adicionado ao carrinho
+            $key = array_search($lote->id, array_column($carrinho, 'lote_id'));
+
+            // Se ainda não foi adicionado insere com quantidade zero
+            if ($key === false) { 
+
+                $ingresso = [ 'lote_id' => $lote->id,
+                            'descricao' => $lote->descricao, 
+                            'valor' => $lote->preco, 
+                            'quantidade' => 0, 
+                            'valor_total' => 0];
+            } else {             
+
+                $ingresso = [ 'lote_id' => $lote->id,
+                            'descricao' => $lote->descricao,
+                            'valor' => $lote->preco, 
+                            'quantidade' => $carrinho[$key]['quantidade'], 
+                            'valor_total' => $carrinho[$key]['quantidade'] * $lote->preco ];
+            }            
+        
+            array_push($ingressos, $ingresso);
+        }
+
+      
+
+// TODO- nao passar a variavel carrinho, apenas para debug
+        return view('shop.evento', compact('evento', 'carrinho', 'ingressos'));
     }
 
     /**
@@ -185,19 +220,30 @@ class EventoController extends Controller
     public function adicionarIngresso(Request $request)
     {        
 
-        $lote = Lote::findOrFail($request->lote);
-
-        $item = ['lote' => $request->lote, 
-                'descricao' => $lote->descricao,
+        $item = ['lote_id' => $request->lote, 
                 'quantidade' => $request->quantidade];
-        
-        $data = Session::get('carrinho'); 
-        $data[] = $item; 
-        Session::put('carrinho', $data);
 
-//        dd(Session::get('carrinho'));
+        $carrinho = Session::get('carrinho'); 
 
-//        $request->session()->push('carrinho.itens', $item);
+        // Inicializa carrinho
+        if (is_null($carrinho)) {
+            $carrinho = [];
+        }
+
+        // Verificar se o usuário já havia adicionado um ingresso desse lote
+        $key = array_search($item['lote_id'], array_column($carrinho, 'lote_id'));
+
+        if ( $key === false ) {
+            // Adiciona novo item no carrinho
+            array_push($carrinho, $item);
+        }
+        else
+        {
+            // atualiza a quantidade
+            $carrinho[$key]['quantidade'] = $item['quantidade'];
+        }
+
+        Session::put('carrinho', $carrinho);
         
         return back();
     }
