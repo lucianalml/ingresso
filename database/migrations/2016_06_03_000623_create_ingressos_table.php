@@ -12,13 +12,19 @@ class CreateIngressosTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('ingressos');
+        
         Schema::create('ingressos', function (Blueprint $table) {
+
+            $table->engine = 'MyISAM';
 
             $table->increments('id');
 
             $table->integer('pedido_item_id')->unsigned();
             $table->string('nome');
             $table->string('documento');
+
+            $table->string('qr_code', 100)->unique();
 
             $table->timestamps();
 
@@ -36,6 +42,6 @@ class CreateIngressosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ingressos');
+        Schema::dropIfExists('ingressos');
     }
 }

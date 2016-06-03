@@ -33,6 +33,7 @@ class Produtor extends Authenticatable
      */
     public function eventos()
     {
-        return $this->hasMany(Evento::class,'produtor_id', 'id');
+        return $this->hasMany(Evento::class);
     }
+
 }

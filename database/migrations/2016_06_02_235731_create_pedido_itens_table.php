@@ -12,7 +12,11 @@ class CreatePedidoItensTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('pedido_itens');
+        
         Schema::create('pedido_itens', function (Blueprint $table) {
+
+            $table->engine = 'MyISAM';
 
             $table->increments('id');
 
@@ -37,6 +41,6 @@ class CreatePedidoItensTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pedido_itens');
+        Schema::dropIfExists('pedido_itens');
     }
 }

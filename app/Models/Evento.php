@@ -20,7 +20,7 @@ class Evento extends Model
      */
     public function produtor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Produtor::class);
     }
 
     /**

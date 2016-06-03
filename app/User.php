@@ -4,9 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use App\Models\Admin;
-use App\Models\Evento;
-use App\Models\Produtor;
+use App\Models\Pedido;
 
 class User extends Authenticatable
 {
@@ -29,27 +27,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * Verifica se o usuário é Produtor
+     * Recupera todos os pedidos do usuário
      */
-    public function isProdutor()
+    public function pedidos()
     {
-        $produtor = Produtor::find($this->id);
-
-        if ($produtor == NULL) {
-            return false ;
-        }
-        else {
-            return true;
-        }      
-
+        return $this->hasMany(Pedido::class);
     }
-
-    /**
-     * Recupera todos os eventos desse usuário
-     */
-    public function eventos()
-    {
-        return $this->hasMany(Evento::class);
-    }
-
 }

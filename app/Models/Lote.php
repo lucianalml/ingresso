@@ -16,4 +16,13 @@ class Lote extends Model
     {
         return $this->belongsTo(Evento::class);
     }
+
+    /**
+     * Recupera todos os itens de pedidos desse lote
+     */
+    public function pedidoItens()
+    {
+        return $this->hasMany(PedidoItem::class);
+    }
+
 }
