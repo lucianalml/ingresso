@@ -6,7 +6,9 @@
 
 @section('content')
 
-<h4 class="text-center">Próximos eventos</h4>
+<div class="page-header">
+  <h1>Próximos eventos</h1>
+</div>
 
 @foreach(array_chunk($eventos->all(),4) as $row)
     <div class="row">
