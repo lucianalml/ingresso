@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 });
 
 
-// Rotas para autenticação do usuário (login, register, logout)
+// Rotas para autenticação do usuário (/login, /register, /logout)
 Route::auth();
 
 // Rotas para acesso ao site principal
@@ -75,6 +75,11 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Adicionar ingressos ao carrinho
 	Route::post('carrinho/add', 'EventoController@adicionarIngresso');
+
+    // Checkout
+    // TODO -Somente se o usuário estiver logado
+	Route::post('/checkout', 'PedidoController@create');
+
 
 });
 

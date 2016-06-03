@@ -286,12 +286,34 @@ class EventoController extends Controller
             $itensCarrinho[$key]['quantidade'] = $item['quantidade'];
         }
 
+        // Atualiza variável de sessão
         Session::put('carrinho', $itensCarrinho);
+
+        // Atualiza a quantidade total de ingressos no carrinho
+        $totalCarrinho = $this->totalCarrinho();
+        Session::put('totalcarrinho', $totalCarrinho);
 
 // TODO: Nao sei pq nao está exibindo a msg
         flash()->success('Ingressos adicionados!');
         
         return back();
+    }
+
+    public function totalCarrinho()
+    {
+        $itensCarrinho = Session::get('carrinho'); 
+
+        if (is_null($itensCarrinho)) {
+            $itensCarrinho = [];
+        }
+
+        $totalCarrinho = 0;
+
+        foreach ($itensCarrinho as $item) {
+            $totalCarrinho = $totalCarrinho + $item['quantidade'];
+        }
+
+        return $totalCarrinho;
     }
 
 }

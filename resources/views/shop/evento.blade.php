@@ -93,7 +93,7 @@
 		<br>
 		<div class="pull-right">
 		<a href="{{ url('checkout') }}" class="btn btn-success" role="button">
-			<i class="fa fa-check" aria-hidden="true"></i> Confirmar Pedido</a>	
+			<i class="fa fa-check" aria-hidden="true"></i> Prosseguir</a>	
 		</div>
 		<br>
 

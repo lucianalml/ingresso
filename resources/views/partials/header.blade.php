@@ -15,10 +15,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url('/admin') }}">Admin</a></li>
-        <li><a href="{{ url('/produtor') }}">Produtor</a></li>
+
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Busca por <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">A empresa</a></li>
+            <li><a href="#">Fale com o ingressito</a></li>
+            <li><a href="#">Dúvidas frequentes</a></li>
+            <li><a href="#">Redes Sociais</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i> Busca por <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Estado</a></li>
             <li><a href="#">Cidade</a></li>
@@ -29,23 +38,25 @@
       </ul>
 
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar evento">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Procurar eventos...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Vai!</button>
+          </span>
         </div>
-        <button type="submit" class="btn btn-default">Pesquisar</button>
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho</a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ Session::get('totalcarrinho') }} </a></li>
 
           <!-- Links para autenticação -->
           @if (Auth::guest())
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user" aria-hidden="true"></i> Login <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user" aria-hidden="true"></i> Visitante <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ url('/login') }}">Logar</a></li>
-                <li><a href="{{ url('/register') }}">Registrar</a></li>
+                <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+                <li><a href="{{ url('/register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrar</a></li>
               </ul>
             </li>
 
