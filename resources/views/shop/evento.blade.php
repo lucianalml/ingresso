@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
 			
 	<h1> {{ $evento->nome }} </h1>
 

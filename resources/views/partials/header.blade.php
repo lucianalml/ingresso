@@ -47,7 +47,12 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ Session::get('totalcarrinho') }} </a></li>
+        <!-- Carrinho -->
+        <li><a href="{{ url('/checkout') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+        @if (Session::get('totalcarrinho') > 0)
+          <span class="badge">{{ Session::get('totalcarrinho') }}</span>
+        @endif
+        </a></li>
 
           <!-- Links para autenticação -->
           @if (Auth::guest())

@@ -71,17 +71,21 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'HomeController@index');
 
     // Exibir o evento
-	Route::get('/evento/{evento}', 'EventoController@show');
+	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
 
 	// Adicionar ingressos ao carrinho
-	Route::post('carrinho/add', 'EventoController@adicionarIngresso');
+	Route::post('carrinho/add', 'HomeController@adicionarIngresso');
 
-    // Checkout
-    // TODO -Somente se o usuário estiver logado
-	Route::post('/checkout', 'PedidoController@create');
-
-
+	Route::get('/checkout', 'HomeController@checkout');
+	
+	
+	// Quando for fechar o pedido tem q estar autenticado....
+	Route::group(['middleware' => 'auth'], function () {
+//		Route::post('/pedido', 'PedidoController@store');
+	});
 });
+
+	Route::post('/pedido', 'PedidoController@store');
 
 // Rotas para acesso a area do produtor
 Route::group(['prefix' => 'produtor', ['middleware' => 'produtor']], function () {

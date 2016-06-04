@@ -22,8 +22,6 @@
 				<!-- Descrição -->
 	            <div class="form-group">
 	                <label for="descricao" class="col-sm-3 control-label">Descrição</label>
-
-
 	                <div class="col-sm-6">
 	                	<input type="text" name="descricao" id="descricao" class="form-control" value ="{{ $lote->descricao }}">
 	                </div>
