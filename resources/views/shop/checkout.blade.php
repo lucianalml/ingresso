@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 	<!-- Resumo do pedido -->
 	<div class="panel panel-default">
         <div class="panel-heading">
@@ -14,7 +13,7 @@
         </div>
 		<div class="panel-body">
 
-			{!! Form::open(array('url'=>'/pedido','method'=>'POST')) !!}
+			{!! Form::open(array('url'=>'/checkout','method'=>'POST')) !!}
 
         	@foreach ($ingressos as $ingresso)
 			
@@ -25,12 +24,12 @@
 				<!-- Nome -->
 	            <div class="form-group">
 	                <label for="nome" class="control-label">Nome</label>
-	                <input type="text" name="nome[{{ $ingresso['id'] }}]" id="nome" class="form-control">
+	                <input type="text" name="ingresso[{{ $ingresso['id'] }}][nome]" class="form-control">
 				</div>
 					<!-- Documento -->
 				<div class="form-group">
 	                <label for="documento" class="control-label">Documento</label>
-	                <input type="text" name="documento[{{ $ingresso['id'] }}]" id="documento" class="form-control">
+	                <input type="text" name="ingresso[{{ $ingresso['id'] }}][documento]" class="form-control">
 	            </div>
 				<br><br>
 

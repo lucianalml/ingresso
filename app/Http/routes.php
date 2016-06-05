@@ -62,11 +62,11 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 });
 
 
-// Rotas para autenticação do usuário (/login, /register, /logout)
-Route::auth();
-
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
+
+	// Rotas para autenticação do usuário (/login, /register, /logout)
+	Route::auth();
 
     Route::get('/', 'HomeController@index');
 
@@ -77,15 +77,15 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('carrinho/add', 'HomeController@adicionarIngresso');
 
 	Route::get('/checkout', 'HomeController@checkout');
-	
+
+	Route::post('/checkout', 'PedidoController@store');
 	
 	// Quando for fechar o pedido tem q estar autenticado....
 	Route::group(['middleware' => 'auth'], function () {
-//		Route::post('/pedido', 'PedidoController@store');
+//		
 	});
 });
 
-	Route::post('/pedido', 'PedidoController@store');
 
 // Rotas para acesso a area do produtor
 Route::group(['prefix' => 'produtor', ['middleware' => 'produtor']], function () {

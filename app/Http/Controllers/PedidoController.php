@@ -27,26 +27,6 @@ class PedidoController extends Controller
         
     }
 
-
-    public function rules(Request $request)
-    {
-        $rules = [];
-
-        foreach($request->get('nome') as $key => $val)
-        {
-//            $rules['nome['.$key.']'] = 'required';
-            $rules['nome.' . $key] = 'required';
-        }
-
-        foreach($request->get('documento') as $key => $val)
-        {
-//            $rules['documento['.$key.']'] = 'required';
-            $rules['documento.' . $key] = 'required';
-        }
-
-        return $rules;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -56,42 +36,35 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
 
-        $rules = $this->rules($request);
-
         $validator = Validator::make($request->all(), 
-            $rules
-        );
+            ['ingresso.*.nome' => 'required|string',
+            'ingresso.*.documento' => 'required',
+        	]);
 
-        // NAO SEI PQ NAO EXIBE OS ERROS :'(
         if ($validator->fails()) {
-            return redirect('/checkout')
-                        ->withErrors($validator)
+
+            return back()->withErrors($validator)
                         ->withInput();
         }
         else
         {
-        	// tambem nao exibe msg de sucesso
-        	flash()->error('sucesso das galsxias!');
-            // Entao vamos supor q esta tudo preenchido certo...
-            $nomes = $request->get('nome');
-            $documentos = $request->get('documento');
+            $ingressos = $request->get('ingresso');
 
-        
+            $pedido = new Pedido();
+
+			$pedido->user_id = Auth::user();
+			// $pedido->valor_total
+			// $pedido->status = "NOVO";
+			// 
+			// $pedido->save();
+
+
+         flash()->success('Sucesso das galaxias!');
 //        $pedido = new Pedido();
-			return Redirect::to('/checkout')->with('message', 'uhuu');
+			return back();
 
         }
-
-
-//         // Get all the validation rules for eventos and assign it to the evento Model
-//         $this->validate($request, [
-//             'nome' => 'required',
-//             'descricao' => 'required',
-//             'data' => 'required',
-//             'hora' => 'required',
-//             'local' => 'required',
-//         ]);
-        
+       
 //         $evento = new Evento();
 
 //         $evento->nome = $request->nome;
