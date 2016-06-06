@@ -39,6 +39,8 @@ class HomeController extends Controller
     public function index()
     {
 
+// TODO mudar pra recuperar os dados do repositorio
+//        $eventos = $this->eventoRepo->getAll();
         $eventos = Evento::get();
         return view('shop.index', compact('eventos'));
     }
