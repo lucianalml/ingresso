@@ -69,20 +69,17 @@ Route::group(['middleware' => ['web']], function () {
 	Route::auth();
 
     Route::get('/', 'HomeController@index');
-
+    
     // Exibir o evento
 	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
 
 	// Adicionar ingressos ao carrinho
 	Route::post('carrinho/add', 'HomeController@adicionarIngresso');
 
-	Route::get('/checkout', 'HomeController@checkout');
-
-	Route::post('/checkout', 'PedidoController@store');
-	
 	// Quando for fechar o pedido tem q estar autenticado....
 	Route::group(['middleware' => 'auth'], function () {
-//		
+		Route::get('/checkout', 'HomeController@checkout');
+		Route::post('/checkout', 'PedidoController@store');
 	});
 });
 

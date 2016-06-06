@@ -8,6 +8,8 @@ class PedidoItem extends Model
 {
     protected $table = 'pedido_itens';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'pedido_id', 'lote_id', 'quantidade', 'valor'
     ];

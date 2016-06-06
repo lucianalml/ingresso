@@ -18,7 +18,7 @@ class EventoController extends Controller
      *
      * @var EventoRepository
      */
-    protected $eventos;
+    protected $eventoRepository;
 
 
     /**
@@ -26,16 +26,13 @@ class EventoController extends Controller
      *
      * @return void
      */
-    public function __construct(EventoRepository $eventos)
+    public function __construct(EventoRepository $eventoRepository)
     {
 // Middleware valido para todos os métodos desse controler
 //        $this->middleware('auth');
 
-// Verificar como funciona essa pira de Repository
-//         $this->eventos = $eventos;
-
-// Listar eventos do usuário em EventoRepository
-//        $eventos->forUser($user);
+// Instancia o repositório
+         $this->eventoRepository = $eventoRepository;
     }
 
 	/**
