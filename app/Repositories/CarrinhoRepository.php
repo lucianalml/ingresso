@@ -105,38 +105,4 @@ class CarrinhoRepository
 
     }
 
-    /**
-     * Recupera todos os ingressos do pedido
-     */
-    public function ingressosPedido()
-    {
-        // Recupera os itens do pedido
-        $pedido = $this->recuperaPedido();
-
-        $ingressos = [];
-
-        $id = 0;
-
-        // Abre os itens de cada pedido por quantidade
-        foreach ($pedido as $pedidoItem) {
-            
-            $lote = Lote::find($pedidoItem['lote_id']);
-
-            for ($i=1; $i <= $pedidoItem['quantidade'] ; $i++) {
-
-                $id = $id + 1;
-
-                $ingresso = ['id' => $id,
-                            'evento_nome' => $lote->evento->nome,
-                            'lote_id' => $lote->id,
-                            'lote_descricao' => $lote->descricao
-                ];
-
-                array_push($ingressos, $ingresso);
-            }
-        }
-
-        return $ingressos;
-    }
-
 }

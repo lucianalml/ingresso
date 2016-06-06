@@ -11,7 +11,7 @@ use App\Repositories\CarrinhoRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
+use Session;
 
 class PedidoController extends Controller
 {
@@ -86,9 +86,14 @@ class PedidoController extends Controller
 					
  				}
 
+            // Limpa o carrinho
+            Session::forget('carrinho');
+            Session::forget('totalcarrinho');
+
 			flash()->success('Sucesso das galaxias!');
+
+            return redirect('/');
         }
-        
-		return back();
+
 	}
 }
