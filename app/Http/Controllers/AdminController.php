@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Pedido;
 use App\Models\Produtor;
 use App\User;
 use Auth;
@@ -68,5 +69,11 @@ class AdminController extends Controller
     {
         $users = User::get();
         return view('admin.usuarios', compact('users'));
+    }
+
+    public function listarPedidos()
+    {
+        $pedidos = Pedido::get();
+        return view('admin.pedidos', compact('pedidos'));
     }
 }

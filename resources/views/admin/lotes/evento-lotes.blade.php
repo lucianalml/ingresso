@@ -5,9 +5,6 @@
 
     <div class="panel-body">
 
-        <!-- Erros de validação -->
-        @include('common.errors')
-
         <table class="table table-striped">
             <thead>
                 <th>Descrição</th>

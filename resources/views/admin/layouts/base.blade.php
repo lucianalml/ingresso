@@ -16,7 +16,7 @@
     <link href="{{ URL::to('/css/admin/timeline.css') }}" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
     <!-- MetisMenu CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.css" rel="stylesheet">
@@ -38,8 +38,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.js"></script>
 
 <!-- Morris Charts JavaScript -->
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <script src="{{ URL::to('/js/admin/morris-data.js') }}"></script>
 
 <!-- Custom Theme JavaScript -->

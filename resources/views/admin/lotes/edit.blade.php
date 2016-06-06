@@ -12,9 +12,6 @@
 
         <div class="panel-body">
 
-	        <!-- Display Validation Errors -->
-	        @include('common.errors')
-
 	        <!-- Form para editar o lote -->
 	        <form action="{{ url('admin/lote/'.$lote->id.'/edit' ) }}" method="POST" class="form-horizontal" id="form">
 	            {{ csrf_field() }}

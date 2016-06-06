@@ -22,9 +22,6 @@
 
     <div class="panel-body">
 
-        <!-- Exibe os erros de validação -->
-        @include('common.errors')
-
         <!-- Form para editar produtors -->
 		    <form action="{{ url('admin/produtor/'.$produtor->id.'/edit') }}" method="POST" class="form-horizontal" id="form">
 

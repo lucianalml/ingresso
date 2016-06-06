@@ -54,8 +54,11 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	 	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
 	    Route::delete('imagem/{imagem}', 'EventoImagemController@destroy');
 
-	// Usuários cadastrados
+		// Usuários cadastrados
 	 	 Route::get('/usuarios', 'AdminController@listarUsuarios');
+
+		// Pedidos
+	 	 Route::get('/pedidos', 'AdminController@listarPedidos');
 
 	});
 

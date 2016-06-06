@@ -19,9 +19,6 @@
 
     <div class="panel-body">
 
-        <!-- Exibe os erros de validação -->
-        @include('common.errors')
-
         <!-- Form para editar eventos -->
 		@if( isset($evento) )
 		    <form action="{{ url('admin/evento/'.$evento->id.'/edit') }}" method="POST" class="form-horizontal" id="form">

@@ -13,9 +13,6 @@
 
     <div class="panel-body">
 
-        <!-- Erros de validação -->
-        @include('common.errors')
-
         <!-- Exibir imagens cadastradas -->
         <div class="col-md-12 gallery">
 
