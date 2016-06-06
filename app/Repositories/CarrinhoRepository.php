@@ -3,12 +3,14 @@
 namespace App\Repositories;
 
 use App\Models\Evento;
+use App\Models\Ingresso;
 use App\Models\Lote;
+use App\Models\Pedido;
+use App\Models\PedidoItem;
 use Session;
 
 class CarrinhoRepository
 {
-
     /**
      * Recupera dados do pedido que estão armazenados no carrinho da sessão
      * @return [array] Pedido
@@ -16,34 +18,53 @@ class CarrinhoRepository
     public function recuperaPedido()
     {
 
+        $totalIngressos = 0;
+
         // Recupera a variavel de sessão
         $itensCarrinho = Session::get('carrinho');
         if (is_null($itensCarrinho)) {
             $itensCarrinho = [];
         }
 
-        // Monta o array com os itens do carrinho
-        $pedido = [];
+        $pedido = new Pedido();
 
-        foreach ($itensCarrinho as $item) {
-   
-            $lote = Lote::find($item['lote_id']);
+        // itemCarrinho = array com lote_id e quantidade
+        foreach ($itensCarrinho as $itemCarrinho) {
 
-            $pedidoItem = ['lote_id' => $item['lote_id'],
-                            'evento_nome' => $lote->evento->nome,
-                            'lote_descricao' => $lote->descricao,
-                            'quantidade' => $item['quantidade'],
-                            'valor_total' => $item['quantidade'] * $lote->preco ,
-            ];
+            // Recupera dados do lote
+            $lote = Lote::find($itemCarrinho['lote_id']);
 
-            array_push($pedido, $pedidoItem);
+            // Calcula valor total do pedido
+            $pedido->valor_total = $pedido->valor_total + $itemCarrinho['quantidade'] * $lote->preco;
+
+            $pedidoItem = new PedidoItem();
+            $pedidoItem->lote_id = $itemCarrinho['lote_id'];
+            $pedidoItem->quantidade = $itemCarrinho['quantidade'];
+            $pedidoItem->valor = $itemCarrinho['quantidade'] * $lote->preco;
+
+            // Gera os ingressos para cada item do pedido
+            for ($i=1; $i <= $itemCarrinho['quantidade'] ; $i++) {
+                $totalIngressos = $totalIngressos + 1;
+
+                $ingresso = new Ingresso;
+                $pedidoItem->ingressos[] = $ingresso;
+
+            }
+
+            // Atribui o item ao pedido
+            $pedido->itens[] = $pedidoItem;
+
         }
-
+        
+        // Atualiza a quantidade total de ingressos no carrinho
+         Session::put('totalcarrinho', $totalIngressos);
+   
         return $pedido;
     }
 
     /**
-     * Adiciona um ingresso ao carrinho
+     * Adiciona um ingresso na variavel de sessão do carrinho
+     * Formato array de ['lote_id' => , 'quantidade' => ]
      */
     public function adicionarIngresso($loteId, $quantidade)
     {
@@ -66,35 +87,22 @@ class CarrinhoRepository
         }
         else
         {
-            // atualiza a quantidade
-            $itensCarrinho[$key]['quantidade'] = $item['quantidade'];
+            // Se a quantidade foi zerada elimina do carrinho
+            if ($item['quantidade'] == 0) {
+                unset($itensCarrinho[$key]);
+                $temp = array_values($itensCarrinho);
+                $itensCarrinho = $temp;
+            }
+            // Senão atualiza a quantidade
+            else {
+                $itensCarrinho[$key]['quantidade'] = $item['quantidade'];    
+            }
+            
         }
 
         // Atualiza variável de sessão
         Session::put('carrinho', $itensCarrinho);
 
-        // Atualiza a quantidade total de ingressos no carrinho
-        $totalCarrinho = $this->totalCarrinho();
-        Session::put('totalcarrinho', $totalCarrinho);
-
-
-    }
-
-    public function totalCarrinho()
-    {
-        $itensCarrinho = Session::get('carrinho'); 
-
-        if (is_null($itensCarrinho)) {
-            $itensCarrinho = [];
-        }
-
-        $totalCarrinho = 0;
-
-        foreach ($itensCarrinho as $item) {
-            $totalCarrinho = $totalCarrinho + $item['quantidade'];
-        }
-
-        return $totalCarrinho;
     }
 
     /**
@@ -131,16 +139,4 @@ class CarrinhoRepository
         return $ingressos;
     }
 
-    public function valorTotal()
-    {
-
-        $valorTotal = 0;
-        $pedido = $this->recuperaPedido();
-
-        foreach ($pedido as $item) {
-            $valorTotal = $valorTotal + $item['valor_total'];
-        }
-
-        return $valorTotal;
-    }
 }

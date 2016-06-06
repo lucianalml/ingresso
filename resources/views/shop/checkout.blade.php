@@ -15,24 +15,26 @@
 
 			{!! Form::open(array('url'=>'/checkout','method'=>'POST')) !!}
 
-        	@foreach ($ingressos as $ingresso)
+        	@foreach ($pedido->itens as $itemKey => $item)
+
+        		@foreach ($item->ingressos as $ingressoKey => $ingresso)
 			
-				<h4> {{ $ingresso['evento_nome'] }} - {{ $ingresso['lote_descricao'] }} </h4>
+					<h4> {{ $item->lote->evento->nome }} - {{ $item->lote->descricao }} </h4>
 
-				<br>
+					<br>
 
-				<!-- Nome -->
-	            <div class="form-group">
-	                <label for="nome" class="control-label">Nome</label>
-	                <input type="text" name="ingresso[{{ $ingresso['id'] }}][nome]" class="form-control">
-				</div>
-					<!-- Documento -->
-				<div class="form-group">
-	                <label for="documento" class="control-label">Documento</label>
-	                <input type="text" name="ingresso[{{ $ingresso['id'] }}][documento]" class="form-control">
-	            </div>
-				<br><br>
-
+					<!-- Nome -->
+		            <div class="form-group">
+		                <label for="nome" class="control-label">Nome</label>
+		                <input type="text" name="itens[{{$itemKey}}][{{ $ingressoKey }}][nome]" class="form-control">
+					</div>
+						<!-- Documento -->
+					<div class="form-group">
+		                <label for="documento" class="control-label">Documento</label>
+		                <input type="text" name="itens[{{$itemKey}}][{{ $ingressoKey }}][documento]" class="form-control">
+		            </div>
+					<br><br>
+				@endforeach
 			@endforeach
 
 				<div class="pull-right">

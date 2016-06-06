@@ -78,12 +78,12 @@
 		</thead>
 
         <tbody>
-        	@foreach ($pedido as $item)
+        	@foreach ($pedido->itens as $item)
         	<tr>
-			<td>{{ $item['evento_nome'] }}</td>
-			<td>{{ $item['lote_descricao'] }}</td>
-			<td>{{ $item['quantidade'] }}</td>
-			<td>R$ {{ $item['valor_total'] }}</td>
+			<td>{{ $item->lote->evento->nome }}</td>
+			<td> {{ $item->lote->descricao }} </td>
+			<td> {{ $item->quantidade }} </td>
+			<td>R$ {{ $item->valor }} </td>
 			</tr>
 			@endforeach
 		</tbody>
@@ -97,5 +97,6 @@
 		<br>
 
 	</div>
+
 
 @endsection

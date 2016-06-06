@@ -78,9 +78,9 @@ class HomeController extends Controller
     public function checkout()
     {
 
-        $ingressos = $this->carrinhoRepo->ingressosPedido();
+        $pedido = $this->carrinhoRepo->recuperaPedido();
 
-        return view('shop.checkout', compact('ingressos'));
+        return view('shop.checkout', compact('pedido'));
     }
 
 }

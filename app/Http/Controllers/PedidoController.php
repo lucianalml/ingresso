@@ -49,8 +49,8 @@ class PedidoController extends Controller
     {
 
         $validator = Validator::make($request->all(), 
-            ['ingresso.*.nome' => 'required|string',
-            'ingresso.*.documento' => 'required',
+            ['itens.*.*.nome' => 'required|string',
+            'itens.*.*.documento' => 'required',
         	]);
 
         if ($validator->fails()) {
@@ -61,45 +61,30 @@ class PedidoController extends Controller
         else
         {
 
-			// Recupera os itens do pedido
-			$itens = $this->carrinhoRepo->recuperaPedido();
+            $dadosIngressos = $request->get('itens');
 
-			// Recupera os ingressos de cada item e os dados dos portadores ingressos
-			$ingressosPedido = $this->carrinhoRepo->ingressosPedido();
-        	$dadosIngressos = $request->get('ingresso');
+            // Recupera o pedido e salva
+ 			$pedido = $this->carrinhoRepo->recuperaPedido();
+ 			$pedido->user_id = Auth::user()->id;
+ 			$pedido->status = "NOVO";
+ 			$pedido->save();      	
 
-        	// Salva o pedido
-            $pedido = new Pedido();
-			$pedido->user_id = Auth::user()->id;
-			$pedido->valor_total = $this->carrinhoRepo->valorTotal();
-			$pedido->status = "NOVO";
-			$pedido->save();      	
+            // Salva os itens
+ 			foreach ($pedido->itens as $itemKey => $item) {
+ 				
+                $pedido->itens()->save($item);
 
-			foreach ($itens as $item) {
-				$pedidoItem = new PedidoItem();
-				$pedidoItem->lote_id = $item['lote_id'];
-				$pedidoItem->quantidade = $item['quantidade'];
-				$pedidoItem->valor = $item['valor_total'];
+                // Salva os ingressos
+ 				foreach ($item->ingressos as $ingressoKey => $ingresso) {
 
-				$pedido->itens()->save($pedidoItem);
-
-				// Isso ficou bem tosco...
-				foreach ($ingressosPedido as $ingressoPed) {
-
-					if ($ingressoPed['lote_id'] == $item['lote_id']) {
-
-						$ingresso = new Ingresso;
-
-						$ingresso->nome = $dadosIngressos[$ingressoPed['id']]['nome'];
-						$ingresso->documento = $dadosIngressos[$ingressoPed['id']]['documento'];
-						$ingresso->qr_code = str_random(100);
+ 						$ingresso->nome = $dadosIngressos[$itemKey][$ingressoKey]['nome'];
+ 						$ingresso->documento = $dadosIngressos[$itemKey][$ingressoKey]['documento'];
+ 						$ingresso->qr_code = str_random(100);
 						
-						$pedidoItem->ingressos()->save($ingresso);
-					}
+ 						$item->ingressos()->save($ingresso);
+ 					}
 					
-				}
-
-			}
+ 				}
 
 			flash()->success('Sucesso das galaxias!');
         }
