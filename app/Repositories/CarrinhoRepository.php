@@ -40,7 +40,8 @@ class CarrinhoRepository
             $pedidoItem = new PedidoItem();
             $pedidoItem->lote_id = $itemCarrinho['lote_id'];
             $pedidoItem->quantidade = $itemCarrinho['quantidade'];
-            $pedidoItem->valor = $itemCarrinho['quantidade'] * $lote->preco;
+            $pedidoItem->valor_unitario = $lote->preco;
+            $pedidoItem->valor_total = $itemCarrinho['quantidade'] * $lote->preco;
 
             // Gera os ingressos para cada item do pedido
             for ($i=1; $i <= $itemCarrinho['quantidade'] ; $i++) {

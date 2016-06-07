@@ -60,6 +60,8 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 		// Pedidos
 	 	Route::get('/pedidos', 'PedidoController@index');
 	 	Route::get('/pedido/{pedido}', 'PedidoController@show');
+
+	 	Route::get('/ingresso/{ingresso}', 'IngressoController@show');
 //	 	Route::get('/ingressos', 'AdminController@listarIngressos');
 
 

@@ -83,7 +83,7 @@
 			<td>{{ $item->lote->evento->nome }}</td>
 			<td> {{ $item->lote->descricao }} </td>
 			<td> {{ $item->quantidade }} </td>
-			<td>R$ {{ $item->valor }} </td>
+			<td>R$ {{ $item->valor_total }} </td>
 			</tr>
 			@endforeach
 		</tbody>

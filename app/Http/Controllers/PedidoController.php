@@ -42,7 +42,7 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {   
-        return view('admin.pedidos.pedido', compact('pedido'));
+        return view('admin.pedidos.show', compact('pedido'));
     }
 
 

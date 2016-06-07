@@ -5,15 +5,16 @@
 <!-- Dados do pedido -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2 class="panel-title">Pedido {{ $pedido->id }}</h2>
+        <h2 class="panel-title">Pedido #{{ $pedido->id }} - 
+        {{ date('d/m/Y', strtotime($pedido->created_at)) }}</h2>
     </div>
 
     <div class="panel-body">
         <p><b>Usuario:</b> {{ $pedido->user->id }}</p>
         <p><b>Nome:</b> {{ $pedido->user->name }}</p>
         <p><b>Email:</b> {{ $pedido->user->email }}</p>
-        <p><b>Data de criação:</b> {{ $pedido->created_at }}</p>
-        <p><b>Data de atualização:</b> {{ $pedido->updated_at }}</p>
+        
+        <p><b>Última atualização:</b> {{ $pedido->updated_at }}</p>
         <p><b>Status:</b> {{ $pedido->status }}</p>
     </div>
 
@@ -29,8 +30,10 @@
                 <!-- Cabeçalho -->
                 <thead>
                     <th>#</th>
+                    <th>Evento</th>
                     <th>Lote</th>
                     <th>Quantidade</th>
+                    <th>Valor Unitário</th>
                     <th>Valor Total</th>
                 </thead>
 
@@ -38,6 +41,8 @@
                   <tfoot>
                     <tr>
                         <th>Total</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th>R$ {{ $pedido->valor_total }}</th>
@@ -48,10 +53,12 @@
                 <tbody>
                     @foreach ($pedido->itens as $key => $item)
                         <tr>
-                            <td class="table-text"><div>{{ $key + 1 }}</div></td>
+                            <td class="table-text"><div>{{ $item->id }}</div></td>
+                            <td class="table-text"><div>{{ $item->lote->evento->nome }}</div></td>
             				<td class="table-text"><div>{{ $item->lote->descricao }}</div></td>
                             <td class="table-text"><div>{{ $item->quantidade }}</div></td>
-                            <td class="table-text"><div>R$ {{ $item->valor }}</div></td>
+                            <td class="table-text"><div>R$ {{ $item->valor_unitario }}</div></td>
+                            <td class="table-text"><div>R$ {{ $item->valor_total }}</div></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -73,9 +80,11 @@
                 <!-- Cabeçalho -->
                 <thead>
                     <th>#</th>
+                    <th>Evento</th>
+                    <th>Lote</th>
                     <th>Nome</th>
                     <th>Documento</th>
-                    <th>Ingresso</th>
+                    <th>Ingressito</th>
                 </thead>
 
                 <!-- Tabela -->
@@ -84,6 +93,8 @@
                         @foreach ($item->ingressos as $ingresso)
                             <tr>
                                 <td class="table-text"><div>{{ $ingresso->id }}</div></td>
+                                <td class="table-text"><div>{{ $ingresso->pedidoItem->lote->evento->nome }}</div></td>
+                                <td class="table-text"><div>{{ $ingresso->pedidoItem->lote->descricao }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->nome }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->documento }}</div></td>
                                 <!-- Ver ingresso -->

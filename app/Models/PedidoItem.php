@@ -11,7 +11,7 @@ class PedidoItem extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'pedido_id', 'lote_id', 'quantidade', 'valor'
+        'pedido_id', 'lote_id', 'quantidade', 'valor_unitario', 'valor_total'
     ];
 
     /**
