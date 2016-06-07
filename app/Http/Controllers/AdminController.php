@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Ingresso;
 use App\Models\Pedido;
+use App\Models\PedidoItem;
 use App\Models\Produtor;
 use App\User;
 use Auth;
@@ -73,7 +75,20 @@ class AdminController extends Controller
 
     public function listarPedidos()
     {
-        $pedidos = Pedido::get();
-        return view('admin.pedidos', compact('pedidos'));
+        // TODO -> Depois colocar os selecs em um repositório e fazer a pira de paginação
+        $pedidos = Pedido::orderBy('id', 'desc')->get();
+        return view('admin.pedidos.index', compact('pedidos'));
     }
+
+    public function detalhePedido(Pedido $pedido)
+    {
+        return view('admin.pedidos.itens', compact('pedido'));
+    }
+
+    public function listarIngressos()
+    {
+        $ingressos = Ingresso::orderBy('id', 'desc')->get();
+        return view('admin.pedidos.ingressos', compact('ingressos'));
+    }
+    
 }

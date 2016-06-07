@@ -2,14 +2,14 @@
 
 @section('content')
 
-<!-- Lista todos os produtores -->
+<!-- Lista todos os pedidos -->
     <div class="panel panel-default">
         <div class="panel-heading">
             Pedidos
         </div>
 
         <div class="panel-body">
-            <table class="table table-striped produtor-table">
+            <table class="table table-striped">
 
                 <!-- Table Headings -->
                 <thead>
@@ -18,6 +18,7 @@
                     <th>Valor</th>
                     <th>Criado</th>
                     <th>Cliente</th>
+                    <th>Detalhes</th>
                 </thead>
 
                 <!-- Table Body -->
@@ -29,6 +30,11 @@
                             <td class="table-text"><div>R$ {{ $pedido->valor_total }}</div></td>
                             <td class="table-text"><div>{{ $pedido->created_at }}</div></td>
                             <td class="table-text"><div>{{ $pedido->user->name }}</div></td>
+                            <td>
+                                <a href="{{ url('admin/pedido/'.$pedido->id) }}" class="btn btn-primary">
+                                <i class="fa fa-eye" aria-hidden="true"></i></a>
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>

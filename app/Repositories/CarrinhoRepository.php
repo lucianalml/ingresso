@@ -66,7 +66,7 @@ class CarrinhoRepository
      * Adiciona um ingresso na variavel de sessão do carrinho
      * Formato array de ['lote_id' => , 'quantidade' => ]
      */
-    public function adicionarIngresso($loteId, $quantidade)
+    public function atualizaCarrinho($loteId, $quantidade)
     {
         $item = ['lote_id' => $loteId, 
                 'quantidade' => $quantidade];

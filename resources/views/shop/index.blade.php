@@ -26,8 +26,10 @@
                         <h3>{{ $evento->nome }}</h3>
                         <p>{{ $evento->descricao }}</p>
 
+                        <div class="text-center">
                         <p><a href="{{ url('evento/'.$evento->id) }}" class="btn btn-success" role="button">
                         <i class="fa fa-ticket" aria-hidden="true"></i> Ingressos</a></p>
+                        </div>
                     </div>
                 </div>
             </div>

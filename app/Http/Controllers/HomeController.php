@@ -60,29 +60,16 @@ class HomeController extends Controller
 
 
     /**
-     * Adiciona um ingresso ao carrinho
+     * Atualiza os ingressos no carrinho
      */
-    public function adicionarIngresso(Request $request)
+    public function atualizaCarrinho(Request $request)
     {        
 
-        $this->carrinhoRepo->adicionarIngresso($request->lote, $request->quantidade);
+        $this->carrinhoRepo->atualizaCarrinho($request->lote, $request->quantidade);
 
         flash()->success('Ingressos adicionados!');
         
         return back();
-    }
-
-
-
-    /**
-     * Exibe pagina de checkout
-     */
-    public function checkout()
-    {
-
-        $pedido = $this->carrinhoRepo->recuperaPedido();
-
-        return view('shop.checkout', compact('pedido'));
     }
 
 }

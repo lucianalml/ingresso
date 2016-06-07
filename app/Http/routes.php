@@ -55,10 +55,14 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	    Route::delete('imagem/{imagem}', 'EventoImagemController@destroy');
 
 		// Usuários cadastrados
-	 	 Route::get('/usuarios', 'AdminController@listarUsuarios');
+	 	Route::get('/usuarios', 'AdminController@listarUsuarios');
 
 		// Pedidos
-	 	 Route::get('/pedidos', 'AdminController@listarPedidos');
+	 	Route::get('/pedidos', 'AdminController@listarPedidos');
+	 	Route::get('/pedido/{pedido}', 'AdminController@detalhePedido');
+	 	Route::get('/pedido/{pedido}/ingressos', 'AdminController@ingressosPedido');
+	 	Route::get('/ingressos', 'AdminController@listarIngressos');
+
 
 	});
 
@@ -77,11 +81,12 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
 
 	// Adicionar ingressos ao carrinho
-	Route::post('carrinho/add', 'HomeController@adicionarIngresso');
+	Route::post('carrinho/add', 'HomeController@atualizaCarrinho');
 
 	// Quando for fechar o pedido tem q estar autenticado....
 	Route::group(['middleware' => 'auth'], function () {
-		Route::get('/checkout', 'HomeController@checkout');
+//		Route::get('/checkout', 'HomeController@checkout');
+		Route::get('/checkout', 'PedidoController@create');
 		Route::post('/checkout', 'PedidoController@store');
 	});
 });

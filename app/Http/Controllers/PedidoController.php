@@ -23,27 +23,23 @@ class PedidoController extends Controller
 
 	public function __construct(CarrinhoRepository $carrinhoRepo)
     {
-// Middleware valido para todos os métodos desse controler
-//        $this->middleware('web');
         $this->carrinhoRepo = $carrinhoRepo;
     }
 
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Exibe a pagina de checkout
      */
     public function create()
     {
-        
+        $pedido = $this->carrinhoRepo->recuperaPedido();
+
+        return view('shop.checkout', compact('pedido'));
+
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Salva um novo pedido
      */
     public function store(Request $request)
     {

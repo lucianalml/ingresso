@@ -18,9 +18,23 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Vendas<span class="fa arrow"></span></a>
+
                 <ul class="nav nav-second-level">
-                    <li><a href="{{ url('admin/pedidos') }}">Pedidos</a></li>
+                    <li>
+                        <a href="#">Ordens <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="{{ url('admin/pedidos') }}">
+                                <i class="fa fa-shopping-bag" aria-hidden="true"></i> Pedidos</a></li>
+                            <li><a href="{{ url('admin/ingressos') }}">
+                                <i class="fa fa-ticket" aria-hidden="true"></i> Ingressos</a></li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{ url('admin/pagamento') }}">
+                    <i class="fa fa-money" aria-hidden="true"></i> Pagamento</a></li>
                 </ul>
             </li>
 
@@ -36,18 +50,6 @@
                 <ul class="nav nav-second-level">
                     <li><a href="{{ url('admin/usuarios') }}">Gerenciar Usuarios</a></li>
                     <li><a href="{{ url('admin/produtores') }}">Gerenciar Produtores</a></li>
-                    <li>
-                        <a href="#">Exemplo Third Level <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-third-level -->
-                    </li>
                 </ul>
             </li>
         </ul>
