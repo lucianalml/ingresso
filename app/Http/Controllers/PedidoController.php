@@ -28,6 +28,25 @@ class PedidoController extends Controller
 
 
     /**
+     * Lista todos os pedidos
+     */
+    public function index(Request $request)
+    {
+        // TODO -> Depois colocar os selecs em um repositório e fazer a pira de paginação
+        $pedidos = Pedido::orderBy('id', 'desc')->get();
+        return view('admin.pedidos.index', compact('pedidos'));
+    }
+
+    /**
+     * Exibe um pedido
+     */
+    public function show(Pedido $pedido)
+    {   
+        return view('admin.pedidos.pedido', compact('pedido'));
+    }
+
+
+    /**
      * Exibe a pagina de checkout
      */
     public function create()
@@ -90,6 +109,6 @@ class PedidoController extends Controller
 
             return redirect('/');
         }
-
 	}
+
 }

@@ -73,18 +73,6 @@ class AdminController extends Controller
         return view('admin.usuarios', compact('users'));
     }
 
-    public function listarPedidos()
-    {
-        // TODO -> Depois colocar os selecs em um repositório e fazer a pira de paginação
-        $pedidos = Pedido::orderBy('id', 'desc')->get();
-        return view('admin.pedidos.index', compact('pedidos'));
-    }
-
-    public function detalhePedido(Pedido $pedido)
-    {
-        return view('admin.pedidos.itens', compact('pedido'));
-    }
-
     public function listarIngressos()
     {
         $ingressos = Ingresso::orderBy('id', 'desc')->get();

@@ -16,7 +16,6 @@ class HomeController extends Controller
     /**
      * Instancia dos repositórios
      */
-    protected $eventoRepo;
     protected $carrinhoRepo;
 
     /**
@@ -24,10 +23,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(EventoRepository $eventoRepo, CarrinhoRepository $carrinhoRepo)
+    public function __construct(CarrinhoRepository $carrinhoRepo)
     {
         // Instancia os repositórios
-        $this->eventoRepo = $eventoRepo;
         $this->carrinhoRepo = $carrinhoRepo;
     }
 
@@ -49,11 +47,13 @@ class HomeController extends Controller
      * Exibe a pagina para comprar ingressos de um evento
      */
     public function exibirEvento(Evento $evento)
-    {
-
-        $ingressos = $this->eventoRepo->recuperaIngressos($evento);
-        
+    {        
         $pedido = $this->carrinhoRepo->recuperaPedido();
+
+        // ficou meio zuado, depois arrumar...
+        // daria para pegar os lotes direto do pedido ou carrinho e preencher um array 
+        // com indice = lotes_id e quantidades as qtds q estao no carrinho
+        $ingressos = $this->carrinhoRepo->recuperaIngressos($evento);
 
         return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
     }
