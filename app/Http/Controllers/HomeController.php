@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Models\Evento;
 use App\Models\Lote;
+use App\Models\Pedido;
 use App\Repositories\CarrinhoRepository;
 use App\Repositories\EventoRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class HomeController extends Controller
@@ -70,6 +72,33 @@ class HomeController extends Controller
         flash()->success('Ingressos adicionados!');
         
         return back();
+    }
+
+    /**
+     * Exibe a área do cliente
+     */
+    public function areaCliente()
+    {
+        $usuario = Auth::user();
+        return view('shop.area-cliente', compact('usuario'));
+        
+    }
+
+    /**
+     * Exibe a pagina com detalhes de um pedido para o cliente
+     */
+    public function clientePedido(Pedido $pedido)
+    {
+    
+        // Verifica se o pedido pertence ao usuário logado
+        if ($pedido->user->id == Auth::user()->id) {
+            return view('shop.pedido', compact('pedido'));
+        } 
+        else 
+        {
+            abort(403, 'Unauthorized action.');
+        }
+        
     }
 
 }

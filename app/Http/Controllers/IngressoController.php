@@ -15,7 +15,8 @@ class IngressoController extends Controller
      */
     public function index()
     {
-        //
+        $ingressos = Ingresso::orderBy('id', 'desc')->get();
+        return view('admin.ingressos.index', compact('ingressos'));
     }
 
     /**
@@ -47,7 +48,7 @@ class IngressoController extends Controller
      */
     public function show(Ingresso $ingresso)
     {
-        return view('admin.pedidos.ingresso', compact('ingresso'));
+        return view('admin.ingressos.show', compact('ingresso'));
     }
 
     /**

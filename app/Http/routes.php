@@ -62,8 +62,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	 	Route::get('/pedido/{pedido}', 'PedidoController@show');
 
 	 	Route::get('/ingresso/{ingresso}', 'IngressoController@show');
-//	 	Route::get('/ingressos', 'AdminController@listarIngressos');
-
+	 	Route::get('/ingressos', 'IngressoController@index');
 
 	});
 
@@ -88,6 +87,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('/checkout', 'PedidoController@create');
 		Route::post('/checkout', 'PedidoController@store');
+
+		Route::get('/areacliente', 'HomeController@areaCliente');
+		Route::get('/areacliente/pedido/{pedido}', 'HomeController@clientePedido');
 	});
 });
 
