@@ -24,8 +24,11 @@ class AdminController extends Controller
     }
 
     public function index()
-    {
-        return view('admin.index');
+    {   
+//        $novos_pedidos = 
+//        $ingressos_vendidos =
+//        $mensagens
+        return view('admin.dashboard');
     }
 
     public function showFormLogin()
