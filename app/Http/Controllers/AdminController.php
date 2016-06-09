@@ -28,7 +28,11 @@ class AdminController extends Controller
 //        $novos_pedidos = 
 //        $ingressos_vendidos =
 //        $mensagens
-        return view('admin.dashboard');
+//        
+
+        $novas_ordens = Pedido::whereDate('created_at', '=', date('Y-m-d'))->count();
+        return view('admin.dashboard', compact('novas_ordens'));
+        
     }
 
     public function showFormLogin()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Evento;
+use App\Models\Ingresso;
 use App\Models\Lote;
 use App\Models\Pedido;
 use App\Repositories\CarrinhoRepository;
@@ -80,7 +81,10 @@ class HomeController extends Controller
     public function areaCliente()
     {
         $usuario = Auth::user();
-        return view('shop.area-cliente', compact('usuario'));
+        $pedidos = Pedido::where('user_id', $usuario->id)
+                    ->orderBy('id', 'desc')->get();
+
+        return view('shop.cliente.conta', compact('usuario', 'pedidos'));
         
     }
 
@@ -92,13 +96,26 @@ class HomeController extends Controller
     
         // Verifica se o pedido pertence ao usuário logado
         if ($pedido->user->id == Auth::user()->id) {
-            return view('shop.pedido', compact('pedido'));
+            return view('shop.cliente.pedido', compact('pedido'));
         } 
         else 
         {
             abort(403, 'Unauthorized action.');
         }
         
+    }
+
+    public function verIngresso(Ingresso $ingresso)
+    {
+    
+        // Verifica se o ingresso pertence ao usuário logado
+        // if ($pedido->user->id == Auth::user()->id) {
+        //     return view('shop.cliente.pedido', compact('pedido'));
+        // } 
+        // else 
+        // {
+        //     abort(403, 'Unauthorized action.');
+        // }
     }
 
 }

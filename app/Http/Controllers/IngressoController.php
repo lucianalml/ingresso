@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Models\Ingresso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class IngressoController extends Controller
 {
@@ -48,7 +50,21 @@ class IngressoController extends Controller
      */
     public function show(Ingresso $ingresso)
     {
-        return view('admin.ingressos.show', compact('ingresso'));
+
+        // Verifica se o ingresso pertence ao usuário logado
+        if ($ingresso->pedidoItem->pedido->user->id == Auth::user()->id) {
+            return view('shop.cliente.ingressos.show', compact('ingresso'));
+        } 
+        // Verifica se o usuário é administrador
+        elseif (auth()->guard('admin')->check() ) 
+        {
+            return view('shop.cliente.ingressos.show', compact('ingresso'));
+        } 
+        else
+        {
+            abort(403, 'Unauthorized action.');
+        }
+        
     }
 
     /**
@@ -57,9 +73,16 @@ class IngressoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ingresso $ingresso)
     {
-        //
+        // Verifica se o ingresso pertence ao usuário logado
+        if ($ingresso->pedidoItem->pedido->user->id == Auth::user()->id) {
+            return view('shop.cliente.ingressos.edit', compact('ingresso'));
+        } 
+        else 
+        {
+            abort(403, 'Unauthorized action.');
+        }
     }
 
     /**
@@ -69,9 +92,29 @@ class IngressoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ingresso $ingresso)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required',
+            'documento' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                    ->withInput($request->input())
+                    ->withErrors($validator);
+        } 
+        else {
+
+            $ingresso->update($request->all());
+
+            flash()->success('Dados do ingresso atualizados!');
+
+            return redirect('/areacliente/pedido/'.$ingresso->pedidoItem->pedido->id);
+
+        }
+
     }
 
     /**

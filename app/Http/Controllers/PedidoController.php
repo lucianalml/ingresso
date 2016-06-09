@@ -81,7 +81,7 @@ class PedidoController extends Controller
             // Recupera o pedido e salva
  			$pedido = $this->carrinhoRepo->recuperaPedido();
  			$pedido->user_id = Auth::user()->id;
- 			$pedido->status = "NOVO";
+ 			$pedido->status = "Novo";
  			$pedido->save();      	
 
             // Salva os itens

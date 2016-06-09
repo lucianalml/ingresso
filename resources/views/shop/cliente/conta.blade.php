@@ -36,7 +36,7 @@
 
 	    <!-- Table Body -->
 	    <tbody>
-	        @foreach ($usuario->pedidos as $pedido)
+	        @foreach ($pedidos as $pedido)
 	            <tr>
 	                <td class="table-text"><div>{{ $pedido->id }}</div></td>
 					<td class="table-text"><div>{{ $pedido->status }}</div></td>

@@ -84,7 +84,8 @@
                     <th>Lote</th>
                     <th>Nome</th>
                     <th>Documento</th>
-                    <th>Ingressito</th>
+                    <th>Editar</th>
+                    <th>Imprimir</th>
                 </thead>
 
                 <!-- Tabela -->
@@ -92,15 +93,22 @@
                     @foreach ($pedido->itens as $item)
                         @foreach ($item->ingressos as $ingresso)
                             <tr>
-                                <td class="table-text"><div>{{ $ingresso->id }}</div></td>
+                                <td class="table-text"><div></div></td>
                                 <td class="table-text"><div>{{ $ingresso->pedidoItem->lote->evento->nome }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->pedidoItem->lote->descricao }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->nome }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->documento }}</div></td>
-                                <!-- Ver ingresso -->
+
+                                <!-- Editar dados do portador do ingresso -->
                                 <td>
-                                    <a href="{{ url('admin/ingresso/'.$ingresso->id) }}" class="btn btn-primary">
-                                    <i class="fa fa-qrcode" aria-hidden="true"></i></a>
+                                    <a href="{{ url('/ingresso/'.$ingresso->id.'/edit') }}" class="btn btn-primary">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                                
+                                <!-- Imprimir ingresso -->
+                                <td>
+                                    <a href="{{ url('/ingresso/'.$ingresso->id) }}" class="btn btn-primary">
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         @endforeach

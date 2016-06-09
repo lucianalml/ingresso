@@ -23,7 +23,13 @@
 
         <p>
             Esse ingresso é possoal e intransferível. Obrigatório apresentar
-            um documento com foto. Blablabla blablabla.
+            um documento com foto. Blablabla blablabla. <br>
+            Ele vale somente para o acesso de uma pessoa ao evento. Caso ele seja
+            duplicado não será permitida a entrada da pessoa.
+        </p>
+        <p>
+            Nunca compre ingressos de terceiros, compre sempre pelo site oficial
+            www.ingresso.art.br
         </p>
         
         <h3>Código</h3>
@@ -32,7 +38,9 @@
         </div>
 
         <p>
-        Venda: {{ $ingresso->pedidoItem->pedido->id }}.{{ $ingresso->pedidoItem->id }}
+        Adicionar essas informações no Qr Code para validação: <br>
+        Venda {{ $ingresso->pedidoItem->pedido->id }}.{{ $ingresso->pedidoItem->id }} <br>
+        Comprado por {{ $ingresso->pedidoItem->pedido->user->id }}
         </p>
 
     </div>

@@ -90,6 +90,10 @@ Route::group(['middleware' => ['web']], function () {
 
 		Route::get('/areacliente', 'HomeController@areaCliente');
 		Route::get('/areacliente/pedido/{pedido}', 'HomeController@clientePedido');
+
+		Route::get('/ingresso/{ingresso}', 'IngressoController@show');
+		Route::get('/ingresso/{ingresso}/edit', 'IngressoController@edit');
+		Route::post('/ingresso/{ingresso}/edit', 'IngressoController@update');
 	});
 });
 
