@@ -51,14 +51,12 @@ class HomeController extends Controller
      */
     public function exibirEvento(Evento $evento)
     {        
-        $pedido = $this->carrinhoRepo->recuperaPedido();
 
-        // ficou meio zuado, depois arrumar...
-        // daria para pegar os lotes direto do pedido ou carrinho e preencher um array 
-        // com indice = lotes_id e quantidades as qtds q estao no carrinho
+        $pedido = $this->carrinhoRepo->recuperaPedido();
         $ingressos = $this->carrinhoRepo->recuperaIngressos($evento);
 
         return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
+        
     }
 
 
@@ -66,11 +64,11 @@ class HomeController extends Controller
      * Atualiza os ingressos no carrinho
      */
     public function atualizaCarrinho(Request $request)
-    {        
+    {   
 
-        $this->carrinhoRepo->atualizaCarrinho($request->lote, $request->quantidade);
+        $ingressos = $request->get('ingressos');
 
-        flash()->success('Ingressos adicionados!');
+        $this->carrinhoRepo->atualizaCarrinho($ingressos);
         
         return back();
     }

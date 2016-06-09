@@ -11,6 +11,81 @@ use Session;
 
 class CarrinhoRepository
 {
+
+    protected $carrinho;
+    protected $eventoCarrinho;
+    protected $qtdTotal;
+
+    public function __construct()
+    {
+        // Instancia o carrinho
+        $this->carrinho = $this->getCarrinho();
+
+        // Quantidade total de ingressos no carrinho
+        $this->qtdTotal = $this->getQtdTotal();
+
+        // Um carrinho pode ter apenas ingressos de um evento
+        $this->eventoCarrinho = $this->getEventoCarrinho();
+
+    }
+
+
+
+    public function getCarrinho()
+    {
+        // Recupera a variavel de sessão
+        $carrinho = Session::get('carrinho');
+        if (is_null($carrinho)) {
+            $carrinho = [];
+        }
+
+        return $carrinho;
+    }
+
+    public function getQtdTotal()
+    {
+
+        $qtdTotal = 0;
+        foreach ($this->carrinho as $item) {
+            if (! empty($item)) {
+                $qtdTotal = $qtdTotal + $item['quantidade'];
+            }
+        }
+        return $qtdTotal;
+    }
+
+
+    public function getEventoCarrinho()
+    {
+        // Se o carrinho está vazio não retorna nada
+        if ($this->qtdTotal > 0) {
+            $lote = Lote::find($this->carrinho[0]['lote_id']);
+            return $lote->evento;
+        }
+
+    }
+
+    /**
+     * Recupera a quantidade de ingressos adicionado ao carrinho de um Lote
+     * @return Int quantidade
+     */
+    public function recuperaQtdLoteCarrinho(Lote $lote)
+    {
+
+        // Verificar se o usuário já havia adicionado um ingresso desse lote
+        $key = array_search($lote->id, array_column($this->carrinho, 'lote_id'));
+
+        // Não encontrou
+        if ( $key === false ) {
+            return 0;
+        }
+        else
+        {
+            return $this->carrinho[$key]['quantidade'];           
+        }
+
+    }
+
     /**
      * Recupera dados do pedido que estão armazenados no carrinho da sessão
      * @return [array] Pedido
@@ -18,18 +93,18 @@ class CarrinhoRepository
     public function recuperaPedido()
     {
 
-        $totalIngressos = 0;
-
-        // Recupera a variavel de sessão
-        $itensCarrinho = Session::get('carrinho');
-        if (is_null($itensCarrinho)) {
-            $itensCarrinho = [];
-        }
-
         $pedido = new Pedido();
 
-        // itemCarrinho = array com lote_id e quantidade
-        foreach ($itensCarrinho as $itemCarrinho) {
+        // Se nao há itens no carrinho
+        if ($this->qtdTotal == 0) {
+            return $pedido;
+        }
+
+        // // remover isso depois......
+        // Session::forget('carrinho');
+       
+        // itemCarrinho = array com campos lote_id e quantidade
+        foreach ($this->carrinho as $itemCarrinho) {
 
             // Recupera dados do lote
             $lote = Lote::find($itemCarrinho['lote_id']);
@@ -45,7 +120,6 @@ class CarrinhoRepository
 
             // Gera os ingressos para cada item do pedido
             for ($i=1; $i <= $itemCarrinho['quantidade'] ; $i++) {
-                $totalIngressos = $totalIngressos + 1;
 
                 $ingresso = new Ingresso;
                 $pedidoItem->ingressos[] = $ingresso;
@@ -56,53 +130,65 @@ class CarrinhoRepository
             $pedido->itens[] = $pedidoItem;
 
         }
-        
-        // Atualiza a quantidade total de ingressos no carrinho
-         Session::put('totalcarrinho', $totalIngressos);
-   
+           
         return $pedido;
     }
 
+
+    public function validaCarrinho($ingressos)
+    {
+        
+        // Permite somente ingressos do mesmo evento no carrinho
+        if (empty($this->eventoCarrinho)) {
+            return true;
+        }
+
+        $lote = Lote::find($ingressos[0]['lote_id']);
+
+        if ($lote->evento != $this->eventoCarrinho) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
     /**
      * Adiciona um ingresso na variavel de sessão do carrinho
      * Formato array de ['lote_id' => , 'quantidade' => ]
      */
-    public function atualizaCarrinho($loteId, $quantidade)
+    public function atualizaCarrinho($ingressos)
     {
-        $item = ['lote_id' => $loteId, 
-                'quantidade' => $quantidade];
 
-        $itensCarrinho = Session::get('carrinho'); 
+        if (! $this->validaCarrinho($ingressos)) {
 
-        // Inicializa carrinho
-        if (is_null($itensCarrinho)) {
-            $itensCarrinho = [];
-        }
-
-        // Verificar se o usuário já havia adicionado um ingresso desse lote
-        $key = array_search($item['lote_id'], array_column($itensCarrinho, 'lote_id'));
-
-        if ( $key === false ) {
-            // Adiciona novo item ao carrinho
-            array_push($itensCarrinho, $item);
-        }
-        else
-        {
-            // Se a quantidade foi zerada elimina do carrinho
-            if ($item['quantidade'] == 0) {
-                unset($itensCarrinho[$key]);
-                $temp = array_values($itensCarrinho);
-                $itensCarrinho = $temp;
-            }
-            // Senão atualiza a quantidade
-            else {
-                $itensCarrinho[$key]['quantidade'] = $item['quantidade'];    
-            }
+            flash()->error('Permitido adicionar ao carrinho apenas ingressos do mesmo evento');
             
-        }
+            return back()->withInput();
 
-        // Atualiza variável de sessão
-        Session::put('carrinho', $itensCarrinho);
+        }
+        
+        // Sobrescreve os itens do carrinho
+        $carrinho = [];
+        $totalIngressos = 0;
+
+        foreach ($ingressos as $key => $ingresso) {
+            
+            // Se a quantidade do item for maior que zero insere no carrinho
+            if ($ingresso['quantidade'] > 0) {
+                $carrinhoItem = ['lote_id' => $ingresso['lote_id'],
+                                'quantidade' => $ingresso['quantidade']];
+
+                $carrinho[] = $carrinhoItem;
+                $totalIngressos = $totalIngressos + $ingresso['quantidade'];
+            }
+        }
+        
+        flash()->success('Ingressos adicionados!');
+
+        // Atualiza as variáveis de sessão
+        Session::put('carrinho', $carrinho);
+        Session::put('totalcarrinho', $totalIngressos);
 
     }
 
@@ -115,40 +201,20 @@ class CarrinhoRepository
      */
     public function recuperaIngressos(Evento $evento)
     {
-        // Recupera a variavel de sessão
-        $itensCarrinho = Session::get('carrinho');
-        if (is_null($itensCarrinho)) {
-            $itensCarrinho = [];
-        }
 
         $ingressos = [];
 
-        // Percorre todos os lotes existentes para preencher tabela de ingressos
+        // Monta um array com todos os lotes do evento e qtdades no carrinho
         foreach ($evento->lotes as $lote) {
 
-            // Verifica se o lote foi adicionado ao carrinho
-            $key = array_search($lote->id, array_column($itensCarrinho, 'lote_id'));
+            $ingresso = ['lote_id' => $lote->id,
+                        'quantidade' => $this->recuperaQtdLoteCarrinho($lote) ];
 
-            // Se ainda não foi adicionado insere com quantidade zero
-            if ($key === false) { 
+            // Adiciona o item ao array
+            $ingressos[] = $ingresso;
 
-                $ingresso = [ 'lote_id' => $lote->id,
-                            'descricao' => $lote->descricao, 
-                            'valor' => $lote->preco, 
-                            'quantidade' => 0, 
-                            'valor_total' => 0];
-            } else {             
-
-                $ingresso = [ 'lote_id' => $lote->id,
-                            'descricao' => $lote->descricao,
-                            'valor' => $lote->preco, 
-                            'quantidade' => $itensCarrinho[$key]['quantidade'], 
-                            'valor_total' => $itensCarrinho[$key]['quantidade'] * $lote->preco ];
-            }            
-        
-            array_push($ingressos, $ingresso);
         }
-
+       
         return $ingressos;
     }
 
