@@ -107,7 +107,9 @@ class PedidoController extends Controller
 
 			flash()->success('Sucesso das galaxias!');
 
-            return redirect('/');
+            // Envia para controller de pagamento
+            return redirect()->action('PagamentoController@create', $pedido->id);
+
         }
 	}
 

@@ -99,10 +99,7 @@ class CarrinhoRepository
         if ($this->qtdTotal == 0) {
             return $pedido;
         }
-
-        // // remover isso depois......
-        // Session::forget('carrinho');
-       
+      
         // itemCarrinho = array com campos lote_id e quantidade
         foreach ($this->carrinho as $itemCarrinho) {
 
@@ -163,7 +160,7 @@ class CarrinhoRepository
         if (! $this->validaCarrinho($ingressos)) {
 
             flash()->error('Permitido adicionar ao carrinho apenas ingressos do mesmo evento');
-            
+
             return back()->withInput();
 
         }

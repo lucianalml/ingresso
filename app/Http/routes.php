@@ -88,6 +88,10 @@ Route::group(['middleware' => ['web']], function () {
 		Route::get('/checkout', 'PedidoController@create');
 		Route::post('/checkout', 'PedidoController@store');
 
+		// Nao sei se isso ficou bom assim....
+		Route::get('/pagamento/{pedido}', 'PagamentoController@create');
+		Route::post('/pagamento/{pedido}', 'PagamentoController@store');
+
 		Route::get('/areacliente', 'HomeController@areaCliente');
 		Route::get('/areacliente/pedido/{pedido}', 'HomeController@clientePedido');
 
