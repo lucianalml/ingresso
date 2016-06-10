@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5efd27fbd8e5124410206c5cae6fb049",
-    "content-hash": "ac1dec821925f49bba34bd78cab87660",
+    "hash": "5853d97fec4e878aad0ba0307251bb2c",
+    "content-hash": "7435410d3d130524bb1df9a140a51c1b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -102,6 +102,41 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "developercielo/webservice-1.5-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DeveloperCielo/Webservice-1.5-php.git",
+                "reference": "63c8b4c0dd6357f0dd596ec00d1b6117362b10c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DeveloperCielo/Webservice-1.5-php/zipball/63c8b4c0dd6357f0dd596ec00d1b6117362b10c7",
+                "reference": "63c8b4c0dd6357f0dd596ec00d1b6117362b10c7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cielo": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "SDK PHP para integração com webservice 1.5 da Cielo",
+            "homepage": "https://github.com/DeveloperCielo/Webservice-1.5-php",
+            "time": "2016-04-05 14:04:27"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3511,7 +3546,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "developercielo/webservice-1.5-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

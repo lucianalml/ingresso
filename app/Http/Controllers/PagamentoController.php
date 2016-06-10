@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Cielo\Cielo;
+use Cielo\CieloException;
+use Cielo\Transaction;
+use Cielo\Holder;
+use Cielo\PaymentMethod;
+
 use App\Http\Requests;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
@@ -28,7 +34,7 @@ class PagamentoController extends Controller
     {
 
         // TODO - verificar se o pagamento é do usuario logado
-
+	
         return view('shop.pagamento', compact('pedido'));
     }
 
@@ -40,7 +46,7 @@ class PagamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), 
+        /*$validator = Validator::make($request->all(), 
             ['cartao' => 'required',
             ]);
 
@@ -56,7 +62,40 @@ class PagamentoController extends Controller
                 $request->get('pedido'). ' confirmado!');
 
             return redirect('/');
-        }
+        }*/
+
+	$mid = '12345678'; //seu merchant id
+	$key = 'xxxx'; //sua chave
+
+	$cielo = new Cielo($mid, $key, Cielo::TEST);
+
+	$holder = $cielo->holder('4012001037141112', 2018, 5, Holder::CVV_INFORMED, 123);
+	$order = $cielo->order('178148599', 1000);
+	$paymentMethod = $cielo->paymentMethod(PaymentMethod::VISA, PaymentMethod::CREDITO_A_VISTA);
+
+
+	dd($transaction);
+	
+	$transaction = $cielo->transaction($holder,
+                                   $order,
+                                   $paymentMethod,
+                                   'http://localhost/cielo.php',
+                                   Transaction::AUTHORIZE_WITHOUT_AUTHENTICATION,
+                                   true);
+	try {
+
+    		$transaction = $cielo->transactionRequest($transaction);
+
+      		if ($transaction->getAuthorization()->getLR() == 0)
+          		printf("Transação autorizada com sucesso. TID=%s\n", $transaction->getTid());
+
+ 	 }	 
+	catch (CieloException $e) {
+
+      		printf("Opz[%d]: %s\n", $e->getCode(), $e->getMessage());
+
+ 	 }	
+    
 
     }
 

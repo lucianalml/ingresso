@@ -39,4 +39,4 @@ def send_to_slack(usr,msg,chanel,emoji):
 def deploy(msg='stage'):
         if msg=='stage':
                 commitChange()
-                send_to_slack()
+                send_to_slac()
