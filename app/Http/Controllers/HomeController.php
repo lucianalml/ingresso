@@ -42,7 +42,7 @@ class HomeController extends Controller
 
 // TODO mudar pra recuperar os dados do repositorio
 //        $eventos = $this->eventoRepo->getAll();
-        $eventos = Evento::get();
+        $eventos = Evento::simplePaginate(8);
         return view('shop.index', compact('eventos'));
     }
 

@@ -134,21 +134,20 @@ class CarrinhoRepository
 
     public function validaCarrinho($ingressos)
     {
-        
-        // Permite somente ingressos do mesmo evento no carrinho
-        if (empty($this->eventoCarrinho)) {
-            return true;
+        if (empty($ingressos)) {
+            return "Selecionar pelo menos um ingresso";
         }
-
+        
+        // Verifica se está adicionando apenas ingressos do mesmo evento
         $lote = Lote::find($ingressos[0]['lote_id']);
 
-        if ($lote->evento != $this->eventoCarrinho) {
-            return false;
-        }
-        else {
-            return true;
+        if (! empty($this->eventoCarrinho) AND 
+            $this->eventoCarrinho != $lote->evento ) {
+
+            return "Permitido adicionar ao carrinho apenas ingressos do mesmo evento";
         }
 
+        return true;
     }
     /**
      * Adiciona um ingresso na variavel de sessão do carrinho
@@ -157,9 +156,11 @@ class CarrinhoRepository
     public function atualizaCarrinho($ingressos)
     {
 
-        if (! $this->validaCarrinho($ingressos)) {
+        $valida = $this->validaCarrinho($ingressos);
 
-            flash()->error('Permitido adicionar ao carrinho apenas ingressos do mesmo evento');
+        if ( $valida !== true ) {
+
+            flash()->error($valida);
 
             return back()->withInput();
 

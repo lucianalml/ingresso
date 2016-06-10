@@ -37,11 +37,11 @@
         </li>
       </ul>
 
-      <form class="navbar-form navbar-left" role="search">
+      <form action="{{ action('SearchController@index') }}" method="GET" class="navbar-form navbar-left" role="search">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Procurar eventos...">
+          <input type="text" name="evento" class="form-control" placeholder="Procurar eventos...">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Vai!</button>
+            <button class="btn btn-default" type="submit">Vai!</button>
           </span>
         </div>
       </form>

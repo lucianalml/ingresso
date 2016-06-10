@@ -37,4 +37,6 @@
     </div>
 @endforeach
 
+{{ $eventos->appends(Request::except('page'))->links() }}
+
 @endsection

@@ -53,6 +53,7 @@ class PedidoController extends Controller
     {
         $pedido = $this->carrinhoRepo->recuperaPedido();
 
+        // TODO - Verificar se ha itens no carrinho
         return view('shop.checkout', compact('pedido'));
 
     }

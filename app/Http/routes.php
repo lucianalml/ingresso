@@ -72,10 +72,12 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
 
+	
 	// Rotas para autenticação do usuário (/login, /register, /logout)
 	Route::auth();
 
     Route::get('/', 'HomeController@index');
+    Route::get('/search', 'SearchController@index');
     
     // Exibir o evento para compra de ingressos
 	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
