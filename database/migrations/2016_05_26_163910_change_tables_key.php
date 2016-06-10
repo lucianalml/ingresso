@@ -12,7 +12,7 @@ class ChangeTablesKey extends Migration
      */
     public function up()
     {
-        Schema::drop('lotes');
+        Schema::dropIfExists('lotes');
 
         Schema::create('lotes', function (Blueprint $table) { 
             
@@ -32,7 +32,7 @@ class ChangeTablesKey extends Migration
         });
 
 
-        Schema::drop('evento_imagens');
+        Schema::dropIfExists('evento_imagens');
 
         Schema::create('evento_imagens', function (Blueprint $table) {
 

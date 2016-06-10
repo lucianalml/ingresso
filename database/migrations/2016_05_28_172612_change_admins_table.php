@@ -12,7 +12,7 @@ class ChangeAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::drop('admins');
+        Schema::dropIfExists('admins');
 
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
