@@ -74,7 +74,7 @@ class PagamentoController extends Controller
 	$paymentMethod = $cielo->paymentMethod(PaymentMethod::VISA, PaymentMethod::CREDITO_A_VISTA);
 
 
-	dd($transaction);
+	
 	
 	$transaction = $cielo->transaction($holder,
                                    $order,
@@ -82,6 +82,7 @@ class PagamentoController extends Controller
                                    'http://localhost/cielo.php',
                                    Transaction::AUTHORIZE_WITHOUT_AUTHENTICATION,
                                    true);
+
 	try {
 
     		$transaction = $cielo->transactionRequest($transaction);
@@ -93,7 +94,7 @@ class PagamentoController extends Controller
 	catch (CieloException $e) {
 
       		printf("Opz[%d]: %s\n", $e->getCode(), $e->getMessage());
-
+		dd($transaction);
  	 }	
     
 
