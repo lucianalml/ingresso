@@ -27,6 +27,30 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="Ano" class="col-sm-3 control-label">Ano</label>
+
+                <div class="col-sm-6">
+                    <input type="text" name="ano" id="ano" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mes" class="col-sm-3 control-label">Mes</label>
+
+                <div class="col-sm-6">
+                    <input type="text" name="mes" id="mes" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv" class="col-sm-3 control-label">CVV</label>
+
+                <div class="col-sm-6">
+                    <input type="text" name="cvv" id="cvv" class="form-control">
+                </div>
+            </div>
+
             <!-- Botão de salvar -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
@@ -37,7 +61,9 @@
             </div>
 
         </form>
-    </div>
+
+
+</div>
 </div>
 
 

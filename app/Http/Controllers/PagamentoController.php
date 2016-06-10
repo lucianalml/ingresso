@@ -44,33 +44,15 @@ class PagamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        /*$validator = Validator::make($request->all(), 
-            ['cartao' => 'required',
-            ]);
-
-        if ($validator->fails()) {
-
-            return back()->withErrors($validator)
-                        ->withInput();
-        }
-        else
-        {   
-            
-            flash()->success('Parabens! Pagamento do pedido '. 
-                $request->get('pedido'). ' confirmado!');
-
-            return redirect('/');
-        }*/
-
 	$mid = '12345678'; //seu merchant id
 	$key = 'xxxx'; //sua chave
 
 	$cielo = new Cielo($mid, $key, Cielo::TEST);
 
-	$holder = $cielo->holder('4012001037141112', 2018, 5, Holder::CVV_INFORMED, 123);
-	$order = $cielo->order('178148599', 1000);
+	$holder = $cielo->holder($request->cartao,$request->ano, $request->mes, Holder::CVV_INFORMED, $request->cvv);
+	$order = $cielo->order($request->pedido, 1000);
 	$paymentMethod = $cielo->paymentMethod(PaymentMethod::VISA, PaymentMethod::CREDITO_A_VISTA);
 
 
@@ -79,7 +61,8 @@ class PagamentoController extends Controller
 	$transaction = $cielo->transaction($holder,
                                    $order,
                                    $paymentMethod,
-                                   'http://localhost/cielo.php',
+                                  // 'https://cieloecommerce.cielo.com.br/api/public/v1/orders',
+					'https://cieloecommerce.cielo.com.br/Transactional/Order/Index',
                                    Transaction::AUTHORIZE_WITHOUT_AUTHENTICATION,
                                    true);
 
