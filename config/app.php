@@ -161,6 +161,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
+        IngressoArt\Db\DbServiceProvider::class,
+
     ],
 
     /*

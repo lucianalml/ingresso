@@ -69,7 +69,9 @@
 
     
     <br>
-    <!-- Lista todos os ingressos do pedido -->
+
+    <!-- Ingressos do Pedido -->
+    @if($pedido->status == 'Confirmado')
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Ingressos</h3>
@@ -77,7 +79,6 @@
         <div class="panel-body">
             <table class="table table-striped">
 
-                <!-- Cabeçalho -->
                 <thead>
                     <th>#</th>
                     <th>Evento</th>
@@ -88,7 +89,6 @@
                     <th>Imprimir</th>
                 </thead>
 
-                <!-- Tabela -->
                 <tbody>
                     @foreach ($pedido->itens as $item)
                         @foreach ($item->ingressos as $ingresso)
@@ -99,13 +99,13 @@
                                 <td class="table-text"><div>{{ $ingresso->nome }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->documento }}</div></td>
 
-                                <!-- Editar dados do portador do ingresso -->
+                                <!-- Editar dados do portador -->
                                 <td>
                                     <a href="{{ url('/ingresso/'.$ingresso->id.'/edit') }}" class="btn btn-primary">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </td>
                                 
-                                <!-- Imprimir ingresso -->
+                                <!-- Imprimir ingresso/ Enviar por email -->
                                 <td>
                                     <a href="{{ url('/ingresso/'.$ingresso->id) }}" class="btn btn-primary">
                                     <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
@@ -117,7 +117,9 @@
             </table>
         </div>
     </div>
+    @endif
 
+    
 </div>
 
 @endsection

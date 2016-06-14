@@ -32,8 +32,8 @@ class PedidoController extends Controller
      */
     public function index(Request $request)
     {
-        // TODO -> Depois colocar os selecs em um repositório e fazer a pira de paginação
-        $pedidos = Pedido::orderBy('id', 'desc')->get();
+        // TODO -> Depois colocar os selecs em um repositório
+        $pedidos = Pedido::orderBy('id', 'desc')->Paginate(20);
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
@@ -42,7 +42,18 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {   
-        return view('admin.pedidos.show', compact('pedido'));
+        // Verifica se o usuário é admin
+        if (auth()->guard('admin')->check()) {
+            return view('admin.pedidos.show', compact('pedido'));
+        }
+
+        // Verifica se o pedido pertence ao usuário logado
+        if ($pedido->user->id <> Auth::user()->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('shop.cliente.pedido', compact('pedido'));
+
     }
 
 
@@ -51,9 +62,14 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        $pedido = $this->carrinhoRepo->recuperaPedido();
 
-        // TODO - Verificar se ha itens no carrinho
+        // Se não há itens no carrinho
+        if ($this->carrinhoRepo->getQtdTotal() == 0) {
+            flash()->error('Seu carrinho está vazio :(');
+            return back();
+        }
+        
+        $pedido = $this->carrinhoRepo->recuperaPedido();
         return view('shop.checkout', compact('pedido'));
 
     }
@@ -113,5 +129,28 @@ class PedidoController extends Controller
 
         }
 	}
+
+    /**
+     * Atualiza dados do pedido
+     *
+     */
+    public function update(Request $request, Pedido $pedido)
+    {
+
+        // Verifica se o usuário é admin
+        if (! auth()->guard('admin')->check()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $pedido->status = $request->get('status');
+
+        $pedido->save();
+
+        flash()->success('Pedido atualizado!');
+
+        return back();
+
+    }
+
 
 }

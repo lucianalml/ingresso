@@ -4,6 +4,6 @@
 Homestead.yaml
 Homestead.json
 /public/ImagensEventos/*
-!/public/ImagensEventos/.gitkeep
+!/public/ImagensEventos/img-nao-encontrada.jpg
 /public/ImagensEventos/Thumbnail/*
-!/public/ImagensEventos/Thumbnail/.gitkeep
+!/public/ImagensEventos/Thumbnail/img-nao-encontrada.jpg

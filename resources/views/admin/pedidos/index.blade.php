@@ -5,10 +5,34 @@
 <!-- Lista todos os pedidos -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            Pedidos
+            <h4>Pedidos</h4>
         </div>
 
         <div class="panel-body">
+
+            <div class="container-fluid">
+            <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email" for="pedido">Pedido:
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="tex" class="form-control" id="pedido">
+                    </div>
+                </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            </div>
+
             <table class="table table-striped">
 
                 <!-- Table Headings -->
@@ -40,6 +64,11 @@
                 </tbody>
             </table>
         </div>
+
+        {{ $pedidos->appends(Request::except('page'))->links() }}
+
     </div>
+
+
 
 @endsection

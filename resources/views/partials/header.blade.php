@@ -27,7 +27,7 @@
         </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i> Busca por <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i> Local <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Estado</a></li>
             <li><a href="#">Cidade</a></li>
@@ -36,8 +36,9 @@
           </ul>
         </li>
       </ul>
-
-      <form action="{{ action('SearchController@index') }}" method="GET" class="navbar-form navbar-left" role="search">
+    
+      <!-- Busca -->
+      <form action="{{ url('/') }}" method="GET" class="navbar-form navbar-left" role="search">
         <div class="input-group">
           <input type="text" name="evento" class="form-control" placeholder="Procurar eventos...">
           <span class="input-group-btn">
@@ -70,8 +71,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ url('/areacliente') }}"><i class="fa fa-user" aria-hidden="true"></i> Minha conta</a></li>
-                <li><a href="{{ url('/areacliente') }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Pedidos</a></li>
+                <li><a href="{{ url('/conta') }}"><i class="fa fa-user" aria-hidden="true"></i> Minha conta</a></li>
+                <li><a href="{{ url('/conta') }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Pedidos</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
               </ul>

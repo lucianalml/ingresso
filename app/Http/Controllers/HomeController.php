@@ -8,10 +8,10 @@ use App\Models\Ingresso;
 use App\Models\Lote;
 use App\Models\Pedido;
 use App\Repositories\CarrinhoRepository;
-use App\Repositories\EventoRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use IngressoArt\EventoFilters;
 
 class HomeController extends Controller
 {
@@ -37,12 +37,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(EventoFilters $filters)
     {
-
-// TODO mudar pra recuperar os dados do repositorio
-//        $eventos = $this->eventoRepo->getAll();
-        $eventos = Evento::simplePaginate(8);
+        // Filtra os eventos
+        $eventos = Evento::filter($filters)->simplePaginate(8);
+        
         return view('shop.index', compact('eventos'));
     }
 
@@ -52,9 +51,14 @@ class HomeController extends Controller
     public function exibirEvento(Evento $evento)
     {        
 
-        $pedido = $this->carrinhoRepo->recuperaPedido();
         $ingressos = $this->carrinhoRepo->recuperaIngressos($evento);
+        
+        // Se não há itens no pedido
+        if ($this->carrinhoRepo->getQtdTotal() == 0) {
+            return view('shop.evento', compact('evento', 'ingressos'));
+        }
 
+        $pedido = $this->carrinhoRepo->recuperaPedido();
         return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
         
     }
@@ -76,7 +80,7 @@ class HomeController extends Controller
     /**
      * Exibe a área do cliente
      */
-    public function areaCliente()
+    public function conta()
     {
         $usuario = Auth::user();
         $pedidos = Pedido::where('user_id', $usuario->id)
@@ -84,36 +88,6 @@ class HomeController extends Controller
 
         return view('shop.cliente.conta', compact('usuario', 'pedidos'));
         
-    }
-
-    /**
-     * Exibe a pagina com detalhes de um pedido para o cliente
-     */
-    public function clientePedido(Pedido $pedido)
-    {
-    
-        // Verifica se o pedido pertence ao usuário logado
-        if ($pedido->user->id == Auth::user()->id) {
-            return view('shop.cliente.pedido', compact('pedido'));
-        } 
-        else 
-        {
-            abort(403, 'Unauthorized action.');
-        }
-        
-    }
-
-    public function verIngresso(Ingresso $ingresso)
-    {
-    
-        // Verifica se o ingresso pertence ao usuário logado
-        // if ($pedido->user->id == Auth::user()->id) {
-        //     return view('shop.cliente.pedido', compact('pedido'));
-        // } 
-        // else 
-        // {
-        //     abort(403, 'Unauthorized action.');
-        // }
     }
 
 }

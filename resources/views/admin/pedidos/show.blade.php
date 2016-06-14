@@ -15,7 +15,29 @@
         <p><b>Email:</b> {{ $pedido->user->email }}</p>
         
         <p><b>Última atualização:</b> {{ $pedido->updated_at }}</p>
-        <p><b>Status:</b> {{ $pedido->status }}</p>
+
+        <!-- Form para alterar status -->
+        {{ Form::open(array('action' => array('PedidoController@update', $pedido->id))) }}
+
+        <div class="form-group">
+            {{ Form::label('status', 'Status') }}
+            {{ Form::select('status', [
+               'Novo' => 'Novo',
+               'Em análise' => 'Em análise',
+               'Confirmado' => 'Confirmado',
+               'Cancelado' => 'Cancelado',
+               'Reembolsado' => 'Reembolsado'],
+               $pedido->status
+            ) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::submit('Salvar', array( 'class'=>'btn btn-success' )) }}
+        </div>
+
+        {{ Form::close() }}
+        
+
     </div>
 
     <div class="panel panel-default">
@@ -84,6 +106,7 @@
                     <th>Lote</th>
                     <th>Nome</th>
                     <th>Documento</th>
+                    <th>Editar</th>
                     <th>Ingressito</th>
                 </thead>
 
@@ -97,9 +120,16 @@
                                 <td class="table-text"><div>{{ $ingresso->pedidoItem->lote->descricao }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->nome }}</div></td>
                                 <td class="table-text"><div>{{ $ingresso->documento }}</div></td>
+
+                                <!-- Editar -->
+                                <td>
+                                    <a href="{{ url('/ingresso/'.$ingresso->id.'/edit') }}" class="btn btn-primary">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+
                                 <!-- Ver ingresso -->
                                 <td>
-                                    <a href="{{ url('admin/ingresso/'.$ingresso->id) }}" class="btn btn-primary">
+                                    <a href="{{ url('ingresso/'.$ingresso->id) }}" class="btn btn-primary">
                                     <i class="fa fa-qrcode" aria-hidden="true"></i></a>
                                 </td>
                             </tr>

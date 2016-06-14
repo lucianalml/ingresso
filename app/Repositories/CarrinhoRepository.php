@@ -79,16 +79,14 @@ class CarrinhoRepository
         if ( $key === false ) {
             return 0;
         }
-        else
-        {
-            return $this->carrinho[$key]['quantidade'];           
-        }
+        
+        return $this->carrinho[$key]['quantidade'];           
 
     }
 
     /**
      * Recupera dados do pedido que estão armazenados no carrinho da sessão
-     * @return [array] Pedido
+     * @return Pedido
      */
     public function recuperaPedido()
     {
@@ -182,7 +180,7 @@ class CarrinhoRepository
             }
         }
         
-        flash()->success('Ingressos adicionados!');
+        flash()->success('Ingressos atualizados!');
 
         // Atualiza as variáveis de sessão
         Session::put('carrinho', $carrinho);

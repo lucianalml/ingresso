@@ -43,7 +43,7 @@
 	                <td class="table-text"><div>R$ {{ $pedido->valor_total }}</div></td>
 	                <td class="table-text"><div>{{ date('d/m/Y', strtotime($pedido->created_at)) }}</div></td>
 	                <td>
-	                    <a href="{{ url('areacliente/pedido/'.$pedido->id) }}" class="btn btn-primary">
+	                    <a href="{{ url('conta/pedido/'.$pedido->id) }}" class="btn btn-primary">
 	                    <i class="fa fa-eye" aria-hidden="true"></i></a>
 	                </td>
 

@@ -111,7 +111,7 @@ class IngressoController extends Controller
 
             flash()->success('Dados do ingresso atualizados!');
 
-            return redirect('/areacliente/pedido/'.$ingresso->pedidoItem->pedido->id);
+            return redirect('/conta/pedido/'.$ingresso->pedidoItem->pedido->id);
 
         }
 

@@ -60,8 +60,8 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 		// Pedidos
 	 	Route::get('/pedidos', 'PedidoController@index');
 	 	Route::get('/pedido/{pedido}', 'PedidoController@show');
+	 	Route::post('/pedido/{pedido}/edit', 'PedidoController@update');
 
-	 	Route::get('/ingresso/{ingresso}', 'IngressoController@show');
 	 	Route::get('/ingressos', 'IngressoController@index');
 
 	});
@@ -77,7 +77,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::auth();
 
     Route::get('/', 'HomeController@index');
-    Route::get('/search', 'SearchController@index');
     
     // Exibir o evento para compra de ingressos
 	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
@@ -94,8 +93,8 @@ Route::group(['middleware' => ['web']], function () {
 		Route::get('/pagamento/{pedido}', 'PagamentoController@create');
 		Route::post('/pagamento/{pedido}', 'PagamentoController@store');
 
-		Route::get('/areacliente', 'HomeController@areaCliente');
-		Route::get('/areacliente/pedido/{pedido}', 'HomeController@clientePedido');
+		Route::get('/conta', 'HomeController@conta');
+		Route::get('/conta/pedido/{pedido}', 'PedidoController@show');
 
 		Route::get('/ingresso/{ingresso}', 'IngressoController@show');
 		Route::get('/ingresso/{ingresso}/edit', 'IngressoController@edit');

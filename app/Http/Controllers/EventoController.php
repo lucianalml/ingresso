@@ -6,45 +6,31 @@ use App\Http\Requests;
 use App\Models\Evento;
 use App\Models\Lote;
 use App\Models\Produtor;
-use App\Repositories\EventoRepository;
 use Illuminate\Http\Request;
+use IngressoArt\Db\Evento\EventoRepository;
 use Session;
 
 class EventoController extends Controller
 {
 
-    /**
-     * The evento repository instance.
-     *
-     * @var EventoRepository
-     */
-    protected $eventoRepository;
+    protected $evento;
 
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(EventoRepository $eventoRepository)
+    public function __construct(EventoRepository $eventoRepo)
     {
 // Middleware valido para todos os métodos desse controler
 //        $this->middleware('auth');
 
 // Instancia o repositório
-         $this->eventoRepository = $eventoRepository;
+         $this->evento = $eventoRepo;
     }
 
 	/**
 	 * Lista todos os eventos
-	 *
-	 * @param  Request  $request
-	 * @return Response
 	 */
 	public function index(Request $request)
 	{
 
-        $eventos = Evento::get();
+        $eventos = $this->evento->all();
         return view('admin.eventos.index', compact('eventos'));
 
 	}

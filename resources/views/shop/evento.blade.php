@@ -54,7 +54,7 @@
                 <td><input type="number" name="ingressos[{{$key}}][quantidade]"
                  min="0" value="{{ $ingressos[$key]['quantidade'] }}" /></td>
 
-                <td>R$ vl tot</td>
+                <td>R$ {{ $lote->preco * $ingressos[$key]['quantidade'] }} </td>
 				
                 </tr>
 			
@@ -71,6 +71,7 @@
     </div>
 
 	<!-- Resumo do pedido -->
+	@if (isset($pedido))
 	<div class="panel panel-default">
         <div class="panel-heading">
         	<h4><i class="fa fa-shopping-bag" aria-hidden="true"></i><b> Resumo do pedido</b></h4>
@@ -104,6 +105,8 @@
 		<br>
 
 	</div>
+	
+	@endif
 
 
 @endsection

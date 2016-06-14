@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use IngressoArt\QueryFilter;
 
 class Evento extends Model
 {
@@ -14,6 +15,11 @@ class Evento extends Model
 
     protected $dates = ['deleted_at'];
 
+
+    public function scopeFilter($query, QueryFilter $filters)
+    {
+        return $filters->apply($query);
+    }
 
     /**
      * Produtor do evento
@@ -38,4 +44,5 @@ class Evento extends Model
     {
         return $this->hasMany(EventoImagem::class);
     }
+
 }
