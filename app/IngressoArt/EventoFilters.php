@@ -14,4 +14,9 @@ class EventoFilters extends QueryFilter
 	{
 		return $this->builder->where('nome', 'like', "%$nome%");
 	}
+
+	public function produtor($produtor)
+	{
+		return $this->builder->where('produtor_id', $produtor);
+	}
 }

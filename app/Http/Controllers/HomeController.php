@@ -19,17 +19,17 @@ class HomeController extends Controller
     /**
      * Instancia dos repositórios
      */
-    protected $carrinhoRepo;
+    protected $carrinho;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CarrinhoRepository $carrinhoRepo)
+    public function __construct(CarrinhoRepository $carrinho)
     {
         // Instancia os repositórios
-        $this->carrinhoRepo = $carrinhoRepo;
+        $this->carrinho = $carrinho;
     }
 
     /**
@@ -51,14 +51,14 @@ class HomeController extends Controller
     public function exibirEvento(Evento $evento)
     {        
 
-        $ingressos = $this->carrinhoRepo->recuperaIngressos($evento);
+        $ingressos = $this->carrinho->recuperaIngressos($evento);
         
-        // Se não há itens no pedido
-        if ($this->carrinhoRepo->getQtdTotal() == 0) {
+        // Se não há itens no pedido não exibe pedido
+        if ($this->carrinho->getQtdTotal() == 0) {
             return view('shop.evento', compact('evento', 'ingressos'));
         }
 
-        $pedido = $this->carrinhoRepo->recuperaPedido();
+        $pedido = $this->carrinho->recuperaPedido();
         return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
         
     }
@@ -72,7 +72,7 @@ class HomeController extends Controller
 
         $ingressos = $request->get('ingressos');
 
-        $this->carrinhoRepo->atualizaCarrinho($ingressos);
+        $this->carrinho->atualizaCarrinho($ingressos);
         
         return back();
     }

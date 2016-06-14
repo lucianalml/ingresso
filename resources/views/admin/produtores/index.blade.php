@@ -51,7 +51,8 @@
 
                             <td>
                                 <!-- Eventos do produtor - TODO-->
-                                <a href="{{ url('admin/eventos') }}" class="btn btn-primary">
+                                <a href="{{ action('EventoController@index', 
+                                ['produtor' => $produtor->id ]) }}" class="btn btn-primary">
                                 <i class="fa fa-btn fa-headphones"></i>Eventos</a>
                             </td>
 

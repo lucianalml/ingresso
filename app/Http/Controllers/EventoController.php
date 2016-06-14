@@ -8,6 +8,7 @@ use App\Models\Lote;
 use App\Models\Produtor;
 use Illuminate\Http\Request;
 use IngressoArt\Db\Evento\EventoRepository;
+use IngressoArt\EventoFilters;
 use Session;
 
 class EventoController extends Controller
@@ -27,10 +28,13 @@ class EventoController extends Controller
 	/**
 	 * Lista todos os eventos
 	 */
-	public function index(Request $request)
+	public function index(EventoFilters $filters)
 	{
 
-        $eventos = $this->evento->all();
+//        $eventos = $this->evento->all();
+
+        // Filtra os eventos
+        $eventos = Evento::filter($filters)->get();
         return view('admin.eventos.index', compact('eventos'));
 
 	}
