@@ -34,6 +34,17 @@
 	                </div>
 	            </div>
 
+                <!-- Taxa Administrativa -->
+                <div class="form-group">
+                    <label for="lote-taxa" class="col-sm-3 control-label">Taxa Adm.</label>
+
+	                <div class="col-sm-6">
+
+	                <input type="number" name="taxa_adm" id="taxa_adm" class="form-control" min="0" max="15" value="{{ $lote->taxa_adm }}">
+	                </div>
+
+                </div>
+
 	            <!-- Botão de salvar -->
 	            <div class="form-group">
 	                <div class="col-sm-offset-3 col-sm-6">

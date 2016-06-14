@@ -21,8 +21,9 @@
 
         <!-- Form para editar eventos -->
 		@if( isset($evento) )
+
 		    <form action="{{ url('admin/evento/'.$evento->id.'/edit') }}" method="POST" class="form-horizontal" id="form">
-		@else
+
 		<!-- Form para criar eventos -->
 		    <form action="{{ url('admin/evento/create') }}" method="POST" class="form-horizontal" id="form">
 		@endif
@@ -89,21 +90,88 @@
                 </div>
             </div>
 
+            <!-- Gênero -->
+            <div class="form-group">
+            {{ Form::label('genero', 'Genero', ['class' => 'col-sm-3 control-label']) }}
+
+                <div class="col-sm-6">
+
+                    @if( isset($evento) )
+                        {{ Form::select('genero', 
+                            ['' => '',
+                            'Rock' => 'Rock',
+                            'Trance' => 'Trance',
+                            'Festival' => 'Festival',
+                            'Alternativo' => 'Alternativo'], 
+                            $evento->genero, ['class' => 'form-control'] )}}
+
+                    @else
+                            {{ Form::select('genero', 
+                            ['' => '',
+                            'Rock' => 'Rock', 
+                            'Trance' => 'Trance',
+                            'Festival' => 'Festival',
+                            'Alternativo' => 'Alternativo'], 
+                            old('genero'), ['class' => 'form-control'] )}}
+                    @endif
+
+                </div>
+            </div>
+
+            <!-- Estado -->
+            <div class="form-group">
+            {{ Form::label('estado', 'Estado', ['class' => 'col-sm-3 control-label']) }}
+
+                <div class="col-sm-6">
+
+                    @if( isset($evento) )
+                        {{ Form::select('estado', 
+                            ['' => '',
+                            'PR' => 'Paraná', 
+                            'SC' => 'Santa Catarina',
+                            'SP' => 'São Paulo'], $evento->estado, ['class' => 'form-control'] )}}
+                    @else
+                        {{ Form::select('estado', 
+                            ['' => '',
+                            'PR' => 'Paraná', 
+                            'SC' => 'Santa Catarina',
+                            'SP' => 'São Paulo'], old('estado'), ['class' => 'form-control'] )}}
+
+
+                    @endif
+
+                </div>
+            </div>
+
+            <!-- Cidade -->
+            <div class="form-group">
+            {{ Form::label('cidade', 'Cidade', ['class' => 'col-sm-3 control-label']) }}
+
+                <div class="col-sm-6">
+
+                    @if( isset($evento) )
+                        {{ Form::text('cidade', $evento->cidade, ['class' => 'form-control']) }}
+                    @else
+                        {{ Form::text('cidade', old('cidade'), ['class' => 'form-control']) }}
+                    @endif
+
+                </div>
+            </div>
+
             <!-- Local -->
             <div class="form-group">
                 <label for="local" class="col-sm-3 control-label">Local</label>
 
                 <div class="col-sm-6">
 
-					@if( isset($evento) )
-                    	<input type="text" name="local" id="local" class="form-control" value="{{ $evento->local }}">
-					@else
-                    	<input type="text" name="local" id="local" class="form-control" value="{{ old('local') }}">
-					@endif
+                    @if( isset($evento) )
+                        <input type="text" name="local" id="local" class="form-control" value="{{ $evento->local }}">
+                    @else
+                        <input type="text" name="local" id="local" class="form-control" value="{{ old('local') }}">
+                    @endif
 
                 </div>
             </div>
-
 
             <!-- Produtor -->
             <div class="form-group">

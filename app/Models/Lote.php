@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lote extends Model
 {
 
-	protected $fillable = array('descricao', 'preco');
+	protected $fillable = array('descricao', 'preco', 'taxa_adm', 'valor_total');
 
     /**
      * Recupera o evento desse lote

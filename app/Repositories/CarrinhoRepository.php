@@ -105,13 +105,13 @@ class CarrinhoRepository
             $lote = Lote::find($itemCarrinho['lote_id']);
 
             // Calcula valor total do pedido
-            $pedido->valor_total = $pedido->valor_total + $itemCarrinho['quantidade'] * $lote->preco;
+            $pedido->valor_total = $pedido->valor_total + $itemCarrinho['quantidade'] * $lote->valor_total;
 
             $pedidoItem = new PedidoItem();
             $pedidoItem->lote_id = $itemCarrinho['lote_id'];
             $pedidoItem->quantidade = $itemCarrinho['quantidade'];
-            $pedidoItem->valor_unitario = $lote->preco;
-            $pedidoItem->valor_total = $itemCarrinho['quantidade'] * $lote->preco;
+            $pedidoItem->valor_unitario = $lote->valor_total;
+            $pedidoItem->valor_total = $itemCarrinho['quantidade'] * $lote->valor_total;
 
             // Gera os ingressos para cada item do pedido
             for ($i=1; $i <= $itemCarrinho['quantidade'] ; $i++) {

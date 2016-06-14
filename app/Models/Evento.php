@@ -11,7 +11,8 @@ class Evento extends Model
 
     use SoftDeletes;
 
-	protected $fillable = array('nome', 'descricao', 'data', 'hora', 'local', 'produtor_id');
+	protected $fillable = array('nome', 'descricao', 'data', 'hora', 'local', 
+        'produtor_id', 'genero', 'estado', 'cidade', 'ativo');
 
     protected $dates = ['deleted_at'];
 

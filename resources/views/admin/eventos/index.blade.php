@@ -21,7 +21,8 @@
                     <th>Nome</th>
                     <th>Data</th>
                     <th>Hora</th>
-                    <th>Local</th>
+                    <th>Estado</th>
+                    <th>Cidade</th>
                     <th>Editar</th>
                     <th>Imagens</th>
                 </thead>
@@ -33,7 +34,8 @@
                             <td class="table-text"><div>{{ $evento->nome }}</div></td>
 							<td class="table-text"><div>{{ $evento->data }}</div></td>
 							<td class="table-text"><div>{{ $evento->hora }}</div></td>
-							<td class="table-text"><div>{{ $evento->local }}</div></td>
+							<td class="table-text"><div>{{ $evento->estado }}</div></td>
+                            <td class="table-text"><div>{{ $evento->cidade }}</div></td>
 
                             <!-- Botão de editar -->
                             <td>

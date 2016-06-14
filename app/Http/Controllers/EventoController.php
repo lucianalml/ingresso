@@ -71,14 +71,14 @@ class EventoController extends Controller
         
         $evento = new Evento();
 
-        $evento->nome = $request->nome;
-        $evento->descricao = $request->descricao;
-        $evento->data = $request->data;
-        $evento->hora = $request->hora;
-        $evento->local = $request->local;
+        // $evento->nome = $request->nome;
+        // $evento->descricao = $request->descricao;
+        // $evento->data = $request->data;
+        // $evento->hora = $request->hora;
+        // $evento->local = $request->local;
       
 // Salva o evento no banco de dados
-        $evento->save();
+        $evento->save($request->all());
 
         flash()->success('Evento criado com sucesso!');
 

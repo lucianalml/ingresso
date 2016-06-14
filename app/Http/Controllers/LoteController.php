@@ -34,6 +34,7 @@ class LoteController extends Controller
         $this->validate($request, [
             'descricao' => 'required|max:255',
             'preco' => 'required',
+            'taxa_adm' => 'required',
         ]);
 
         
@@ -41,6 +42,8 @@ class LoteController extends Controller
 
         $lote->descricao = $request->descricao;
         $lote->preco = $request->preco;
+        $lote->taxa_adm = $request->taxa_adm;
+        $lote->valor_total = $request->preco + $request->taxa_adm;
 
 // Salva no banco de dados
         $evento->lotes()->save($lote);
@@ -76,10 +79,17 @@ class LoteController extends Controller
         $this->validate($request, [
             'descricao' => 'required',
             'preco' => 'required',
+            'taxa_adm' => 'required'
         ]);
 
+        $lote->descricao = $request->descricao;
+        $lote->preco = $request->preco;
+        $lote->taxa_adm = $request->taxa_adm;
+        $lote->valor_total = $request->preco + $request->taxa_adm;
 
-        $lote->update($request->all());
+        $lote->save();
+        // $lote->update([$request->all(), 
+        //     'valor_total' => $request->preco + $request->taxa_adm ]);
 
         flash()->success('Lote atualizado.');
             

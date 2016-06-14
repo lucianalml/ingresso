@@ -48,13 +48,13 @@
 
                 <tr>
                 <td class="table-text"><div>{{ $lote->descricao }}</div></td>
-                <td class="table-text"><div>R$ {{ $lote->preco }}</div></td>
+                <td class="table-text"><div>R$ {{ $lote->valor_total }}</div></td>
 				
 				<!-- Recupera o valor que está no carrinho -->
                 <td><input type="number" name="ingressos[{{$key}}][quantidade]"
                  min="0" value="{{ $ingressos[$key]['quantidade'] }}" /></td>
 
-                <td>R$ {{ $lote->preco * $ingressos[$key]['quantidade'] }} </td>
+                <td>R$ {{ $lote->valor_total * $ingressos[$key]['quantidade'] }} </td>
 				
                 </tr>
 			
@@ -84,6 +84,17 @@
 			<th>Quantidade</th>
 			<th>Valor total</th>
 		</thead>
+
+	    <!-- Rodapé -->
+		<tfoot>
+			<tr>
+				<th>Total</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>R$ {{ $pedido->valor_total }}</th>
+			</tr>
+		</tfoot>
 
         <tbody>
         	@foreach ($pedido->itens as $item)
