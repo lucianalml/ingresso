@@ -14,7 +14,7 @@
 	@yield('styles')
 </head>
 <body>
-@include('partials.header')
+@include('layouts.partials.header')
 
 <div class="container">
 	@include('flash::message')

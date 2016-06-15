@@ -7,3 +7,4 @@ Homestead.json
 !/public/ImagensEventos/img-nao-encontrada.jpg
 /public/ImagensEventos/Thumbnail/*
 !/public/ImagensEventos/Thumbnail/img-nao-encontrada.jpg
+.env*
