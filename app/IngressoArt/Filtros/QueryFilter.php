@@ -1,6 +1,6 @@
 <?php
 
-namespace IngressoArt;
+namespace IngressoArt\Filtros;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

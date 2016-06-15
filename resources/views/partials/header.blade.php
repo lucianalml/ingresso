@@ -40,7 +40,7 @@
       <!-- Busca -->
       <form action="{{ url('/') }}" method="GET" class="navbar-form navbar-left" role="search">
         <div class="input-group">
-          <input type="text" name="evento" class="form-control" placeholder="Procurar eventos...">
+          <input type="text" name="nome" class="form-control" placeholder="Procurar eventos...">
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Vai!</button>
           </span>

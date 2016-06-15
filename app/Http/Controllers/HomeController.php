@@ -7,11 +7,11 @@ use App\Models\Evento;
 use App\Models\Ingresso;
 use App\Models\Lote;
 use App\Models\Pedido;
-use App\Repositories\CarrinhoRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use IngressoArt\EventoFilters;
+use IngressoArt\Carrinho;
+use IngressoArt\Filtros\EventoFilters;
 
 class HomeController extends Controller
 {
@@ -26,7 +26,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(CarrinhoRepository $carrinho)
+    public function __construct(Carrinho $carrinho)
     {
         // Instancia os repositórios
         $this->carrinho = $carrinho;

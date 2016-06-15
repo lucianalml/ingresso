@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use IngressoArt\QueryFilter;
+use IngressoArt\Filtros\QueryFilter;
 
 class Evento extends Model
 {

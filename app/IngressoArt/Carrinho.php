@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace IngressoArt;
 
 use App\Models\Evento;
 use App\Models\Ingresso;
@@ -9,7 +9,7 @@ use App\Models\Pedido;
 use App\Models\PedidoItem;
 use Session;
 
-class CarrinhoRepository
+class Carrinho
 {
 
     protected $carrinho;

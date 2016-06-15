@@ -7,21 +7,20 @@ use App\Models\Evento;
 use App\Models\Lote;
 use App\Models\Produtor;
 use Illuminate\Http\Request;
-use IngressoArt\Db\Evento\EventoRepository;
-use IngressoArt\EventoFilters;
+use IngressoArt\Filtros\EventoFilters;
+use IngressoArt\Repositories\Evento\EventoRepositoryInterface;
 use Session;
 
 class EventoController extends Controller
 {
 
+    /**
+     * Repositório
+     */
     protected $evento;
 
-    public function __construct(EventoRepository $eventoRepo)
+    public function __construct(EventoRepositoryInterface $eventoRepo)
     {
-// Middleware valido para todos os métodos desse controler
-//        $this->middleware('auth');
-
-// Instancia o repositório
          $this->evento = $eventoRepo;
     }
 
@@ -31,6 +30,7 @@ class EventoController extends Controller
 	public function index(EventoFilters $filters)
 	{
 
+// TODO - Descobrir como usa repositorios e filtros ao mesmo tempo
 //        $eventos = $this->evento->all();
 
         // Filtra os eventos
@@ -136,7 +136,7 @@ class EventoController extends Controller
         ]);
 
 
-        $eventos = Evento::findOrFail($id);
+        $eventos = $this->evento->getById($id);
 
         $eventos->update($request->all());
 

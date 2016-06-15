@@ -7,10 +7,10 @@ use App\Models\Ingresso;
 use App\Models\Lote;
 use App\Models\Pedido;
 use App\Models\PedidoItem;
-use App\Repositories\CarrinhoRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use IngressoArt\Carrinho;
 use Session;
 
 class PedidoController extends Controller
@@ -19,11 +19,11 @@ class PedidoController extends Controller
 	/**
      * Instancia dos repositórios
      */
-	protected $carrinhoRepo;
+	protected $carrinho;
 
-	public function __construct(CarrinhoRepository $carrinhoRepo)
+	public function __construct(Carrinho $carrinho)
     {
-        $this->carrinhoRepo = $carrinhoRepo;
+        $this->carrinho = $carrinho;
     }
 
 
@@ -64,12 +64,12 @@ class PedidoController extends Controller
     {
 
         // Se não há itens no carrinho
-        if ($this->carrinhoRepo->getQtdTotal() == 0) {
+        if ($this->carrinho->getQtdTotal() == 0) {
             flash()->error('Seu carrinho está vazio :(');
             return back();
         }
         
-        $pedido = $this->carrinhoRepo->recuperaPedido();
+        $pedido = $this->carrinho->recuperaPedido();
         return view('shop.checkout', compact('pedido'));
 
     }
@@ -96,7 +96,7 @@ class PedidoController extends Controller
             $dadosIngressos = $request->get('itens');
 
             // Recupera o pedido e salva
- 			$pedido = $this->carrinhoRepo->recuperaPedido();
+ 			$pedido = $this->carrinho->recuperaPedido();
  			$pedido->user_id = Auth::user()->id;
  			$pedido->status = "Novo";
  			$pedido->save();      	
