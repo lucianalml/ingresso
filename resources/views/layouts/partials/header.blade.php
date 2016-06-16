@@ -50,8 +50,8 @@
       <ul class="nav navbar-nav navbar-right">
         <!-- Carrinho -->
         <li><a href="{{ url('/checkout') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-        @if (Session::get('totalcarrinho') > 0)
-          <span class="badge">{{ Session::get('totalcarrinho') }}</span>
+        @if (Carrinho::getQtdTotalIngressos() > 0)
+          <span class="badge">{{ Carrinho::getQtdTotalIngressos() }}</span>
         @endif
         </a></li>
 

@@ -53,8 +53,8 @@ class PedidoController extends Controller
     {
 
         // Se não há itens no carrinho
-        if (Carrinho::getQtdIngressos() == 0) {
-            flash()->error('Seu carrinho está vazio :(');
+        if (Carrinho::getQtdTotalIngressos() == 0) {
+            flash()->error('Seu carrinho está vazio :( Coloque alguma coisa nele :)');
             return back();
         }
         
@@ -107,11 +107,10 @@ class PedidoController extends Controller
 					
  				}
 
-            // Limpa o carrinho
-            Session::forget('carrinho');
-            Session::forget('totalcarrinho');
-
 			flash()->success('Sucesso das galaxias!');
+
+            // Limpa o carrinho
+            Carrinho::limpar();
 
             // Envia para controller de pagamento
             return redirect()->action('PagamentoController@create', $pedido->id);

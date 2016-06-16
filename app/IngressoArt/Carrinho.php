@@ -3,8 +3,10 @@
 namespace IngressoArt;
 
 use Illuminate\Support\Collection;
-use IngressoArt\Models\Evento;
+use IngressoArt\Models\Ingresso;
 use IngressoArt\Models\Lote;
+use IngressoArt\Models\Pedido;
+use IngressoArt\Models\PedidoItem;
 use Session;
 
 class Carrinho
@@ -33,8 +35,8 @@ class Carrinho
     }
 
     /**
-     * Recupera a quantidade de ingressos de um lote que está
-     * no carrinho
+     * Recupera a quantidade de ingressos de um lote especifico 
+     * que está no carrinho
      */
     public static function qtdItens($loteId)
     {
@@ -50,6 +52,15 @@ class Carrinho
     }
 
     /**
+     * Recupera a quantidade total de ingressos no carrinho
+     */
+    public static function getQtdTotalIngressos()
+    {
+        $conteudo = self::getConteudo();
+        return $conteudo->sum('quantidade');
+    }
+
+    /**
      * Substitui todos os itens que estavam no carrinho pelos
      * itens passados por parâmetro
      */
@@ -60,7 +71,7 @@ class Carrinho
         $conteudo = self::getConteudo();
         if (!$conteudo->isEmpty()) {
             if (self::getEvento($conteudo) <> self::getEvento($itens)) {
-                flash()->error('Somente adicionar ao carrinho ingressos para o mesmo evento!');
+                flash()->error('Somente adicionar ao carrinho ingressos do mesmo evento!');
                 return back();
             }
         }
@@ -68,7 +79,7 @@ class Carrinho
         // Inicializa a uma collection
         $carrinho = collect([]);
 
-        // Monta a estrutura que irá substituir todo o carrinho
+        // Monta a estrutura que irá substituir todos os itens do carrinho
         foreach ($itens as $item) {
 
             // Adiciona no carrinho os itens com quantidade > 0
@@ -90,184 +101,66 @@ class Carrinho
      * Recupera o evento dos itens do carrinho pois
      * só é permitido adicionar ao carrinho ingressos de um mesmo evento
      */
-    public static function getEvento(Collection $itens)
+    private static function getEvento(Collection $itens)
     {
         // Recupera o primeiro item e retorna qual é o evento que ele pertence
         $item = $itens->first();
-        return Evento::find($item['lote_id']);
+        $lote = Lote::find($item['lote_id']);
+
+        return $lote->evento->id;
     }
 
+    /**
+     * Monta um pedido com os itens que estão armazenados no carrinho
+     * TODO - Não sei sei deixar isso aqui é um bom lugar...
+     * @return Pedido
+     */
+    public static function pedido()
+    {
 
-    // public static function getCarrinho()
-    // {
-    //     // Recupera a variavel de sessão
-    //     $carrinho = Session::get('carrinho');
-    //     if (is_null($carrinho)) {
-    //         $carrinho = [];
-    //     }
+        $pedido = new Pedido();
 
-    //     return $carrinho;
-    // }
-
-    // public static function getQtdIngressos()
-    // {
-
-    //     $qtdIngressos = 0;
-    //     foreach ($this->carrinho as $item) {
-    //         if (! empty($item)) {
-    //             $qtdIngressos = $qtdIngressos + $item['quantidade'];
-    //         }
-    //     }
-    //     return $qtdIngressos;
-    // }
-
-    // /**
-    //  * Recupera a quantidade de ingressos adicionado ao carrinho de um Lote
-    //  * @return Int quantidade
-    //  */
-    // public static function recuperaQtdLoteCarrinho(Lote $lote)
-    // {
-
-    //     // Verificar se o usuário já havia adicionado um ingresso desse lote
-    //     $key = array_search($lote->id, array_column($this->carrinho, 'lote_id'));
-
-    //     // Não encontrou
-    //     if ( $key === false ) {
-    //         return 0;
-    //     }
-        
-    //     return $this->carrinho[$key]['quantidade'];           
-
-    // }
-
-    // /**
-    //  * Recupera dados do pedido que estão armazenados no carrinho da sessão
-    //  * @return Pedido
-    //  */
-    // public static function pedido()
-    // {
-
-    //     $pedido = new Pedido();
-
-    //     // Se nao há itens no carrinho
-    //     if ($this->qtdIngressos == 0) {
-    //         return $pedido;
-    //     }
+        // Se nao há itens no carrinho
+        // isso é inutil?
+        if (self::getQtdTotalIngressos() == 0) {
+            return $pedido;
+        }
       
-    //     // itemCarrinho = array com campos lote_id e quantidade
-    //     foreach ($this->carrinho as $itemCarrinho) {
+        // Recupera o conteúdo do carrinho
+        $conteudo = self::getConteudo();
+        foreach ($conteudo as $item) {
 
-    //         // Recupera dados do lote
-    //         $lote = Lote::find($itemCarrinho['lote_id']);
+            // Recupera dados do lote
+            $lote = Lote::find($item['lote_id']);
 
-    //         // Calcula valor total do pedido
-    //         $pedido->valor_total = $pedido->valor_total + $itemCarrinho['quantidade'] * $lote->valor_total;
+            // Calcula valor total do pedido
+            $pedido->valor_total = $pedido->valor_total + $item['quantidade'] * $lote->valor_total;
 
-    //         $pedidoItem = new PedidoItem();
-    //         $pedidoItem->lote_id = $itemCarrinho['lote_id'];
-    //         $pedidoItem->quantidade = $itemCarrinho['quantidade'];
-    //         $pedidoItem->valor_unitario = $lote->valor_total;
-    //         $pedidoItem->valor_total = $itemCarrinho['quantidade'] * $lote->valor_total;
+            $pedidoItem = new PedidoItem();
+            $pedidoItem->lote_id = $lote->id;
+            $pedidoItem->quantidade = $item['quantidade'];
+            $pedidoItem->valor_unitario = $lote->valor_total;
+            $pedidoItem->valor_total = $item['quantidade'] * $lote->valor_total;
 
-    //         // Gera os ingressos para cada item do pedido
-    //         for ($i=1; $i <= $itemCarrinho['quantidade'] ; $i++) {
+            // Gera os ingressos para cada item do pedido
+            for ($i=1; $i <= $item['quantidade'] ; $i++) {
 
-    //             $ingresso = new Ingresso;
-    //             $pedidoItem->ingressos[] = $ingresso;
+                $ingresso = new Ingresso;
+                $pedidoItem->ingressos[] = $ingresso;
 
-    //         }
+            }
 
-    //         // Atribui o item ao pedido
-    //         $pedido->itens[] = $pedidoItem;
+            // Atribui o item ao pedido
+            $pedido->itens[] = $pedidoItem;
 
-    //     }
+        }
            
-    //     return $pedido;
-    // }
+        return $pedido;
+    }
 
-
-    // public static function validaCarrinho($ingressos)
-    // {
-    //     if (empty($ingressos)) {
-    //         return "Selecionar pelo menos um ingresso";
-    //     }
-        
-    //     // Verifica se está adicionando apenas ingressos do mesmo evento
-    //     $lote = Lote::find($ingressos[0]['lote_id']);
-
-    //     if (! empty($this->eventoCarrinho) AND 
-    //         $this->eventoCarrinho != $lote->evento ) {
-
-    //         return "Permitido adicionar ao carrinho apenas ingressos do mesmo evento";
-    //     }
-
-    //     return true;
-    // }
-    // /**
-    //  * Adiciona um ingresso na variavel de sessão do carrinho
-    //  * Formato array de ['lote_id' => , 'quantidade' => ]
-    //  */
-    // public static function atualizaCarrinho($ingressos)
-    // {
-
-    //     $valida = $this->validaCarrinho($ingressos);
-
-    //     if ( $valida !== true ) {
-
-    //         flash()->error($valida);
-
-    //         return back()->withInput();
-
-    //     }
-        
-    //     // Sobrescreve os itens do carrinho
-    //     $carrinho = [];
-    //     $totalIngressos = 0;
-
-    //     foreach ($ingressos as $key => $ingresso) {
-            
-    //         // Se a quantidade do item for maior que zero insere no carrinho
-    //         if ($ingresso['quantidade'] > 0) {
-    //             $carrinhoItem = ['lote_id' => $ingresso['lote_id'],
-    //                             'quantidade' => $ingresso['quantidade']];
-
-    //             $carrinho[] = $carrinhoItem;
-    //             $totalIngressos = $totalIngressos + $ingresso['quantidade'];
-    //         }
-    //     }
-        
-    //     flash()->success('Ingressos atualizados!');
-
-    //     // Atualiza as variáveis de sessão
-    //     Session::put('carrinho', $carrinho);
-    //     Session::put('totalcarrinho', $totalIngressos);
-
-    // }
-
-
-    // /**
-    //  * Recupera os ingressos do evento considerando as quantidade
-    //  * de itens adicionados ao carrinho
-    //  * @param  Evento $evento
-    //  * @return [array] Ingressos
-    //  */
-    // public static function recuperaIngressos(Evento $evento)
-    // {
-
-    //     // $ingressos = [];
-
-    //     // // Monta um array com todos os lotes do evento e qtdades no carrinho
-    //     // foreach ($evento->lotes as $lote) {
-
-    //     //     $ingresso = ['lote_id' => $lote->id,
-    //     //                 'quantidade' => Carrinho::recuperaQtdLoteCarrinho($lote) ];
-
-    //     //     // Adiciona o item ao array
-    //     //     $ingressos[] = $ingresso;
-
-    //     // }
-       
-    //     // return $ingressos;
-    // }
+    public static function limpar()
+    {
+        Session::forget(self::SESSION_DEFAULT);
+    }
 
 }
