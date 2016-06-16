@@ -82,12 +82,12 @@ return [
 
         'admin' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => IngressoArt\Models\Admin::class,
         ],
 
         'produtor' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Produtor::class,
+            'model' => IngressoArt\Models\Produtor::class,
         ],
 
         // 'users' => [

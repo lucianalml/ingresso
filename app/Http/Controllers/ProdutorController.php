@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Produtor;
-use App\User;
+use IngressoArt\Models\Produtor;
+use IngressoArt\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Evento;
-use App\Models\Lote;
-use App\Models\Produtor;
+use IngressoArt\Models\Evento;
+use IngressoArt\Models\Lote;
+use IngressoArt\Models\Produtor;
 use Illuminate\Http\Request;
 
 class LoteController extends Controller

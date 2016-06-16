@@ -2,7 +2,7 @@
 
 namespace IngressoArt\Repositories\Evento;
 
-use App\Models\Evento;
+use IngressoArt\Models\Evento;
 use IngressoArt\Repositories\DbRepository;
 
 class DbEventoRepository extends DbRepository implements EventoRepositoryInterface {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Evento;
+use IngressoArt\Models\Evento;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller

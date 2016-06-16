@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Evento;
-use App\Models\EventoImagem;
+use IngressoArt\Models\Evento;
+use IngressoArt\Models\EventoImagem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;

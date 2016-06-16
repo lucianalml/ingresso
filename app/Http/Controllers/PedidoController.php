@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Ingresso;
-use App\Models\Lote;
-use App\Models\Pedido;
-use App\Models\PedidoItem;
+use IngressoArt\Models\Ingresso;
+use IngressoArt\Models\Lote;
+use IngressoArt\Models\Pedido;
+use IngressoArt\Models\PedidoItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -15,17 +15,6 @@ use Session;
 
 class PedidoController extends Controller
 {
-
-	/**
-     * Instancia dos repositórios
-     */
-	protected $carrinho;
-
-	public function __construct(Carrinho $carrinho)
-    {
-        $this->carrinho = $carrinho;
-    }
-
 
     /**
      * Lista todos os pedidos
@@ -41,7 +30,7 @@ class PedidoController extends Controller
      * Exibe um pedido
      */
     public function show(Pedido $pedido)
-    {   
+    {        
         // Verifica se o usuário é admin
         if (auth()->guard('admin')->check()) {
             return view('admin.pedidos.show', compact('pedido'));
@@ -64,12 +53,12 @@ class PedidoController extends Controller
     {
 
         // Se não há itens no carrinho
-        if ($this->carrinho->getQtdTotal() == 0) {
+        if (Carrinho::getQtdIngressos() == 0) {
             flash()->error('Seu carrinho está vazio :(');
             return back();
         }
         
-        $pedido = $this->carrinho->recuperaPedido();
+        $pedido = Carrinho::pedido();
         return view('shop.checkout', compact('pedido'));
 
     }
@@ -96,7 +85,7 @@ class PedidoController extends Controller
             $dadosIngressos = $request->get('itens');
 
             // Recupera o pedido e salva
- 			$pedido = $this->carrinho->recuperaPedido();
+ 			$pedido = Carrinho::pedido();
  			$pedido->user_id = Auth::user()->id;
  			$pedido->status = "Novo";
  			$pedido->save();      	

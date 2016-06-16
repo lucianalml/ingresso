@@ -9,7 +9,7 @@ use Cielo\Holder;
 use Cielo\PaymentMethod;
 
 use App\Http\Requests;
-use App\Models\Pedido;
+use IngressoArt\Models\Pedido;
 use Illuminate\Http\Request;
 use Validator;
 

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Ingresso;
-use App\Models\Pedido;
-use App\Models\PedidoItem;
-use App\Models\Produtor;
-use App\User;
+use IngressoArt\Models\Ingresso;
+use IngressoArt\Models\Pedido;
+use IngressoArt\Models\PedidoItem;
+use IngressoArt\Models\Produtor;
+use IngressoArt\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 

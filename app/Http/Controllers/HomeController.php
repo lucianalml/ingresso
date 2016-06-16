@@ -3,34 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Evento;
-use App\Models\Ingresso;
-use App\Models\Lote;
-use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use IngressoArt\Carrinho;
 use IngressoArt\Filtros\EventoFilters;
+use IngressoArt\Models\Evento;
+use IngressoArt\Models\Ingresso;
+use IngressoArt\Models\Lote;
+use IngressoArt\Models\Pedido;
 
 class HomeController extends Controller
 {
-
-    /**
-     * Instancia dos repositórios
-     */
-    protected $carrinho;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(Carrinho $carrinho)
-    {
-        // Instancia os repositórios
-        $this->carrinho = $carrinho;
-    }
 
     /**
      * Show the application dashboard.
@@ -51,16 +35,25 @@ class HomeController extends Controller
     public function exibirEvento(Evento $evento)
     {        
 
-        $ingressos = $this->carrinho->recuperaIngressos($evento);
+//        $ingressos = Carrinho::recuperaIngressos($evento);
         
-        // Se não há itens no pedido não exibe pedido
-        if ($this->carrinho->getQtdTotal() == 0) {
-            return view('shop.evento', compact('evento', 'ingressos'));
-        }
+        // // Se não há itens no pedido não exibe pedido
+        // if (Carrinho::getQtdIngressos() == 0) {
+        //     return view('shop.evento', compact('evento', 'ingressos'));
+        // }
 
-        $pedido = $this->carrinho->recuperaPedido();
-        return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
+//        $pedido = Carrinho::pedido();
+//        return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
         
+
+//        $ingressos = $evento->getIngressos();
+//        
+
+        // foreach ($evento->lotes as $key => $lote) {
+        //     $lote->descricao --- Carrinho::qtdItens($lote->id)
+        // }
+     
+        return view('shop.evento', compact('evento'));
     }
 
 
@@ -70,9 +63,10 @@ class HomeController extends Controller
     public function atualizaCarrinho(Request $request)
     {   
 
-        $ingressos = $request->get('ingressos');
+        // Cria uma collection com os ingressos
+        $itens = collect($request->get('itens'));
 
-        $this->carrinho->atualizaCarrinho($ingressos);
+        Carrinho::atualizaItens($itens);
         
         return back();
     }

@@ -43,18 +43,19 @@
 
         <tbody>
             @foreach ($evento->lotes as $key => $lote)
-				<input type="hidden" name="ingressos[{{$key}}][lote_id]"
-                 value="{{ $ingressos[$key]['lote_id'] }}" />
 
                 <tr>
                 <td class="table-text"><div>{{ $lote->descricao }}</div></td>
                 <td class="table-text"><div>R$ {{ $lote->valor_total }}</div></td>
 				
-				<!-- Recupera o valor que está no carrinho -->
-                <td><input type="number" name="ingressos[{{$key}}][quantidade]"
-                 min="0" value="{{ $ingressos[$key]['quantidade'] }}" /></td>
+				<input type="hidden" name="itens[{{$key}}][lote_id]"
+                 value="{{ $lote->id }}" />
 
-                <td>R$ {{ $lote->valor_total * $ingressos[$key]['quantidade'] }} </td>
+				<!-- Recupera o valor que está no carrinho -->
+                <td><input type="number" name="itens[{{$key}}][quantidade]"
+                 min="0" value="{{ Carrinho::qtdItens($lote->id) }}" /></td>
+
+                <td>R$ {{ $lote->valor_total * Carrinho::qtdItens($lote->id) }} </td>
 				
                 </tr>
 			
