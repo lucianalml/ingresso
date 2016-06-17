@@ -3,6 +3,8 @@
 namespace IngressoArt\Repositories;
 
 abstract class DbRepository {
+
+	protected $model;
 	
 	public function getById($id)
 	{

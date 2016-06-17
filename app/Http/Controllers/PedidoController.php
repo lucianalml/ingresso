@@ -108,7 +108,7 @@ class PedidoController extends Controller
             Carrinho::limpar();
 
             // Envia para controller de pagamento
-            return redirect()->action('PagamentoController@create', $pedido->id);
+            return redirect()->action('PagamentoController@create', $pedido);
 
         }
 	}
@@ -134,6 +134,4 @@ class PedidoController extends Controller
         return back();
 
     }
-
-
 }

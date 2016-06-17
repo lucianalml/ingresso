@@ -2,7 +2,6 @@
 
 namespace IngressoArt\Models;
 
-use IngressoArt\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
@@ -28,4 +27,11 @@ class Pedido extends Model
         return $this->hasMany(PedidoItem::class);
     }
 
+    /**
+     * Recupera o pagamento desse pedido
+     */
+    public function pagamento()
+    {
+        return $this->hasOne(Pagamento::class);
+    }
 }

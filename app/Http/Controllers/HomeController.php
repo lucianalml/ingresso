@@ -6,12 +6,13 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use IngressoArt\Shop\Carrinho;
 use IngressoArt\Filtros\EventoFilters;
 use IngressoArt\Models\Evento;
 use IngressoArt\Models\Ingresso;
 use IngressoArt\Models\Lote;
 use IngressoArt\Models\Pedido;
+use IngressoArt\Shop\Carrinho;
+use IngressoArt\Shop\Pagamento;
 
 class HomeController extends Controller
 {

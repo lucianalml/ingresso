@@ -11,6 +11,19 @@
 |
 */
 
+	            
+// TODO -> Receber notificações
+Route::get('/pagseguro/not', [
+	'uses' => 'HomeController@index',
+	'as' => 'pagseguro.notification'
+	]);
+
+
+Route::get('/pagamento/confirmacao', [
+	'uses' => 'PagamentoController@store',
+	'as' => 'pagseguro.redirect'
+	]);
+
 
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
@@ -23,7 +36,6 @@ Route::group(['middleware' => ['web']], function () {
     	'uses' => 'HomeController@index',
     	'as' => 'index'
    	]);
-
     
     // Exibir o evento para compra de ingressos
 	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
@@ -38,7 +50,6 @@ Route::group(['middleware' => ['web']], function () {
 
 		// Nao sei se isso ficou bom assim....
 		Route::get('/pagamento/{pedido}', 'PagamentoController@create');
-		Route::post('/pagamento/{pedido}', 'PagamentoController@store');
 
 		Route::get('/conta', 'HomeController@conta');
 		Route::get('/conta/pedido/{pedido}', 'PedidoController@show');
@@ -46,7 +57,9 @@ Route::group(['middleware' => ['web']], function () {
 		Route::get('/ingresso/{ingresso}', 'IngressoController@show');
 		Route::get('/ingresso/{ingresso}/edit', 'IngressoController@edit');
 		Route::post('/ingresso/{ingresso}/edit', 'IngressoController@update');
+
 	});
+
 });
 
 // Rotas para acesso a area de administração

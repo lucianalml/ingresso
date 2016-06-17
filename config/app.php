@@ -160,8 +160,10 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        laravel\pagseguro\Platform\Laravel5\ServiceProvider::class,
 
-        IngressoArt\Repositories\DbServiceProvider::class,
+        IngressoArt\Providers\DbServiceProvider::class,
+        IngressoArt\Providers\CobrancaServiceProvider::class,
 
     ],
 
@@ -215,6 +217,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'PagSeguro' => laravel\pagseguro\Platform\Laravel5\PagSeguro::class,
 
         'Carrinho' => IngressoArt\Shop\Carrinho::class,
 

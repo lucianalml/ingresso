@@ -11,7 +11,7 @@
         "laracasts/flash": "^2.0",
         "intervention/image": "^2.3",
         "simplesoftwareio/simple-qrcode": "~1",
-        "developercielo/webservice-1.5-php": "dev-master"
+        "michael/laravelpagseguro": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

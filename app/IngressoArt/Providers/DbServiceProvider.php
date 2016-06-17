@@ -1,6 +1,6 @@
 <?php 
 
-namespace IngressoArt\Repositories;
+namespace IngressoArt\Providers;
  
 use Illuminate\Support\ServiceProvider;
  
