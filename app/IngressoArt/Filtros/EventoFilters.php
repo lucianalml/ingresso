@@ -5,7 +5,7 @@ namespace IngressoArt\Filtros;
 class EventoFilters extends QueryFilter
 {
 	/**
-	 * Filtra os evento por nome
+	 * Filtro por nome do evento
 	 */
 	public function nome($nome = '')
 	{
@@ -13,11 +13,35 @@ class EventoFilters extends QueryFilter
 	}
 
 	/**
-	 * Filtra os evento por local
+	 * Filtro por local
 	 */
 	public function local($local)
 	{
 		return $this->builder->where('local', $local);
+	}
+
+	/**
+	 * Filtro por estado
+	 */
+	public function estado($estado)
+	{
+		return $this->builder->where('estado', $estado);
+	}
+
+	/**
+	 * Filtro por cidade
+	 */
+	public function cidade($cidade)
+	{
+		return $this->builder->where('cidade', $cidade);
+	}
+
+	/**
+	 * Filtro por genero
+	 */
+	public function genero($genero)
+	{
+		return $this->builder->where('genero', $genero);
 	}
 
 	/**

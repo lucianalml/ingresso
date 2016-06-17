@@ -80,10 +80,12 @@ class AdminController extends Controller
         return view('admin.usuarios', compact('users'));
     }
 
-    // public function listarIngressos()
-    // {
-    //     $ingressos = Ingresso::orderBy('id', 'desc')->get();
-    //     return view('admin.pedidos.ingressos', compact('ingressos'));
-    // }
+    /**
+     * Exibe um pedido
+     */
+    public function showPedido(Pedido $pedido)
+    {        
+        return view('admin.pedidos.show', compact('pedido'));
+    }
     
 }

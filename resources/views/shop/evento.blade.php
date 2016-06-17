@@ -72,7 +72,7 @@
     </div>
 
 	<!-- Resumo do pedido -->
-	@if (isset($pedido))
+	@if ($pedido != null)
 	<div class="panel panel-default">
         <div class="panel-heading">
         	<h4><i class="fa fa-shopping-bag" aria-hidden="true"></i><b> Resumo do pedido</b></h4>
@@ -90,7 +90,6 @@
 		<tfoot>
 			<tr>
 				<th>Total</th>
-				<th></th>
 				<th></th>
 				<th></th>
 				<th>R$ {{ $pedido->valor_total }}</th>

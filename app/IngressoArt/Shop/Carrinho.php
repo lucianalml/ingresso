@@ -1,6 +1,6 @@
 <?php
 
-namespace IngressoArt;
+namespace IngressoArt\Shop;
 
 use Illuminate\Support\Collection;
 use IngressoArt\Models\Ingresso;
@@ -118,13 +118,12 @@ class Carrinho
     public static function pedido()
     {
 
-        $pedido = new Pedido();
-
         // Se nao há itens no carrinho
-        // isso é inutil?
         if (self::getQtdTotalIngressos() == 0) {
-            return $pedido;
+            return null;
         }
+
+        $pedido = new Pedido();
       
         // Recupera o conteúdo do carrinho
         $conteudo = self::getConteudo();

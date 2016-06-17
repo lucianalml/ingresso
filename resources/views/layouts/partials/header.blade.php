@@ -25,20 +25,43 @@
             <li><a href="#">Redes Sociais</a></li>
           </ul>
         </li>
-
+        
+        <!-- Filtro por local -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i> Local <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Local <span class="caret"></span></a>
+
           <ul class="dropdown-menu">
-            <li><a href="#">Estado</a></li>
-            <li><a href="#">Cidade</a></li>
-            <li role="separator" class="divider"></li>
+            <li><a href="{{ route('index', ['estado' => 'PR']) }}">Paraná</a></li>
+            <ul>
+              <li><a href="{{ route('index', ['cidade' => 'Curitiba']) }}">Curitiba</a></li>
+              <li><a href="{{ route('index', ['cidade' => 'Ponta Grossa']) }}">Ponta Grossa</a></li>
+            </ul>
+            <li><a href="{{ route('index', ['estado' => 'SP']) }}">São Paulo</a></li>
+            <ul>
+              <li><a href="{{ route('index', ['cidade' => 'São Paulo']) }}">São Paulo</a></li>
+              <li><a href="{{ route('index', ['cidade' => 'Campinas']) }}">Campinas</a></li>                
+            </ul>
+          </ul>
+
+        </li>
+        
+        <!-- Filtro por estilo -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estilo <span class="caret"></span></a>
+          <ul class="dropdown-menu">
             <li><a href="#">Estilo</a></li>
+            <ul>
+              <li><a href="{{ route('index', ['genero' => 'Rock']) }}">Rock</a></li>
+              <li><a href="{{ route('index', ['genero' => 'Festival']) }}">Festival</a></li>
+            </ul>
+
           </ul>
         </li>
+
       </ul>
     
       <!-- Busca -->
-      <form action="{{ url('/') }}" method="GET" class="navbar-form navbar-left" role="search">
+      <form action="{{ route('index') }}" method="GET" class="navbar-form navbar-left" role="search">
         <div class="input-group">
           <input type="text" name="nome" class="form-control" placeholder="Procurar eventos...">
           <span class="input-group-btn">

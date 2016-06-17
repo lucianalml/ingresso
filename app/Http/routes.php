@@ -11,6 +11,45 @@
 |
 */
 
+
+// Rotas para acesso ao site principal
+Route::group(['middleware' => ['web']], function () {
+
+	
+	// Rotas para autenticação do usuário (/login, /register, /logout)
+	Route::auth();
+
+    Route::get('/', [
+    	'uses' => 'HomeController@index',
+    	'as' => 'index'
+   	]);
+
+    
+    // Exibir o evento para compra de ingressos
+	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
+
+	// Adicionar ingressos ao carrinho
+	Route::post('carrinho/add', 'HomeController@atualizaCarrinho');
+
+	// Quando for fechar o pedido tem q estar autenticado....
+	Route::group(['middleware' => 'auth'], function () {
+		Route::get('/checkout', 'PedidoController@create');
+		Route::post('/checkout', 'PedidoController@store');
+
+		// Nao sei se isso ficou bom assim....
+		Route::get('/pagamento/{pedido}', 'PagamentoController@create');
+		Route::post('/pagamento/{pedido}', 'PagamentoController@store');
+
+		Route::get('/conta', 'HomeController@conta');
+		Route::get('/conta/pedido/{pedido}', 'PedidoController@show');
+
+		Route::get('/ingresso/{ingresso}', 'IngressoController@show');
+		Route::get('/ingresso/{ingresso}/edit', 'IngressoController@edit');
+		Route::post('/ingresso/{ingresso}/edit', 'IngressoController@update');
+	});
+});
+
+// Rotas para acesso a area de administração
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 
 	Route::get('/login', 'AdminController@showFormLogin');
@@ -59,47 +98,13 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 
 		// Pedidos
 	 	Route::get('/pedidos', 'PedidoController@index');
-	 	Route::get('/pedido/{pedido}', 'PedidoController@show');
+	 	Route::get('/pedido/{pedido}', 'AdminController@showPedido');
 	 	Route::post('/pedido/{pedido}/edit', 'PedidoController@update');
 
 	 	Route::get('/ingressos', 'IngressoController@index');
 
 	});
 
-});
-
-
-// Rotas para acesso ao site principal
-Route::group(['middleware' => ['web']], function () {
-
-	
-	// Rotas para autenticação do usuário (/login, /register, /logout)
-	Route::auth();
-
-    Route::get('/', 'HomeController@index');
-    
-    // Exibir o evento para compra de ingressos
-	Route::get('/evento/{evento}', 'HomeController@exibirEvento');
-
-	// Adicionar ingressos ao carrinho
-	Route::post('carrinho/add', 'HomeController@atualizaCarrinho');
-
-	// Quando for fechar o pedido tem q estar autenticado....
-	Route::group(['middleware' => 'auth'], function () {
-		Route::get('/checkout', 'PedidoController@create');
-		Route::post('/checkout', 'PedidoController@store');
-
-		// Nao sei se isso ficou bom assim....
-		Route::get('/pagamento/{pedido}', 'PagamentoController@create');
-		Route::post('/pagamento/{pedido}', 'PagamentoController@store');
-
-		Route::get('/conta', 'HomeController@conta');
-		Route::get('/conta/pedido/{pedido}', 'PedidoController@show');
-
-		Route::get('/ingresso/{ingresso}', 'IngressoController@show');
-		Route::get('/ingresso/{ingresso}/edit', 'IngressoController@edit');
-		Route::post('/ingresso/{ingresso}/edit', 'IngressoController@update');
-	});
 });
 
 

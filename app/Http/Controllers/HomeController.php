@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use IngressoArt\Carrinho;
+use IngressoArt\Shop\Carrinho;
 use IngressoArt\Filtros\EventoFilters;
 use IngressoArt\Models\Evento;
 use IngressoArt\Models\Ingresso;
@@ -35,25 +35,10 @@ class HomeController extends Controller
     public function exibirEvento(Evento $evento)
     {        
 
-//        $ingressos = Carrinho::recuperaIngressos($evento);
+        $pedido = Carrinho::pedido();
+
+        return view('shop.evento', compact('evento', 'pedido'));
         
-        // // Se não há itens no pedido não exibe pedido
-        // if (Carrinho::getQtdIngressos() == 0) {
-        //     return view('shop.evento', compact('evento', 'ingressos'));
-        // }
-
-//        $pedido = Carrinho::pedido();
-//        return view('shop.evento', compact('evento', 'ingressos', 'pedido'));
-        
-
-//        $ingressos = $evento->getIngressos();
-//        
-
-        // foreach ($evento->lotes as $key => $lote) {
-        //     $lote->descricao --- Carrinho::qtdItens($lote->id)
-        // }
-     
-        return view('shop.evento', compact('evento'));
     }
 
 

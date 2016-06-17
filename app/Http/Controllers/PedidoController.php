@@ -10,7 +10,7 @@ use IngressoArt\Models\PedidoItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use IngressoArt\Carrinho;
+use IngressoArt\Shop\Carrinho;
 use Session;
 
 class PedidoController extends Controller
@@ -31,11 +31,6 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {        
-        // Verifica se o usuário é admin
-        if (auth()->guard('admin')->check()) {
-            return view('admin.pedidos.show', compact('pedido'));
-        }
-
         // Verifica se o pedido pertence ao usuário logado
         if ($pedido->user->id <> Auth::user()->id) {
             abort(403, 'Unauthorized action.');
