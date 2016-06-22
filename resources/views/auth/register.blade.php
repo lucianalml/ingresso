@@ -6,9 +6,10 @@
     <div class="panel-body">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
             {!! csrf_field() !!}
-
+            
+            <!-- Nome Completo-->
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label class="col-md-4 control-label">Nome</label>
+                <label class="col-md-4 control-label">Nome Completo</label>
 
                 <div class="col-md-6">
                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -20,7 +21,8 @@
                     @endif
                 </div>
             </div>
-
+           
+            <!-- Email -->
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="col-md-4 control-label">E-mail</label>
 
@@ -34,7 +36,29 @@
                     @endif
                 </div>
             </div>
+            
 
+            <!-- Documento -->
+            <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
+                <label class="col-md-4 control-label">Documento</label>
+
+                <div class="col-md-6">
+
+                    <input type="text" class="form-control" name="tipo_doc" value="{{ old('tipo_documento') }}">
+                    <input type="text" class="form-control" name="documento" value="{{ old('documento') }}">
+
+                    @if ($errors->has('documento'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('documento') }}</strong>
+                        </span>
+                    @endif
+
+                </div>
+            </div>
+
+
+
+            <!-- Senha -->
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label class="col-md-4 control-label">Senha</label>
 

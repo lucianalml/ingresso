@@ -28,6 +28,10 @@ Route::get('/pagamento/confirmacao', [
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
 
+
+    Route::get('/construcao', function () {
+    	return view('shop.construcao');
+    });
 	
 	// Rotas para autenticação do usuário (/login, /register, /logout)
 	Route::auth();
