@@ -512,11 +512,11 @@
 			}
 		},
 		{
-			"file": "ingresso_art.sublime-project",
+			"file": "app/IngressoArt/Cobranca/PagSeguroCobranca.php",
 			"settings":
 			{
-				"buffer_size": 45,
-				"line_ending": "Unix"
+				"buffer_size": 2382,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -527,10 +527,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 27.0,
-		"last_filter": "ruby",
+		"height": 357.0,
+		"last_filter": "package in",
 		"selected_items":
 		[
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
 			[
 				"ruby",
 				"Set Syntax: Ruby"
@@ -540,7 +544,7 @@
 				"Set Syntax: Python"
 			]
 		],
-		"width": 449.0
+		"width": 528.0
 	},
 	"console":
 	{
@@ -561,10 +565,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/phcs09/ingressoart/vagrant-setup-php/www/html/ingresso"
+		"/C/vm_laravel/www/html/ingresso",
+		"/C/vm_laravel/www/html/ingresso/app",
+		"/C/vm_laravel/www/html/ingresso/app/IngressoArt",
+		"/C/vm_laravel/www/html/ingresso/app/IngressoArt/Cobranca",
+		"/C/vm_laravel/www/html/ingresso/resources",
+		"/C/vm_laravel/www/html/ingresso/resources/views",
+		"/C/vm_laravel/www/html/ingresso/resources/views/admin",
+		"/C/vm_laravel/www/html/ingresso/resources/views/admin/eventos"
 	],
 	"file_history":
 	[
+		"/C/vm_laravel/www/html/ingresso/resources/views/admin/eventos/create-edit.blade.php",
 		"/Users/phcs09/fleety/Fleety-FrontEnd/fabfile.py",
 		"/Applications/MAMP/conf/apache/httpd.conf",
 		"/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf",
@@ -691,8 +703,7 @@
 		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/config/config.php",
 		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/classes/Login.php",
 		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/classes/Update.php",
-		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/config/config.php",
-		"/Users/phcs09/code/respect-festival/requirements.txt"
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/config/config.php"
 	],
 	"find":
 	{
@@ -912,27 +923,28 @@
 				},
 				{
 					"buffer": 1,
-					"file": "ingresso_art.sublime-project",
-					"semi_transient": true,
+					"file": "app/IngressoArt/Cobranca/PagSeguroCobranca.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 45,
+						"buffer_size": 2382,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								414,
+								414
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1013,6 +1025,10 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"xdebug":
+		{
+			"hide_conflict": false
+		}
 	},
 	"show_minimap": true,
 	"show_open_files": false,
