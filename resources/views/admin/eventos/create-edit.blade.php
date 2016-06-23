@@ -23,7 +23,7 @@
 		@if( isset($evento) )
 
 		    <form action="{{ url('admin/evento/'.$evento->id.'/edit') }}" method="POST" class="form-horizontal" id="form">
-
+        @else
 		<!-- Form para criar eventos -->
 		    <form action="{{ url('admin/evento/create') }}" method="POST" class="form-horizontal" id="form">
 		@endif

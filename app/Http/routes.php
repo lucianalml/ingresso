@@ -28,11 +28,6 @@ Route::get('/pagamento/confirmacao', [
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
 
-
-    Route::get('/construcao', function () {
-    	return view('shop.construcao');
-    });
-	
 	// Rotas para autenticação do usuário (/login, /register, /logout)
 	Route::auth();
 
@@ -63,6 +58,11 @@ Route::group(['middleware' => ['web']], function () {
 		Route::post('/ingresso/{ingresso}/edit', 'IngressoController@update');
 
 	});
+
+	// Página em construção
+    Route::get('/construcao', function () {
+    	return view('shop.construcao');
+    });
 
 });
 
