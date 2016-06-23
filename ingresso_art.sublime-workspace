@@ -1,0 +1,1026 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"me",
+				"messageToServerTest"
+			],
+			[
+				"type",
+				"typeAttendance"
+			],
+			[
+				"produ",
+				"produto_id"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"event",
+				"event_id"
+			],
+			[
+				"name",
+				"name-create"
+			],
+			[
+				"produt",
+				"produtoObj"
+			],
+			[
+				"resul",
+				"result_row"
+			],
+			[
+				"re",
+				"registration"
+			],
+			[
+				"regi",
+				"registration_successful"
+			],
+			[
+				"for",
+				"ForeignKey"
+			],
+			[
+				"pessoa",
+				"pessoa_id"
+			],
+			[
+				"hi",
+				"hiddenButton"
+			],
+			[
+				"tipo",
+				"tipo_logradouro"
+			],
+			[
+				"tp",
+				"tipo_logradouro"
+			],
+			[
+				"rua",
+				"rua"
+			],
+			[
+				"com",
+				"comercialphone"
+			],
+			[
+				"use",
+				"user_password"
+			],
+			[
+				"strin",
+				"stringIgual"
+			],
+			[
+				"cri",
+				"criaFilho"
+			],
+			[
+				"company",
+				"companyName"
+			],
+			[
+				"str",
+				"strLogradouro"
+			],
+			[
+				"scho",
+				"schoolinfo"
+			],
+			[
+				"comer",
+				"comercial"
+			],
+			[
+				"born",
+				"bornDate"
+			],
+			[
+				"regis",
+				"registration"
+			],
+			[
+				"logg",
+				"logged_in"
+			],
+			[
+				"sebrae",
+				"sebrae-webapp"
+			],
+			[
+				"registratio",
+				"registration_successful"
+			],
+			[
+				"registra",
+				"registration"
+			],
+			[
+				"veri",
+				"verification_successful"
+			],
+			[
+				"T",
+				"TOKEN_NUM"
+			],
+			[
+				"TOKEN_",
+				"TOKEN_ID"
+			],
+			[
+				"tam",
+				"tamArray"
+			],
+			[
+				"con",
+				"converteDigitoEmInteiro"
+			],
+			[
+				"cla",
+				"classes"
+			],
+			[
+				"resu",
+				"result"
+			],
+			[
+				"submi",
+				"submitDiv"
+			],
+			[
+				"mor",
+				"morador_id"
+			],
+			[
+				"fe",
+				"fetch_object"
+			],
+			[
+				"SESSI",
+				"_SESSION"
+			],
+			[
+				"sq",
+				"sql"
+			],
+			[
+				"attendance",
+				"attendance_id"
+			],
+			[
+				"HOME",
+				"HOME_PAGE"
+			],
+			[
+				"HOST",
+				"HOST_IP_ADDRESS"
+			],
+			[
+				"query",
+				"query_new_user_insert"
+			],
+			[
+				"D",
+				"DB_NAME"
+			],
+			[
+				"sql",
+				"sqlInfo"
+			],
+			[
+				"a",
+				"attendance_id"
+			],
+			[
+				"quer",
+				"query-name"
+			],
+			[
+				"div",
+				"divProfile"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"busin",
+				"business-profile"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"SE",
+				"_SESSION"
+			],
+			[
+				"new",
+				"new_company_id"
+			],
+			[
+				"pro",
+				"business-profile"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"session_se",
+				"session_set_save_handler"
+			],
+			[
+				"t",
+				"table	Tag"
+			],
+			[
+				"htmles",
+				"htmlspecialchars"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"cou",
+				"country"
+			],
+			[
+				"send",
+				"sendgrid_apikey"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"sim",
+				"simplejson"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"craw",
+				"crawlerService"
+			],
+			[
+				"price",
+				"priceList"
+			],
+			[
+				"date",
+				"date_updated"
+			],
+			[
+				"host",
+				"hostId"
+			],
+			[
+				"Cr",
+				"CrawlerService"
+			],
+			[
+				"req",
+				"requestCommandTail"
+			],
+			[
+				"reques",
+				"requestCommandHead"
+			],
+			[
+				"la",
+				"lawAgree"
+			],
+			[
+				"custo",
+				"customerJsonData"
+			],
+			[
+				"app",
+				"approveAllHost"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"has",
+				"hasAirbnbAccount"
+			],
+			[
+				"add",
+				"address"
+			],
+			[
+				"month",
+				"monthlyReports"
+			],
+			[
+				"simple",
+				"simpleGuestComment"
+			],
+			[
+				"js",
+				"jsonObject"
+			],
+			[
+				"roo",
+				"roomId"
+			],
+			[
+				"hos",
+				"hostIdNumber"
+			],
+			[
+				"requ",
+				"requestUrl"
+			],
+			[
+				"api",
+				"apiLinkTail"
+			],
+			[
+				"year",
+				"yearParameter"
+			],
+			[
+				"ap",
+				"apiCalendarBugKey"
+			],
+			[
+				"web",
+				"webdriver"
+			],
+			[
+				"tabl",
+				"tableTit"
+			],
+			[
+				"Rese",
+				"ReservationButtonClass"
+			],
+			[
+				"co",
+				"connectRoom"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"somatorio",
+				"somatorioRec"
+			],
+			[
+				"Use",
+				"UserService"
+			],
+			[
+				"lis",
+				"listRooms"
+			],
+			[
+				"url",
+				"urllib"
+			],
+			[
+				"j",
+				"Json"
+			],
+			[
+				"par",
+				"parseHtml"
+			],
+			[
+				"pho",
+				"PhotoLink"
+			],
+			[
+				"EchoS",
+				"EchoService3"
+			],
+			[
+				"page",
+				"page_source"
+			],
+			[
+				"we",
+				"webpage"
+			],
+			[
+				"room",
+				"roomId"
+			],
+			[
+				"medi",
+				"media-photo-block"
+			],
+			[
+				"ro",
+				"row-space-1"
+			],
+			[
+				"ex",
+				"extraInfo"
+			],
+			[
+				"bran",
+				"branchedName"
+			],
+			[
+				"max",
+				"maxPage"
+			],
+			[
+				"pages",
+				"pagesBySearch"
+			],
+			[
+				"na",
+				"nameToBeSearched"
+			],
+			[
+				"u",
+				"UTF-8"
+			],
+			[
+				"met",
+				"metaList"
+			],
+			[
+				"remo",
+				"remover_acentos"
+			],
+			[
+				"cre",
+				"createDroplet"
+			],
+			[
+				"ea",
+				"eachNode"
+			],
+			[
+				"ma",
+				"maxPage"
+			],
+			[
+				"each",
+				"eachPagesNumber"
+			],
+			[
+				"destroy",
+				"destroyDroplet"
+			],
+			[
+				"roots",
+				"rootstair"
+			],
+			[
+				"root",
+				"rootstair"
+			],
+			[
+				"http",
+				"httpclient"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "composer.lock",
+			"settings":
+			{
+				"buffer_size": 127745,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ingresso_art.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 27.0,
+		"last_filter": "ruby",
+		"selected_items":
+		[
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"set syn",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/phcs09/ingressoart/vagrant-setup-php/www/html/ingresso"
+	],
+	"file_history":
+	[
+		"/Users/phcs09/fleety/Fleety-FrontEnd/fabfile.py",
+		"/Applications/MAMP/conf/apache/httpd.conf",
+		"/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf",
+		"/Users/phcs09/Documents/myproject/flask/venv/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/sysconfig.py",
+		"/Library/WebServer/Documents/ingresso.art/app/src/classes/Registration.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/editEvent.php",
+		"/Users/phcs09/p.c",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/shared/_continue-attendance-form.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/solutions.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/result.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/analysis.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/shared/_create-attendance-form.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/shared/_template-form-head.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/shared/_header-form-page.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/createAttendance.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/assets/scripts/custom.js",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/getCompany.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/password_reset.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/index.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/classes/Produto.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/buy.php",
+		"/Users/phcs09/projetos/respect-festival/app/templates/bar.html",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/criarProduto.php",
+		"/Library/WebServer/Documents/ingresso.art/backend/createProduto.sql",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/_shared/showEvent.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/_shared/header.php",
+		"/Library/WebServer/Documents/ingresso.art/backend/createPedido.sql",
+		"/Library/WebServer/Documents/ingresso.art/backend/createPedidoItem.sql",
+		"/Library/WebServer/Documents/ingresso.art/backend/createEvent.sql",
+		"/Library/WebServer/Documents/ingresso.art/README",
+		"/Library/WebServer/Documents/ingresso.art/backend/createDescr.sql",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/createEvent.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/classes/Event.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/classes/Update.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/classes/Login.php",
+		"/Users/phcs09/ufpr/compiladores/analisadorLex/program.c",
+		"/Users/phcs09/ufpr/compiladores/analisadorLex/analex.py",
+		"/Users/phcs09/ufpr/compiladores/analisadorLex/analex.c",
+		"/Users/phcs09/code/searchModule.py",
+		"/Users/phcs09/a.py",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/createAttendance_bkp.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/company.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/classes/Login.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/new_password.php",
+		"/Users/phcs09/Desktop/scrapy (1)/scrapy/analise dos vendedores mercadolivre/ML/items.py",
+		"/Users/phcs09/projetos/respect-festival/db_view.py",
+		"/Users/phcs09/projetos/respect-festival/backend/createPessoaTable.sql",
+		"/Users/phcs09/projetos/respect-festival/backend/createRoleTable.sql",
+		"/Users/phcs09/projetos/respect-festival/backend/createUserTable.sql",
+		"/Users/phcs09/projetos/respect-festival/.gitignore",
+		"/Users/phcs09/projetos/respect-festival/app.db",
+		"/Users/phcs09/projetos/respect-festival/app/views.py",
+		"/Users/phcs09/receita/receita/items.py",
+		"/Users/phcs09/receita/receita/spiders/receitaspider.py",
+		"/Users/phcs09/receitaFederalCrawl/receitaFederalCrawl/items.py",
+		"/Users/phcs09/receitaFederalCrawl/receitaFederalCrawl/spiders/receitaSpider.py",
+		"/Users/phcs09/scrapyExperience/myproject/myproject/items.py",
+		"/Users/phcs09/Downloads/plugins-master/sublime-text/a.py",
+		"/Users/phcs09/Downloads/plugins-master/sublime-text/a",
+		"/Users/phcs09/a",
+		"/Users/phcs09/node_modules/kite/package.json",
+		"/Users/phcs09/node_modules/kite/lib/kite.js",
+		"/Users/phcs09/projetos/respect-festival/stackoverflow_spider.py",
+		"/Users/phcs09/Documents/myproject/flask/venv/lib/python2.7/site-packages/pip/_vendor/html5lib/html5parser.py",
+		"/Users/phcs09/projetos/respect-festival/scrapy.py",
+		"/Users/phcs09/projetos/respect-festival/top-stackoverflow-questions.json",
+		"/Users/phcs09/projetos/respect-festival/app/models.py",
+		"/Users/phcs09/Desktop/projeto/calculate.py",
+		"/Users/phcs09/Desktop/projeto/matrizNova",
+		"/Users/phcs09/Desktop/projeto/ag.c",
+		"/Users/phcs09/Desktop/projeto/index.html",
+		"/Users/phcs09/Desktop/projeto1.0/index.html",
+		"/Users/phcs09/Desktop/projeto/index2",
+		"/Users/phcs09/Desktop/projeto1.0/ag.c",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/classes/Registration.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/index.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/config/config.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/myaccount.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/register.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/translations/pt_BR.php",
+		"/Users/phcs09/projetos/respect-festival/app/templates/base_with_modal.html",
+		"/Users/phcs09/projetos/respect-festival/app/templates/base_without_message.html",
+		"/Users/phcs09/projetos/respect-festival/run.py",
+		"/Users/phcs09/Documents/myproject/hello.py",
+		"/Users/phcs09/Documents/myproject/template/hello.html",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/shared/_template-form-footer.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/form_login.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/logged_in.php",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/register.php",
+		"/Library/WebServer/Documents/ingresso.art/.git/info/exclude",
+		"/Library/WebServer/Documents/ingresso.art/.gitignore",
+		"/Library/WebServer/Documents/ingresso.art/gitignore",
+		"/Library/WebServer/Documents/ingresso.art/app/src/translations/pt_BR.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/createAttendance",
+		"/Users/phcs09/_www/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/logged_in.php",
+		"/Users/phcs09/gcode/B/input",
+		"/Users/phcs09/gcode/B/p.c",
+		"/Users/phcs09/gcode/B/B-small-attempt0.in",
+		"/Users/phcs09/gcode/A/p.c",
+		"/Users/phcs09/gcode/A/input",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/emails/new-password-link.html",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/emails/confirm-account.html",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/emails/confirm-account-header.html",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/views/emails/confirm-account-footer.html",
+		"/Library/WebServer/Documents/ingresso.art/backend/createUserTable.sql",
+		"/Library/WebServer/Documents/ingresso.art/backend/createIngressoArtDatabase.sql",
+		"/Library/WebServer/Documents/ingresso.art/backend/createAttendanceTable.sql",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/_shared/ls",
+		"/Library/WebServer/Documents/ingresso.art/app/src/views/_shared/footer.php",
+		"/Library/WebServer/Documents/ingresso.art/createEvent.sql",
+		"/Users/phcs09/code/respect-festival/run.py",
+		"/Users/phcs09/code/babel.py",
+		"/Users/phcs09/code/respect-festival/babael.py",
+		"/Users/phcs09/teste2.py",
+		"/Library/WebServer/Documents/respect-festival/teste2.py",
+		"/Library/WebServer/Documents/respect-festival/requirements.txt",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/views/createAttendance.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/views/logged_in.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/views/shared/_header-form-page.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/views/shared/_continue-attendance-form.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/views/company.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/classes/Registration.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/config/config.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/classes/Login.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/build/app/classes/Update.php",
+		"/Library/WebServer/Documents/matilha/sebrae-webapp2/sebrae-webapp/src/app/config/config.php",
+		"/Users/phcs09/code/respect-festival/requirements.txt"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"vihosts",
+			"registration_successful",
+			"header",
+			"Atendimento finalizado",
+			"página ini",
+			"pagina ini",
+			"pagina",
+			"ir para ",
+			"versão para impressão",
+			"versão para impressã",
+			"versao ",
+			"todos os temas",
+			"closeFormModal",
+			"status-bar",
+			"totalSteps",
+			"currentStep",
+			"id=\"Button",
+			"button",
+			"echo",
+			" ?>",
+			"/form",
+			"businne",
+			"business",
+			"possuo cnpj",
+			"nao possuo cnp",
+			"new-company",
+			"clickOnRadioButton",
+			"<input type=\"radio\"",
+			"<input type=\"radio\" name=\"business\" id=\"select-business1\" value=\"1\" class=\"form-control teste\" onclick=\"chooseDiv()\">",
+			"new-company",
+			"Qual o CNPJ",
+			"deleteOverlays",
+			"destination",
+			"echo",
+			"btn btn",
+			"btn",
+			"btn btn",
+			"Searching",
+			"btn ",
+			"Searching",
+			"btn btn",
+			"Searching",
+			"btn btn",
+			"btn",
+			"button",
+			"btn",
+			"btn btn",
+			"btn ",
+			"alert",
+			"session['lo",
+			"doLogout",
+			"echo",
+			"password_verify",
+			"getUserData",
+			"$user_email",
+			"count",
+			"criaNo",
+			"echo \"oi",
+			"user_name",
+			"companyNa",
+			"numero",
+			"bairro",
+			"getUniqueUserEmailData",
+			"getUniqueUserNameData",
+			"getUnique",
+			"UserData",
+			"object",
+			"$object",
+			"UserData",
+			"getUserData",
+			"user_email",
+			"user_mail",
+			"editNewPassword",
+			"updateData",
+			"oi",
+			"setPasswordResetDatabaseTokenAndSendMail",
+			"newRememberMeCookie",
+			"user-field",
+			"user_email",
+			"user_mail",
+			"submitRegister",
+			"verification_successful",
+			"registration_successful",
+			"response",
+			"php",
+			"<",
+			"<?",
+			"?>",
+			"64.251.786/0001-00",
+			"<?",
+			"<? ",
+			"<?",
+			"<?php",
+			"<php",
+			"<?",
+			"row form-single",
+			");\n",
+			"form-input",
+			"business-exist",
+			"show row business-exist cnpj",
+			"Identificar se o cliente possui regras em seu negóciojunto aos sócios",
+			"Em caso positivo, verificar como e com que freqúência o cliente",
+			"O uso de empréstimos ou microcréditos para custear as despesas do\nnegócio deve ser incluido nos controles fi",
+			"Microempreendedor Individual (MEI) é",
+			"A atuação poderá variar de acordo com a atividade e o perfil\n",
+			"Se o cliente já tem uma ideia definida",
+			"lertar que esta separação e fundamental",
+			"É importante saber a partir de que quant",
+			"Para cada tipo de empresa existe um faturamento diferenciado",
+			"Uma vez definidos o quê, o porquê e para onde exportar, a empresa irá\nse deparar com as exigênci",
+			"Qualidade é importante em tudo o que fazemos e está nos detalhes",
+			"Qualidade é importante em tudo o que fazemos e está nos detalhes.\nSem qualidade,",
+			"Procure entender o que impulsiona as compras",
+			"Uma marca deve ser simples, lembrar a finalidade d",
+			"Uma marca deve ser simples, lembrar a finalidade do produto/serviço",
+			"- Paga as contas pessoais (fatura de cartão de crédito, lazer, aluguel, etc) sem usar o dinheiro que entra nas suas vendas ou serviços. Exemplo: se trabalhar em casa, identificar se ",
+			"- Paga as contas pessoais (fatura de cartão de crédito, lazer, aluguel, etc) sem usar o dinheiro que entra nas suas vendas ou serviços. Exemplo: se trabalhar em casa, identificar se o cliente sabe quanto gasta com luz, água e t",
+			"As notas fiscais de vendas de",
+			"As notas fiscais de vendas de produtos e serviços devem ser emitidas para pessoas ju",
+			"As notas fiscais de vendas de produtos e serviços devem ser emitidas para pessoas jurídicas obrigatoriamente, mas no caso de pessoa física está dispensado. O estado do Rio de Janeiro possui um modelo específico de nota fiscal de venda, a Modelo 2, mediante AIDF isenta de pagamento. Há muitos municípios que autorizam o uso da Nota Fiscal Eletrônica de Serviços, verifique no seu município quais as modalidades de notas de serviços disponíveis. Caso atue c",
+			"As notas fiscais de vendas de produtos e serviços devem ser emitidas para pessoas jurídicas obrigatoriamente, mas no caso de pessoa física está dispensado.",
+			"Sobre os deveres e obrigações (ambiental / sanitária / postura) específicas para sua atividade:",
+			"Possui algum conhecimento sobre os deveres e obrigações (ambiental/sanitária/postura)",
+			"session-start",
+			"localhost",
+			"$_POST['born']",
+			";",
+			";1176;"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"origin",
+			"$document",
+			"document",
+			"user_name",
+			"document",
+			"`,`",
+			".potencialquestions",
+			",",
+			"_REQUEST",
+			"dbsebrae.empresarioquestions",
+			"VARCHAR",
+			" ",
+			"\\n",
+			" ",
+			"\\n",
+			" ",
+			"\\n",
+			" ",
+			"\\n",
+			" ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "composer.lock",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 127745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								756,
+								756
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ingresso_art.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ingresso_art.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 256.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
