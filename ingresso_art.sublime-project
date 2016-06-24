@@ -2,7 +2,22 @@
 	"folders":
 	[
 		{
+			"follow_symlinks": true,
 			"path": "."
 		}
-	]
+	],
+
+	"settings": { 
+		"xdebug": {     
+		    "path_mapping": {
+				"/var/www/html/ingresso/" : "C:/vm_laravel/www/html/ingresso/"
+		    },
+			"url": "http://ingresso.dev/", 
+			"port": 9000,
+			"debug": true,
+			"super_globals": true,
+	         "close_on_stop": true
+		} 
+	}
+
 }

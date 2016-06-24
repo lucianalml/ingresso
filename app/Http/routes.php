@@ -12,19 +12,6 @@
 */
 
 	            
-// TODO -> Receber notificações
-Route::get('/pagseguro/not', [
-	'uses' => 'HomeController@index',
-	'as' => 'pagseguro.notification'
-	]);
-
-
-Route::get('/pagamento/confirmacao', [
-	'uses' => 'PagamentoController@store',
-	'as' => 'pagseguro.redirect'
-	]);
-
-
 // Rotas para acesso ao site principal
 Route::group(['middleware' => ['web']], function () {
 
@@ -59,6 +46,19 @@ Route::group(['middleware' => ['web']], function () {
 
 	});
 
+
+	// TODO -> Receber notificações do pag seguro
+	Route::get('/notificacoes/pagseguro', [
+		'uses' => 'HomeController@index',
+		'as' => 'pagseguro.notification'
+		]);
+
+
+	Route::get('/pagamento/confirmacao', [
+		'uses' => 'PagamentoController@store',
+		'as' => 'pagseguro.redirect'
+		]);
+
 	// Página em construção
     Route::get('/construcao', function () {
     	return view('shop.construcao');
@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 
 		Route::get('/', 'AdminController@index');
  		
+ 		// Gerenciamento dos eventos
  		Route::get('/eventos', 'EventoController@index');
 
 		Route::get('/evento/create', 'EventoController@create');
@@ -90,13 +91,18 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 		//Route::post('evento/{id}/delete', 'EventoController@delete');
 	//	Route::delete('/evento/{evento}', 'EventoController@destroy');
 
-	// Cadastro de lotes
+		// Cadastro das imagens dos eventos
+		Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
+	 	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
+	    Route::delete('imagem/{imagem}', 'EventoImagemController@destroy');
+
+		// Gerenciamento dos lotes
 		Route::get('evento/{evento}/lotes', 'LoteController@index');
 	    Route::post('evento/{evento}/lote', 'LoteController@store');
 	    Route::get('/lote/{lote}/edit', 'LoteController@edit');
 	    Route::post('/lote/{lote}/edit', 'LoteController@update');
 
-	// Cadastro de produtores
+		// Gerenciamento dos produtores
 	 	Route::get('/produtores', 'AdminController@listarProdutores');
 	 	Route::get('/produtor/create', 'ProdutorController@create');
 	 	Route::post('/produtor/register', 'ProdutorController@store');
@@ -105,19 +111,18 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
 	    Route::post('produtor/{produtor}/edit', 'ProdutorController@update');
 	    Route::delete('produtor/{produtor}', 'ProdutorController@destroy');
 	    
-	// Cadastro de imagens
-		Route::get('evento/{evento}/imagens', 'EventoImagemController@index');
-	 	Route::post('evento/{evento}/imagem', 'EventoImagemController@store');
-	    Route::delete('imagem/{imagem}', 'EventoImagemController@destroy');
-
-		// Usuários cadastrados
+		// Gerenciamento dos usuários
 	 	Route::get('/usuarios', 'AdminController@listarUsuarios');
 
-		// Pedidos
+		// Gerenciamento dos pedidos
 	 	Route::get('/pedidos', 'PedidoController@index');
 	 	Route::get('/pedido/{pedido}', 'AdminController@showPedido');
 	 	Route::post('/pedido/{pedido}/edit', 'PedidoController@update');
 
+	 	Route::get('/pagamentos', 'PagamentoController@index');
+	 	Route::get('/pagamento/{pagamento}', 'PagamentoController@show');
+
+	 	// Gerenciamento dos ingressos
 	 	Route::get('/ingressos', 'IngressoController@index');
 
 	});

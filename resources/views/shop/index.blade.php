@@ -10,7 +10,6 @@
   <h1>Próximos eventos</h1>
 </div>
 
-
 @forelse(array_chunk($eventos->all(),4) as $row)
     <div class="row">
         @foreach($row as $evento)

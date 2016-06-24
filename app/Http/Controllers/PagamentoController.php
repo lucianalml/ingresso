@@ -15,6 +15,27 @@ class PagamentoController extends Controller
 {
 
     /**
+     * Lista os pagamentos
+     */
+    public function index(Request $request)
+    {
+
+        $pagamentos = Pagamento::orderBy('id', 'desc')->Paginate(20);
+        return view('admin.pagamentos.index', compact('pagamentos'));
+    }
+
+
+    /**
+     * Exibe um pagamento
+     */
+    public function show(Pagamento $pagamento)
+    {        
+        return view('admin.pagamentos.show', compact('pagamento'));
+
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,8 +48,12 @@ class PagamentoController extends Controller
         // Salva no banco de dados
         $pagamento = new Pagamento();
         $pagamento->tipo = $cobranca->getTipoTransacao();
+        $pagamento->transacao = $cobranca->getCodTransacao();
+        $pagamento->data_transacao = $cobranca->getaData();
+
         $pedido->pagamento()->save($pagamento);
 
+        // Envia para o link de cobrança
         return redirect($cobranca->getLink());
     }
 
@@ -42,7 +67,8 @@ class PagamentoController extends Controller
     {        
 
 
-// nao está dando certo mas blz
+// Quando retorna da cobrança vai cair aqui
+// 
         if ($request->has('transaction_id')) {
             // // TODO - pensar se isso vai funcionar....
             // // Recupera o ultimo pagamento criado para o usuário logado

@@ -9,7 +9,7 @@ class PagSeguroCobranca extends Cobranca implements CobrancaInterface {
 
 	function __construct()
 	{
-		$this->tipo_transacao = 'PagSeguro';
+		$this->setTipoTransacao('PagSeguro');
 	}  
 
 	public function cobrar(Pedido $pedido)
@@ -80,7 +80,7 @@ class PagSeguroCobranca extends Cobranca implements CobrancaInterface {
 
 			$this->setLink($information->getLink());
 
-//		    print_r($information->getDate());
+			$this->setData($information->getDate());
 
 		}
 

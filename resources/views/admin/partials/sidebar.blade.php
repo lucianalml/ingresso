@@ -33,7 +33,7 @@
                     </li>
                 </ul>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{ url('admin/pagamento') }}">
+                    <li><a href="{{ url('admin/pagamentos') }}">
                     <i class="fa fa-money" aria-hidden="true"></i> Pagamento</a></li>
                 </ul>
             </li>

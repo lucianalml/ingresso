@@ -14,13 +14,13 @@
         <p><b>Nome:</b> {{ $pedido->user->name }}</p>
         <p><b>Email:</b> {{ $pedido->user->email }}</p>
         
-        <p><b>Última atualização:</b> {{ $pedido->updated_at }}</p>
+        <p><b>Última atualização:</b> {{ date('d/m/Y', strtotime($pedido->updated_at)) }}</p>
 
         <!-- Form para alterar status -->
         {{ Form::open(array('action' => array('PedidoController@update', $pedido->id))) }}
 
         <div class="form-group">
-            {{ Form::label('status', 'Status') }}
+            {{ Form::label('status', 'Status do Pedido') }}
             {{ Form::select('status', [
                'Novo' => 'Novo',
                'Em análise' => 'Em análise',

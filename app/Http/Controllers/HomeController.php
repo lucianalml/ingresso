@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index(EventoFilters $filters)
     {
-        // Filtra os eventos
+        // Filtra os eventos conforme os parametros
         $eventos = Evento::filter($filters)->simplePaginate(8);
         
         return view('shop.index', compact('eventos'));
